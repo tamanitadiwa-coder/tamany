@@ -18,39 +18,39 @@ body {
   text-align: center;
 }
 
-/* Container pushes content slightly upward /
+/* Container pushes content higher */
 .container {
-  transform: translateY(-40px);
+  transform: translateY(-80px); /* moved further up */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/ Logo /
+/* Logo */
 .logo {
-  width: 60px;
-  margin-bottom: 40px;
-  opacity: 0.9;
+  width: 70px;
+  margin-bottom: 45px;
+  opacity: 0.95;
 }
 
-/ TAMANY title — slim, spaced, premium /
+/* TAMANY title — slim, spaced, premium */
 h1 {
   font-size: 64px;
   margin: 0;
   font-weight: 500;
-  letter-spacing: 0.35em; / Wide spacing /
+  letter-spacing: 0.35em;
 }
 
-/ Subtext only (tagline removed) /
+/* Subtext */
 .subtext {
   font-size: 16px;
   color: #888;
   margin-top: 22px;
 }
 
-/ Button — centered with breathing space */
+/* Button — centered with breathing space */
 button {
-  margin-top: 70px;
+  margin-top: 90px; /* extra space below text */
   padding: 16px 44px;
   font-size: 15px;
   letter-spacing: 0.05em;
@@ -73,8 +73,8 @@ button:hover {
 
 <div class="container">
 
-  <!-- Replace src with your logo file name -->
-  <img src="" alt="Tamany Logo" class="logo">
+  <!-- Logo -->
+  <img src="logo.png" alt="Tamany Logo" class="logo">
 
   <h1>TAMANY</h1>
 
