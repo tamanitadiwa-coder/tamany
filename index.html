@@ -34,7 +34,6 @@ body.loaded{
   background:rgba(0,0,0,.7);
   backdrop-filter:blur(14px);
   z-index:999;
-  border-bottom:1px solid rgba(255,255,255,.08);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -53,7 +52,6 @@ body.loaded{
   font-size:48px;
   z-index:1000;
   pointer-events:none;
-  transition:transform .25s ease;
 }
 
 /* ===== HERO ===== */
@@ -106,7 +104,7 @@ body.loaded{
   opacity:0;
   transform:translateY(60px);
   transition:all .6s ease;
-  margin-top:120px; /* MORE SPACE BETWEEN SECTIONS */
+  margin-top:120px;
 }
 
 .section.visible{
@@ -153,28 +151,31 @@ body.loaded{
   background:linear-gradient(transparent, #000);
 }
 
-/* Caption — SMALLER & AT EDGE */
-
-.caption{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  color:#fff;
-  font-size:16px; /* REDUCED */
-  padding:12px 20px;
-  background:linear-gradient(transparent, rgba(0,0,0,.7));
-  z-index:3;
-}
-
-/* Text block */
+/* ===== TEXT BLOCK ===== */
 
 .text-block{
   padding:80px 20px;
   max-width:760px;
   margin:auto;
-  font-size:18px;
   line-height:1.8;
-  color:#ccc;
+  text-align:left;
+}
+
+/* NEW HEADING */
+
+.section-title{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.14em;
+  margin-bottom:18px;
+  color:#e0e0e0; /* slightly dimmed white */
+}
+
+/* BODY TEXT */
+
+.section-text{
+  font-size:18px;
+  color:#bdbdbd; /* darker than heading */
 }
 
 /* ===== FOOTER ===== */
@@ -236,85 +237,85 @@ body.loaded{
 <!-- STORY SECTIONS -->
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image1.jpg">
-    <div class="caption">Building digital experiences for modern businesses</div>
-  </div>
+  <div class="image-wrap"><img src="image1.jpg"></div>
   <div class="text-block">
-    Tamany creates powerful websites, platforms, and digital systems
-    designed to help businesses grow, connect, and succeed in a
-    technology-driven world.
+    <div class="section-title">BUILDING DIGITAL EXPERIENCES</div>
+    <div class="section-text">
+      Tamany creates powerful websites, platforms, and digital systems
+      designed to help businesses grow, connect, and succeed in a
+      technology-driven world.
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image2.jpg">
-    <div class="caption">Technology that improves real lives</div>
-  </div>
+  <div class="image-wrap"><img src="image2.jpg"></div>
   <div class="text-block">
-    Our innovations focus on people first — building solutions that
-    enhance productivity, wellbeing, and everyday experiences through
-    thoughtful design and intelligent engineering.
+    <div class="section-title">TECHNOLOGY THAT IMPROVES LIFE</div>
+    <div class="section-text">
+      Our innovations focus on people first — building solutions that
+      enhance productivity, wellbeing, and everyday experiences through
+      thoughtful design and intelligent engineering.
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image3.jpg">
-    <div class="caption">From the origins of computing to the future of AI</div>
-  </div>
+  <div class="image-wrap"><img src="image3.jpg"></div>
   <div class="text-block">
-    We respect the history of technology while pushing boundaries
-    forward — combining classic computing foundations with modern
-    artificial intelligence and scalable cloud platforms.
+    <div class="section-title">FROM ORIGINS TO AI FUTURE</div>
+    <div class="section-text">
+      We respect the history of technology while pushing boundaries
+      forward — combining classic computing foundations with modern
+      artificial intelligence and scalable cloud platforms.
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image4.jpg">
-    <div class="caption">Sustainable technology for the future</div>
-  </div>
+  <div class="image-wrap"><img src="image4.jpg"></div>
   <div class="text-block">
-    Tamany invests in solutions that balance innovation with
-    responsibility, ensuring technology contributes positively to
-    both society and the environment.
+    <div class="section-title">SUSTAINABLE INNOVATION</div>
+    <div class="section-text">
+      Tamany invests in solutions that balance innovation with
+      responsibility, ensuring technology contributes positively to
+      both society and the environment.
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image5.jpg">
-    <div class="caption">Connecting people across platforms</div>
-  </div>
+  <div class="image-wrap"><img src="image5.jpg"></div>
   <div class="text-block">
-    Our ecosystem includes social platforms, marketplaces, and
-    communication tools designed to bring people closer together in
-    a secure digital environment.
+    <div class="section-title">HUMAN CONNECTION PLATFORMS</div>
+    <div class="section-text">
+      Our ecosystem includes social platforms, marketplaces, and
+      communication tools designed to bring people closer together in
+      a secure digital environment.
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image6.jpg">
-    <div class="caption">Software development at the core</div>
-  </div>
+  <div class="image-wrap"><img src="image6.jpg"></div>
   <div class="text-block">
-    Every product we create is powered by advanced software
-    engineering, delivering reliability, performance, and scalability
-    for businesses of any size.
+    <div class="section-title">SOFTWARE AT THE CORE</div>
+    <div class="section-text">
+      Every product we create is powered by advanced software
+      engineering, delivering reliability, performance, and scalability
+      for businesses of any size.
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="image-wrap">
-    <img src="image7.jpg">
-    <div class="caption">Enabling modern digital commerce</div>
-  </div>
+  <div class="image-wrap"><img src="image7.jpg"></div>
   <div class="text-block">
-    From online stores to complex marketplaces, Tamany builds systems
-    that allow businesses to sell, operate, and expand globally.
+    <div class="section-title">GLOBAL DIGITAL COMMERCE</div>
+    <div class="section-text">
+      From online stores to complex marketplaces, Tamany builds systems
+      that allow businesses to sell, operate, and expand globally.
+    </div>
   </div>
 </section>
 
@@ -356,12 +357,12 @@ const title = document.getElementById("title");
 
 window.addEventListener("scroll", () => {
 
-  const maxScroll = 300;
-  const y = Math.min(window.scrollY, maxScroll);
-  const progress = y / maxScroll;
+  const lockPoint = 300;
+  const y = window.scrollY;
+  const progress = Math.min(y / lockPoint, 1);
 
-  const scale = 1 - progress * 0.65;
-  const moveY = -progress * (window.innerHeight/2 - 35);
+  const scale = 1 - (1 - 0.35) * progress;
+  const moveY = -(window.innerHeight/2 - 35) * progress;
 
   title.style.transform =
     `translate(-50%, -50%) translateY(${moveY}px) scale(${scale})`;
