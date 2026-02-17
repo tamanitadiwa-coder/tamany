@@ -6,96 +6,265 @@
 <title>TAMANY — Website Solutions</title>
 
 <style>
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  text-align: center;
-  padding: 80px 20px;
+
+/* ===== GLOBAL ===== */
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#000;
+  color:#fff;
 }
 
-/* Title */
-h1 {
-  font-size: 34px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  margin-bottom: 40px;
+/* ===== TOP BAR ===== */
+
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:70px;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  padding:0 30px;
+  gap:30px;
+  z-index:999;
 }
 
-/* Service cards */
-.card {
-  border: 1px solid #333;
-  border-radius: 14px;
-  padding: 30px;
-  margin: 20px auto;
-  max-width: 420px;
-  background: rgba(255,255,255,0.02);
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+  opacity:.85;
 }
 
-.card h2 {
-  margin-top: 0;
-  font-weight: 500;
+.nav a:hover{opacity:1;}
+
+/* ===== PAGE WRAPPER ===== */
+
+.wrapper{
+  padding-top:110px;
+  text-align:center;
 }
 
-.card p {
-  color: #bbb;
-  font-size: 15px;
-  line-height: 1.6;
+/* ===== LOGO ===== */
+
+.logo{
+  width:70px;
+  margin:40px auto 70px;
+  display:block;
+  opacity:.95;
 }
 
-/* Contact box */
-.contact {
-  margin-top: 70px;
-  font-size: 16px;
-  color: #ccc;
+/* ===== SERVICE SECTIONS ===== */
+
+.service{
+  max-width:760px;
+  margin:0 auto 80px;
+  padding:0 20px;
 }
 
-/* Back button */
-button {
-  margin-top: 40px;
-  padding: 14px 36px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 10px;
-  cursor: pointer;
+.service h2{
+  font-weight:500;
+  letter-spacing:.08em;
+  margin-bottom:18px;
 }
 
-button:hover {
-  border-color: #aaa;
+.service p{
+  color:#bbb;
+  font-size:17px;
+  line-height:1.7;
 }
+
+/* ===== GALLERY HEADER ===== */
+
+.gallery-title{
+  margin:120px 0 60px;
+  font-size:24px;
+  letter-spacing:.1em;
+  color:#e0e0e0;
+}
+
+/* ===== IMAGE SECTIONS ===== */
+
+.section{
+  margin-top:120px;
+}
+
+.image-wrap img{
+  width:100%;
+  display:block;
+  filter:brightness(.7);
+}
+
+/* TEXT BELOW IMAGE */
+
+.text-block{
+  max-width:760px;
+  margin:40px auto;
+  padding:0 20px;
+  text-align:left;
+}
+
+.section-title{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.14em;
+  margin-bottom:18px;
+  color:#e0e0e0;
+}
+
+.section-text{
+  font-size:18px;
+  color:#bdbdbd;
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+  background:#000;
+  color:#ccc;
+  padding:80px 20px;
+  text-align:center;
+}
+
+.footer h2{
+  color:#fff;
+  letter-spacing:.12em;
+}
+
+.links{
+  margin-top:40px;
+  line-height:2.4;
+  font-size:17px;
+}
+
+.small{
+  margin-top:60px;
+  font-size:14px;
+  color:#777;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>WEBSITE SOLUTIONS</h1>
+<!-- TOP BAR -->
 
-<div class="card">
-  <h2>Starter Website</h2>
-  <p>Clean, modern website for small businesses establishing an online presence.</p>
+<div class="nav">
+  <a href="packages.html">Packages</a>
+  <a href="contact.html">Help</a>
 </div>
 
-<div class="card">
-  <h2>Professional Website</h2>
-  <p>Custom business website with advanced features and strong brand presentation.</p>
+<div class="wrapper">
+
+  <!-- LOGO -->
+  <img src="logo.png" class="logo">
+
+  <!-- SERVICES -->
+
+  <div class="service">
+    <h2>Starter Website</h2>
+    <p>Clean professional website to establish your business online.</p>
+  </div>
+
+  <div class="service">
+    <h2>Professional Website</h2>
+    <p>Custom-designed site built for growth, credibility, and customer engagement.</p>
+  </div>
+
+  <div class="service">
+    <h2>Premium Website</h2>
+    <p>Full digital experience for established brands seeking a strong online presence.</p>
+  </div>
+
+  <!-- GALLERY HEADER -->
+
+  <div class="gallery-title">
+    Our Most Requested Website Solutions
+  </div>
+
 </div>
 
-<div class="card">
-  <h2>Premium Website</h2>
-  <p>Fully tailored digital experience designed for serious brands and growth.</p>
-</div>
+<!-- IMAGE SECTIONS -->
 
-<div class="contact">
-  <p>To begin your project, contact our team:</p>
-  <p>📞 084 037 4424</p>
-  <p>✉️ tamanitadiwa@gmail.com</p>
-</div>
+<section class="section">
+  <div class="image-wrap"><img src="image1.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR RETAIL STORES</div>
+    <div class="section-text">Showcase products clearly and help customers explore your store online.</div>
+  </div>
+</section>
 
-<button onclick="window.location.href='index.html'">
-  Back to Home
-</button>
+<section class="section">
+  <div class="image-wrap"><img src="image2.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR SALONS & BEAUTY BRANDS</div>
+    <div class="section-text">Display services, pricing, and brand identity professionally.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image3.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR FURNITURE STORES</div>
+    <div class="section-text">Large visual layouts designed for browsing and inspiration.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image4.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR TECH SHOPS</div>
+    <div class="section-text">Structured product pages with specifications and highlights.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image5.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR GROCERY STORES</div>
+    <div class="section-text">Clear categories, promotions, and store information.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image6.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR CLOTHING BRANDS</div>
+    <div class="section-text">Modern storefront design with collections and lookbooks.</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image7.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">WEBSITES FOR BOOKSTORES</div>
+    <div class="section-text">Catalog browsing designed for discovery and simplicity.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<section class="footer">
+
+  <h2>TAMANY TECHNOLOGY</h2>
+
+  <div class="links">
+    <div>Email: tamanitadiwa@gmail.com</div>
+    <div>Phone: <span style="text-decoration:underline;">084 037 4424</span></div>
+    <div>WhatsApp: 084 037 4424</div>
+    <div>Instagram: tamany.tech</div>
+  </div>
+
+  <div class="small">
+    Tamany — Parent Technology Company  
+    © 2026 All rights reserved
+  </div>
+
+</section>
 
 </body>
 </html>
