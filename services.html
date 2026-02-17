@@ -128,7 +128,6 @@ a, a:visited, a:active { color:#fff; }
   transition:transform 1s cubic-bezier(.22,.61,.36,1);
 }
 
-/* SCALE INTO PLACE WHEN VISIBLE */
 .section.visible img{ transform:scale(1); }
 
 /* TEXT BELOW IMAGE */
@@ -188,16 +187,13 @@ a, a:visited, a:active { color:#fff; }
 
 <div class="wrapper">
 
-  <!-- LOGO -->
   <img src="logo.png" class="logo" id="logo">
 
-  <!-- VIEW PACKAGES BUTTON -->
   <button class="packages-btn"
     onclick="window.location.href='packages.html'">
     View Packages
   </button>
 
-  <!-- IMAGE HEADER -->
   <div class="gallery-title">
     Our Most Requested Website Solutions
   </div>
@@ -279,10 +275,34 @@ a, a:visited, a:active { color:#fff; }
   <h2>TAMANY TECHNOLOGY</h2>
 
   <div class="links">
-    <div>Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: <span style="text-decoration:underline;">084 037 4424</span></div>
-    <div>WhatsApp: 084 037 4424</div>
-    <div>Instagram: tamany.tech</div>
+
+    <!-- EMAIL -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
+      Email: tamanitadiwa@gmail.com
+    </div>
+
+    <!-- PHONE → WHATSAPP -->
+    <div>
+      Phone:
+      <span style="text-decoration:underline; cursor:pointer;"
+        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+        084 037 4424
+      </span>
+    </div>
+
+    <!-- WHATSAPP -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+      WhatsApp: 084 037 4424
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">
+      Instagram: tamany.tech
+    </div>
+
   </div>
 
   <div class="small">
