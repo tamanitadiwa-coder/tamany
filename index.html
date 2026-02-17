@@ -18,17 +18,13 @@ body{
   overflow-x:hidden;
 }
 
-/* Smooth fade on page load */
+/* Fade on load */
 body.loaded{
   animation:fadeIn 1s ease forwards;
 }
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-/* ===== STICKY NAV BAR ===== */
+/* ===== NAV BAR ===== */
 
 .nav{
   position:fixed;
@@ -37,21 +33,30 @@ body.loaded{
   height:70px;
   background:rgba(0,0,0,.7);
   backdrop-filter:blur(14px);
+  z-index:999;
+  border-bottom:1px solid rgba(255,255,255,.08);
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:999;
-  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.nav span{
+/* ===== MORPHING TITLE ===== */
+
+.hero-title{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(1);
   color:#fff;
   font-weight:500;
   letter-spacing:.12em;
-  font-size:18px;
+  font-size:48px;
+  z-index:1000;
+  pointer-events:none;
+  transition:transform .25s ease;
 }
 
-/* ===== TOP BLACK HERO ===== */
+/* ===== HERO ===== */
 
 .hero{
   background:#000;
@@ -62,7 +67,6 @@ body.loaded{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding-top:70px;
 }
 
 .logo{
@@ -71,16 +75,9 @@ body.loaded{
   opacity:.95;
 }
 
-.hero h1{
-  font-weight:500;
-  letter-spacing:.12em;
-  margin:0;
-  font-size:48px;
-}
-
 .hero p{
   color:#888;
-  margin-top:18px;
+  margin-top:80px;
   font-size:18px;
 }
 
@@ -101,19 +98,15 @@ body.loaded{
   box-shadow:0 0 25px rgba(255,255,255,.2);
 }
 
-/* ===== IMAGE STORY SECTIONS ===== */
+/* ===== IMAGE SECTIONS ===== */
 
 .section{
-  position:relative;
   background:#000;
   text-align:center;
-  transition:all .6s ease;
-}
-
-/* Scroll reveal (Apple style) */
-.section{
   opacity:0;
   transform:translateY(60px);
+  transition:all .6s ease;
+  margin-top:120px; /* MORE SPACE BETWEEN SECTIONS */
 }
 
 .section.visible{
@@ -121,13 +114,11 @@ body.loaded{
   transform:translateY(0);
 }
 
-/* Image container */
 .image-wrap{
   position:relative;
   overflow:hidden;
 }
 
-/* Dark cinematic image */
 .image-wrap img{
   width:100%;
   display:block;
@@ -140,7 +131,8 @@ body.loaded{
   transform:scale(1);
 }
 
-/* Animated gradient fade top & bottom */
+/* Gradient edges */
+
 .image-wrap::before,
 .image-wrap::after{
   content:"";
@@ -149,7 +141,6 @@ body.loaded{
   width:100%;
   height:140px;
   z-index:2;
-  pointer-events:none;
 }
 
 .image-wrap::before{
@@ -162,18 +153,21 @@ body.loaded{
   background:linear-gradient(transparent, #000);
 }
 
-/* Caption */
+/* Caption — SMALLER & AT EDGE */
+
 .caption{
   position:absolute;
-  bottom:30px;
+  bottom:0;
   width:100%;
   color:#fff;
-  font-size:20px;
-  padding:0 20px;
+  font-size:16px; /* REDUCED */
+  padding:12px 20px;
+  background:linear-gradient(transparent, rgba(0,0,0,.7));
   z-index:3;
 }
 
-/* Black description area */
+/* Text block */
+
 .text-block{
   padding:80px 20px;
   max-width:760px;
@@ -181,7 +175,6 @@ body.loaded{
   font-size:18px;
   line-height:1.8;
   color:#ccc;
-  background:#000;
 }
 
 /* ===== FOOTER ===== */
@@ -195,7 +188,6 @@ body.loaded{
 
 .footer h2{
   color:#fff;
-  font-weight:500;
   letter-spacing:.12em;
 }
 
@@ -203,6 +195,11 @@ body.loaded{
   margin-top:40px;
   line-height:2.4;
   font-size:17px;
+}
+
+.links a{
+  color:#fff;
+  text-decoration:underline;
 }
 
 .small{
@@ -216,19 +213,17 @@ body.loaded{
 
 <body onload="document.body.classList.add('loaded')">
 
-<!-- ===== STICKY NAV ===== -->
+<!-- NAV BAR -->
+<div class="nav"></div>
 
-<div class="nav">
-  <span>TAMANY</span>
-</div>
+<!-- MORPHING TITLE -->
+<div id="title" class="hero-title">TAMANY</div>
 
-<!-- ===== HERO ===== -->
-
+<!-- HERO -->
 <section class="hero">
 
   <img src="logo.png" class="logo">
 
-  <h1>TAMANY</h1>
   <p>Technology solutions for modern business.</p>
 
   <button class="cta"
@@ -238,7 +233,7 @@ body.loaded{
 
 </section>
 
-<!-- ===== STORY SECTIONS ===== -->
+<!-- STORY SECTIONS -->
 
 <section class="section">
   <div class="image-wrap">
@@ -323,7 +318,7 @@ body.loaded{
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 
 <section class="footer">
 
@@ -331,7 +326,7 @@ body.loaded{
 
   <div class="links">
     <div>Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: 084 037 4424</div>
+    <div><a href="#">Phone: 084 037 4424</a></div>
     <div>WhatsApp: 084 037 4424</div>
     <div>Instagram: @tamany</div>
   </div>
@@ -348,16 +343,30 @@ body.loaded{
 /* ===== SCROLL REVEAL ===== */
 
 const sections = document.querySelectorAll(".section");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("visible");
   });
 },{threshold:0.15});
+sections.forEach(sec=>observer.observe(sec));
 
-sections.forEach(sec => observer.observe(sec));
+/* ===== TITLE MORPH ===== */
+
+const title = document.getElementById("title");
+
+window.addEventListener("scroll", () => {
+
+  const maxScroll = 300;
+  const y = Math.min(window.scrollY, maxScroll);
+  const progress = y / maxScroll;
+
+  const scale = 1 - progress * 0.65;
+  const moveY = -progress * (window.innerHeight/2 - 35);
+
+  title.style.transform =
+    `translate(-50%, -50%) translateY(${moveY}px) scale(${scale})`;
+
+});
 
 </script>
 
