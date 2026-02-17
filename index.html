@@ -18,6 +18,9 @@ body{
   overflow-x:hidden;
 }
 
+/* FORCE CONTACTS WHITE */
+a, a:visited, a:active { color:#fff; }
+
 /* Fade on load */
 body.loaded{ animation:fadeIn 1s ease forwards; }
 @keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
@@ -40,20 +43,19 @@ body.fade-out{
   z-index:999;
 }
 
-/* ===== MORPHING TITLE (MOVES WITH PAGE + SHRINKS ONLY) ===== */
+/* ===== TAMANY TITLE (LOCKED — NO MOVE, NO SHRINK) ===== */
 
 .hero-title{
-  position:absolute; /* 👈 changed from fixed */
-  top:50vh;
+  position:absolute;            /* now scrolls with page */
+  top:35%;                      /* moved UP for better spacing */
   left:50%;
-  transform:translate(-50%,-50%) scale(1);
+  transform:translate(-50%,-50%);
   color:#fff;
   font-weight:500;
   letter-spacing:.12em;
   font-size:48px;
   z-index:1000;
   pointer-events:none;
-  will-change:transform, top;
 }
 
 /* ===== HERO ===== */
@@ -69,10 +71,22 @@ body.fade-out{
   text-align:center;
 }
 
+/* ===== LOGO ===== */
+
 .logo{
   width:70px;
   margin-bottom:40px;
   opacity:.95;
+  transition:all .3s ease;
+}
+
+/* LOGO LOCKED IN NAVBAR (NO SIZE CHANGE) */
+.logo.locked{
+  position:fixed;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  margin:0;
 }
 
 .hero p{
@@ -210,13 +224,13 @@ body.fade-out{
 <!-- NAV BAR -->
 <div class="nav"></div>
 
-<!-- MORPHING TITLE -->
+<!-- TAMANY TITLE -->
 <div id="title" class="hero-title">TAMANY</div>
 
 <!-- HERO -->
 <section class="hero">
 
-  <img src="logo.png" class="logo">
+  <img src="logo.png" class="logo" id="logo">
 
   <p>Technology solutions for modern business.</p>
 
@@ -343,25 +357,19 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.15});
 sections.forEach(sec=>observer.observe(sec));
 
-/* ===== TITLE MOVE WITH PAGE + SHRINK (PERFECT LOCK) ===== */
+/* ===== LOGO LOCK IN NAVBAR ===== */
 
-const title = document.getElementById("title");
+const logo = document.getElementById("logo");
 
 window.addEventListener("scroll", () => {
 
-  const lockPoint = 300;
-  const y = window.scrollY;
-  const progress = Math.min(y / lockPoint, 1);
+  const rect = logo.getBoundingClientRect();
 
-  const scale = 1 - (1 - 0.35) * progress;
-
-  const startY = window.innerHeight * 0.5 - 60; /* 👈 lifted slightly on desktop */
-  const endY = 35;
-
-  const currentY = startY - (startY - endY) * progress;
-
-  title.style.top = currentY + "px";
-  title.style.transform = "translate(-50%,-50%) scale(" + scale + ")";
+  if(rect.top <= 10){
+    logo.classList.add("locked");
+  }else{
+    logo.classList.remove("locked");
+  }
 
 });
 
