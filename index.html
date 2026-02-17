@@ -64,7 +64,7 @@ body.fade-out{
 
 .logo{
   width:70px;
-  margin-bottom:20px; /* tighter spacing above title */
+  margin-bottom:20px;
   opacity:.95;
   transition:all .35s ease;
   z-index:1000;
@@ -79,13 +79,13 @@ body.fade-out{
   margin:0;
 }
 
-/* ===== TAMANY TITLE — MOVED DOWN ===== */
+/* ===== TAMANY TITLE ===== */
 
 .hero-title{
   font-weight:500;
   letter-spacing:.12em;
   font-size:48px;
-  margin-bottom:12px; /* closer to tagline */
+  margin-bottom:12px;
   color:#fff;
 }
 
@@ -93,7 +93,7 @@ body.fade-out{
 
 .hero p{
   color:#888;
-  margin-top:0; /* remove extra gap */
+  margin-top:0;
   font-size:18px;
 }
 
@@ -209,16 +209,12 @@ body.fade-out{
 <!-- HERO -->
 <section class="hero">
 
-  <!-- LOGO FIRST (ABOVE) -->
   <img src="logo.png" class="logo" id="logo">
 
-  <!-- TITLE -->
   <div class="hero-title">TAMANY</div>
 
-  <!-- TAGLINE -->
   <p>Technology solutions for modern business.</p>
 
-  <!-- BUTTON -->
   <button class="cta" id="servicesBtn">
     Explore Services
   </button>
@@ -265,10 +261,34 @@ body.fade-out{
   <h2>TAMANY TECHNOLOGY</h2>
 
   <div class="links">
-    <div>Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: <span style="text-decoration:underline;">084 037 4424</span></div>
-    <div>WhatsApp: 084 037 4424</div>
-    <div>Instagram: tamany.tech</div>
+
+    <!-- EMAIL (OPENS EMAIL APP) -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
+      Email: tamanitadiwa@gmail.com
+    </div>
+
+    <!-- PHONE → WHATSAPP LINK -->
+    <div>
+      Phone:
+      <span style="text-decoration:underline; cursor:pointer;"
+        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+        084 037 4424
+      </span>
+    </div>
+
+    <!-- WHATSAPP → SAME LINK -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+      WhatsApp: 084 037 4424
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">
+      Instagram: tamany.tech
+    </div>
+
   </div>
 
   <div class="small">
