@@ -39,7 +39,7 @@ body.loaded{
   justify-content:center;
 }
 
-/* ===== MORPHING TITLE ===== */
+/* ===== MORPHING TITLE (LOCKED POSITION) ===== */
 
 .hero-title{
   position:fixed;
@@ -52,6 +52,7 @@ body.loaded{
   font-size:48px;
   z-index:1000;
   pointer-events:none;
+  will-change:transform;
 }
 
 /* ===== HERO ===== */
@@ -161,21 +162,17 @@ body.loaded{
   text-align:left;
 }
 
-/* NEW HEADING */
-
 .section-title{
   font-size:14px;
   font-weight:700;
   letter-spacing:.14em;
   margin-bottom:18px;
-  color:#e0e0e0; /* slightly dimmed white */
+  color:#e0e0e0;
 }
-
-/* BODY TEXT */
 
 .section-text{
   font-size:18px;
-  color:#bdbdbd; /* darker than heading */
+  color:#bdbdbd;
 }
 
 /* ===== FOOTER ===== */
@@ -196,11 +193,6 @@ body.loaded{
   margin-top:40px;
   line-height:2.4;
   font-size:17px;
-}
-
-.links a{
-  color:#fff;
-  text-decoration:underline;
 }
 
 .small{
@@ -327,9 +319,9 @@ body.loaded{
 
   <div class="links">
     <div>Email: tamanitadiwa@gmail.com</div>
-    <div><a href="#">Phone: 084 037 4424</a></div>
+    <div>Phone: <span style="text-decoration:underline;">084 037 4424</span></div>
     <div>WhatsApp: 084 037 4424</div>
-    <div>Instagram: @tamany</div>
+    <div>Instagram: tamany.tech</div>
   </div>
 
   <div class="small">
@@ -351,7 +343,7 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.15});
 sections.forEach(sec=>observer.observe(sec));
 
-/* ===== TITLE MORPH ===== */
+/* ===== LOCKED SMOOTH TITLE SCALE ===== */
 
 const title = document.getElementById("title");
 
@@ -362,10 +354,9 @@ window.addEventListener("scroll", () => {
   const progress = Math.min(y / lockPoint, 1);
 
   const scale = 1 - (1 - 0.35) * progress;
-  const moveY = -(window.innerHeight/2 - 35) * progress;
 
   title.style.transform =
-    `translate(-50%, -50%) translateY(${moveY}px) scale(${scale})`;
+    `translate(-50%, -50%) scale(${scale})`;
 
 });
 
