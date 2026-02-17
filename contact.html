@@ -43,6 +43,7 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   font-size:15px;
   opacity:.85;
   transition:.2s;
+  cursor:pointer;
 }
 
 .nav a:hover{opacity:1;}
@@ -140,7 +141,7 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 <!-- TOP BAR -->
 
 <div class="nav">
-  <a onclick="history.back()">Back</a>
+  <a onclick="goBack()">Back</a>
   <a href="packages.html">Packages</a>
 </div>
 
@@ -192,6 +193,20 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   </div>
 
 </section>
+
+<script>
+
+/* ===== SAFE BACK BUTTON ===== */
+
+function goBack(){
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = "index.html"; // fallback if no history
+  }
+}
+
+</script>
 
 </body>
 </html>
