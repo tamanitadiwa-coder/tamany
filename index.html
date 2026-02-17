@@ -3,88 +3,351 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TAMANY</title>
 
 <style>
-body {
-  margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  height: 100vh;
-  position: relative;
-  text-align: center;
+
+/* ===== GLOBAL ===== */
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#000;
+  color:#111;
+  overflow-x:hidden;
 }
 
-/* Logo stays where it is (top area) */
-.logo {
-  width: 70px;
-  margin-top: 120px;
-  opacity: 0.95;
+/* Smooth fade on page load */
+body.loaded{
+  animation:fadeIn 1s ease forwards;
 }
 
-/* Centered text block */
-.center-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
 }
 
-/* TAMANY title */
-h1 {
-  font-size: 48px;
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+/* ===== TOP BLACK HERO ===== */
+
+.hero{
+  background:#000;
+  color:#fff;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-/* Subtext */
-.subtext {
-  font-size: 16px;
-  color: #888;
-  margin-top: 22px;
+.logo{
+  width:70px;
+  margin-bottom:40px;
+  opacity:.95;
 }
 
-/* Button — much lower */
-button {
-  position: absolute;
-  bottom: 110px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 16px 44px;
-  font-size: 15px;
-  letter-spacing: 0.05em;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #555;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.hero h1{
+  font-weight:500;
+  letter-spacing:.12em;
+  margin:0;
+  font-size:48px;
 }
 
-button:hover {
-  border-color: #aaa;
-  box-shadow: 0 0 22px rgba(255,255,255,0.18);
+.hero p{
+  color:#888;
+  margin-top:18px;
+  font-size:18px;
 }
+
+.cta{
+  margin-top:70px;
+  padding:18px 46px;
+  border-radius:14px;
+  border:1px solid #666;
+  background:transparent;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.cta:hover{
+  border-color:#aaa;
+  box-shadow:0 0 25px rgba(255,255,255,.2);
+}
+
+/* ===== IMAGE STORY SECTIONS ===== */
+
+.section{
+  position:relative;
+  background:#fff;
+  text-align:center;
+}
+
+.image-wrap{
+  position:relative;
+  overflow:hidden;
+}
+
+/* Dark cinematic image */
+.image-wrap img{
+  width:100%;
+  display:block;
+  filter:brightness(.7);
+  transform:scale(1.03);
+}
+
+/* Gradient fade top & bottom */
+.image-wrap::before,
+.image-wrap::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width:100%;
+  height:140px;
+  z-index:2;
+}
+
+.image-wrap::before{
+  top:0;
+  background:linear-gradient(#000, transparent);
+}
+
+.image-wrap::after{
+  bottom:0;
+  background:linear-gradient(transparent, #000);
+}
+
+/* Text over image bottom */
+.caption{
+  position:absolute;
+  bottom:30px;
+  width:100%;
+  color:#fff;
+  font-size:20px;
+  padding:0 20px;
+  z-index:3;
+}
+
+/* White description area */
+.text-block{
+  padding:80px 20px;
+  max-width:760px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.8;
+  color:#444;
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+  background:#000;
+  color:#ccc;
+  padding:80px 20px;
+  text-align:center;
+}
+
+.footer h2{
+  color:#fff;
+  font-weight:500;
+  letter-spacing:.12em;
+}
+
+.links{
+  margin-top:40px;
+  line-height:2.4;
+  font-size:17px;
+}
+
+.links a{
+  color:#ccc;
+  text-decoration:none;
+}
+
+.links a:hover{
+  color:#fff;
+}
+
+.small{
+  margin-top:60px;
+  font-size:14px;
+  color:#777;
+}
+
 </style>
 </head>
 
-<body>
+<body onload="document.body.classList.add('loaded')">
 
-<!-- Logo -->
-<img src="logo.png" alt="Tamany Logo" class="logo">
+<!-- ===== HERO ===== -->
 
-<!-- Centered wording -->
-<div class="center-text">
+<section class="hero">
+
+  <img src="logo.png" class="logo">
+
   <h1>TAMANY</h1>
-  <div class="subtext">Technology solutions for modern business.</div>
-</div>
+  <p>Technology solutions for modern business.</p>
 
-<!-- Lower button (FIXED) -->
-<a href="services.html">
-  <button>Explore Services</button>
-</a>
+  <button class="cta"
+    onclick="window.location.href='services.html'">
+    Explore Services
+  </button>
+
+</section>
+
+<!-- ===== STORY 1 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image1.jpg">
+    <div class="caption">
+      Building digital experiences for modern businesses
+    </div>
+  </div>
+
+  <div class="text-block">
+    Tamany creates powerful websites, platforms, and digital systems
+    designed to help businesses grow, connect, and succeed in a
+    technology-driven world.
+  </div>
+
+</section>
+
+<!-- ===== STORY 2 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image2.jpg">
+    <div class="caption">
+      Technology that improves real lives
+    </div>
+  </div>
+
+  <div class="text-block">
+    Our innovations focus on people first — building solutions that
+    enhance productivity, wellbeing, and everyday experiences through
+    thoughtful design and intelligent engineering.
+  </div>
+
+</section>
+
+<!-- ===== STORY 3 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image3.jpg">
+    <div class="caption">
+      From the origins of computing to the future of AI
+    </div>
+  </div>
+
+  <div class="text-block">
+    We respect the history of technology while pushing boundaries
+    forward — combining classic computing foundations with modern
+    artificial intelligence and scalable cloud platforms.
+  </div>
+
+</section>
+
+<!-- ===== STORY 4 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image4.jpg">
+    <div class="caption">
+      Sustainable technology for the future
+    </div>
+  </div>
+
+  <div class="text-block">
+    Tamany invests in solutions that balance innovation with
+    responsibility, ensuring technology contributes positively to
+    both society and the environment.
+  </div>
+
+</section>
+
+<!-- ===== STORY 5 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image5.jpg">
+    <div class="caption">
+      Connecting people across platforms
+    </div>
+  </div>
+
+  <div class="text-block">
+    Our ecosystem includes social platforms, marketplaces, and
+    communication tools designed to bring people closer together in
+    a secure digital environment.
+  </div>
+
+</section>
+
+<!-- ===== STORY 6 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image6.jpg">
+    <div class="caption">
+      Software development at the core
+    </div>
+  </div>
+
+  <div class="text-block">
+    Every product we create is powered by advanced software
+    engineering, delivering reliability, performance, and scalability
+    for businesses of any size.
+  </div>
+
+</section>
+
+<!-- ===== STORY 7 ===== -->
+
+<section class="section">
+
+  <div class="image-wrap">
+    <img src="image7.jpg">
+    <div class="caption">
+      Enabling modern digital commerce
+    </div>
+  </div>
+
+  <div class="text-block">
+    From online stores to complex marketplaces, Tamany builds systems
+    that allow businesses to sell, operate, and expand globally.
+  </div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<section class="footer">
+
+  <h2>TAMANY TECHNOLOGY</h2>
+
+  <div class="links">
+    <div>Email: tamanitadiwa@gmail.com</div>
+    <div>Phone: 084 037 4424</div>
+    <div>WhatsApp: 084 037 4424</div>
+    <div>Instagram: @tamany</div>
+  </div>
+
+  <div class="small">
+    Tamany — Parent Technology Company  
+    © 2026 All rights reserved
+  </div>
+
+</section>
 
 </body>
 </html>
