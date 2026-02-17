@@ -65,16 +65,6 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   margin:40px auto 40px;
   display:block;
   opacity:.95;
-  transition:.3s ease;
-  z-index:1000;
-}
-
-.logo.locked{
-  position:fixed;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  margin:0;
 }
 
 /* ===== TITLE ===== */
@@ -201,7 +191,8 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
     <div class="price">R2,500</div>
     <div class="desc">
       A clean professional website to establish your business online.
-      Perfect for small businesses starting their digital presence.
+      Perfect for small businesses starting their digital presence.<br><br>
+      Domain & hosting (paid yearly by you): approx. <strong>R120 — R200 per year</strong>.
     </div>
     <button class="enquire-btn"
       onclick="window.location.href='enquiry.html?package=Starter%20Website%20—%20R2,500'">
@@ -216,7 +207,8 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
     <div class="price">R5,000</div>
     <div class="desc">
       A custom website designed for credibility, growth, and a stronger
-      brand presence online.
+      brand presence online.<br><br>
+      Domain & hosting (paid yearly by you): approx. <strong>R150 — R250 per year</strong>.
     </div>
     <button class="enquire-btn"
       onclick="window.location.href='enquiry.html?package=Professional%20Website%20—%20R5,000'">
@@ -231,7 +223,8 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
     <div class="price">R9,500</div>
     <div class="desc">
       A full digital experience for established businesses that want
-      maximum impact, polish, and performance.
+      maximum impact, polish, and performance.<br><br>
+      Domain & hosting (paid yearly by you): approx. <strong>R200 — R400+ per year</strong>.
     </div>
     <button class="enquire-btn"
       onclick="window.location.href='enquiry.html?package=Premium%20Website%20—%20R9,500'">
@@ -242,7 +235,7 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   <!-- NOTE -->
 
   <div class="note">
-    You purchase and own your domain and hosting.  
+    You purchase and fully own your domain and hosting.  
     Tamany handles design, setup, and launch.
   </div>
 
@@ -255,10 +248,30 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   <h2>TAMANY TECHNOLOGY</h2>
 
   <div class="links">
-    <div>Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: 084 037 4424</div>
-    <div>WhatsApp: 084 037 4424</div>
-    <div>Instagram: tamany.tech</div>
+
+    <div style="cursor:pointer;"
+      onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
+      Email: tamanitadiwa@gmail.com
+    </div>
+
+    <div>
+      Phone:
+      <span style="text-decoration:underline; cursor:pointer;"
+        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+        084 037 4424
+      </span>
+    </div>
+
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+      WhatsApp: 084 037 4424
+    </div>
+
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">
+      Instagram: tamany.tech
+    </div>
+
   </div>
 
   <div class="small">
@@ -267,22 +280,6 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   </div>
 
 </section>
-
-<script>
-
-/* ===== LOGO LOCK ===== */
-
-const logo = document.getElementById("logo");
-
-window.addEventListener("scroll", () => {
-  if(window.scrollY > 120){
-    logo.classList.add("locked");
-  }else{
-    logo.classList.remove("locked");
-  }
-});
-
-</script>
 
 </body>
 </html>
