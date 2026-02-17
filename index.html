@@ -40,11 +40,11 @@ body.fade-out{
   z-index:999;
 }
 
-/* ===== MORPHING TITLE (MOVES UP + SHRINKS ONLY) ===== */
+/* ===== MORPHING TITLE (MOVES WITH PAGE + SHRINKS ONLY) ===== */
 
 .hero-title{
-  position:fixed;
-  top:50%;
+  position:absolute; /* 👈 changed from fixed */
+  top:50vh;
   left:50%;
   transform:translate(-50%,-50%) scale(1);
   color:#fff;
@@ -53,7 +53,7 @@ body.fade-out{
   font-size:48px;
   z-index:1000;
   pointer-events:none;
-  will-change:transform;
+  will-change:transform, top;
 }
 
 /* ===== HERO ===== */
@@ -343,7 +343,7 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.15});
 sections.forEach(sec=>observer.observe(sec));
 
-/* ===== TITLE MOVE UP + SHRINK (LOCKED) ===== */
+/* ===== TITLE MOVE WITH PAGE + SHRINK (PERFECT LOCK) ===== */
 
 const title = document.getElementById("title");
 
@@ -355,8 +355,9 @@ window.addEventListener("scroll", () => {
 
   const scale = 1 - (1 - 0.35) * progress;
 
-  const startY = window.innerHeight / 2;
-  const endY = 35; // navbar center
+  const startY = window.innerHeight * 0.5 - 60; /* 👈 lifted slightly on desktop */
+  const endY = 35;
+
   const currentY = startY - (startY - endY) * progress;
 
   title.style.top = currentY + "px";
