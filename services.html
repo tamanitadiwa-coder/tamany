@@ -9,6 +9,10 @@
 
 /* ===== GLOBAL ===== */
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
@@ -19,6 +23,9 @@ body{
 }
 
 body.loaded{ opacity:1; }
+
+/* FORCE ALL LINKS WHITE (no blue anywhere) */
+a, a:visited, a:active { color:#fff; }
 
 /* ===== TOP BAR ===== */
 
@@ -39,7 +46,7 @@ body.loaded{ opacity:1; }
 .nav a,
 .nav a:visited,
 .nav a:active{
-  color:#fff;                 /* 👈 FORCE WHITE (no blue) */
+  color:#fff;
   text-decoration:none;
   font-size:15px;
   opacity:.85;
@@ -64,6 +71,17 @@ body.loaded{ opacity:1; }
   margin:40px auto 30px;
   display:block;
   opacity:.95;
+  transition:all .3s ease;
+  z-index:1000;
+}
+
+/* LOGO LOCKED IN NAVBAR */
+.logo.locked{
+  position:fixed;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  margin:0;
 }
 
 /* ===== BUTTON ===== */
@@ -98,12 +116,31 @@ body.loaded{ opacity:1; }
 
 /* ===== IMAGE SECTIONS ===== */
 
-.section{ margin-top:120px; }
+.section{
+  margin-top:120px;
+
+  /* APPLE-STYLE SNAP */
+  scroll-snap-align:start;
+}
+
+.image-wrap{
+  overflow:hidden;
+}
 
 .image-wrap img{
   width:100%;
   display:block;
   filter:brightness(.7);
+
+  /* PARALLAX + DEPTH */
+  transform:scale(1.08);
+  transition:transform 1.2s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+
+/* SCALE INTO PLACE WHEN VISIBLE */
+.section.visible img{
+  transform:scale(1);
 }
 
 /* TEXT BELOW IMAGE */
@@ -149,6 +186,11 @@ body.loaded{ opacity:1; }
   color:#777;
 }
 
+/* ENABLE SNAP SCROLL */
+body{
+  scroll-snap-type:y proximity;
+}
+
 </style>
 </head>
 
@@ -164,7 +206,7 @@ body.loaded{ opacity:1; }
 <div class="wrapper">
 
   <!-- LOGO -->
-  <img src="logo.png" class="logo">
+  <img src="logo.png" class="logo" id="logo">
 
   <!-- VIEW PACKAGES BUTTON BELOW LOGO -->
   <button class="packages-btn"
@@ -262,7 +304,7 @@ body.loaded{ opacity:1; }
 
   <div class="small">
     Tamany — Parent Technology Company  
-    © 2026 All rights reserved
+    ©️ 2026 All rights reserved
   </div>
 
 </section>
@@ -286,6 +328,36 @@ window.addEventListener("scroll", () => {
   });
 
 });
+
+/* ===== LOGO LOCK IN NAVBAR ===== */
+
+const logo = document.getElementById("logo");
+
+window.addEventListener("scroll", () => {
+
+  const rect = logo.getBoundingClientRect();
+
+  if(rect.top <= 10){
+    logo.classList.add("locked");
+  }else{
+    logo.classList.remove("locked");
+  }
+
+});
+
+/* ===== CINEMATIC REVEAL ===== */
+
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:0.25});
+
+sections.forEach(sec=>observer.observe(sec));
 
 </script>
 
