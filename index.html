@@ -36,17 +36,20 @@ body.fade-out{
 .nav{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
   height:70px;
   background:rgba(0,0,0,.7);
   backdrop-filter:blur(14px);
   z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 /* ===== HERO ===== */
 
 .hero{
-  position:relative;          /* 🔑 anchor for title */
   background:#000;
   color:#fff;
   height:100vh;
@@ -57,19 +60,14 @@ body.fade-out{
   text-align:center;
 }
 
-/* ===== TAMANY TITLE (PERFECTLY CENTERED) ===== */
+/* ===== TAMANY TITLE — CLEAN CENTER ===== */
 
 .hero-title{
-  position:absolute;
-  top:30%;                    /* higher but visible */
-  left:50%;
-  transform:translate(-50%,-50%);
-  color:#fff;
   font-weight:500;
   letter-spacing:.12em;
   font-size:48px;
-  z-index:1000;
-  pointer-events:none;
+  margin-bottom:40px;
+  color:#fff;
 }
 
 /* ===== LOGO ===== */
@@ -78,10 +76,11 @@ body.fade-out{
   width:70px;
   margin-bottom:40px;
   opacity:.95;
-  transition:all .3s ease;
+  transition:all .35s ease;
+  z-index:1000;
 }
 
-/* LOGO LOCKED IN NAVBAR (NO SIZE CHANGE) */
+/* LOGO LOCKED IN NAVBAR */
 .logo.locked{
   position:fixed;
   top:10px;
@@ -90,14 +89,18 @@ body.fade-out{
   margin:0;
 }
 
+/* ===== TEXT ===== */
+
 .hero p{
   color:#888;
-  margin-top:80px;
+  margin-top:10px;
   font-size:18px;
 }
 
+/* ===== BUTTON ===== */
+
 .cta{
-  margin-top:70px;
+  margin-top:50px;
   padding:18px 46px;
   border-radius:14px;
   border:1px solid #666;
@@ -144,28 +147,6 @@ body.fade-out{
 
 .section.visible img{
   transform:scale(1);
-}
-
-/* Gradient edges */
-
-.image-wrap::before,
-.image-wrap::after{
-  content:"";
-  position:absolute;
-  left:0;
-  width:100%;
-  height:140px;
-  z-index:2;
-}
-
-.image-wrap::before{
-  top:0;
-  background:linear-gradient(#000, transparent);
-}
-
-.image-wrap::after{
-  bottom:0;
-  background:linear-gradient(transparent, #000);
 }
 
 /* ===== TEXT BLOCK ===== */
@@ -228,8 +209,7 @@ body.fade-out{
 <!-- HERO -->
 <section class="hero">
 
-  <!-- TAMANY TITLE -->
-  <div id="title" class="hero-title">TAMANY</div>
+  <div class="hero-title">TAMANY</div>
 
   <img src="logo.png" class="logo" id="logo">
 
@@ -249,8 +229,7 @@ body.fade-out{
     <div class="section-title">BUILDING DIGITAL EXPERIENCES</div>
     <div class="section-text">
       Tamany creates powerful websites, platforms, and digital systems
-      designed to help businesses grow, connect, and succeed in a
-      technology-driven world.
+      designed to help businesses grow, connect, and succeed.
     </div>
   </div>
 </section>
@@ -260,9 +239,7 @@ body.fade-out{
   <div class="text-block">
     <div class="section-title">TECHNOLOGY THAT IMPROVES LIFE</div>
     <div class="section-text">
-      Our innovations focus on people first — building solutions that
-      enhance productivity, wellbeing, and everyday experiences through
-      thoughtful design and intelligent engineering.
+      Solutions that enhance productivity, wellbeing, and experiences.
     </div>
   </div>
 </section>
@@ -272,56 +249,7 @@ body.fade-out{
   <div class="text-block">
     <div class="section-title">FROM ORIGINS TO AI FUTURE</div>
     <div class="section-text">
-      We respect the history of technology while pushing boundaries
-      forward — combining classic computing foundations with modern
-      artificial intelligence and scalable cloud platforms.
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="image-wrap"><img src="image4.jpg"></div>
-  <div class="text-block">
-    <div class="section-title">SUSTAINABLE INNOVATION</div>
-    <div class="section-text">
-      Tamany invests in solutions that balance innovation with
-      responsibility, ensuring technology contributes positively to
-      both society and the environment.
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="image-wrap"><img src="image5.jpg"></div>
-  <div class="text-block">
-    <div class="section-title">HUMAN CONNECTION PLATFORMS</div>
-    <div class="section-text">
-      Our ecosystem includes social platforms, marketplaces, and
-      communication tools designed to bring people closer together in
-      a secure digital environment.
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="image-wrap"><img src="image6.jpg"></div>
-  <div class="text-block">
-    <div class="section-title">SOFTWARE AT THE CORE</div>
-    <div class="section-text">
-      Every product we create is powered by advanced software
-      engineering, delivering reliability, performance, and scalability
-      for businesses of any size.
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="image-wrap"><img src="image7.jpg"></div>
-  <div class="text-block">
-    <div class="section-title">GLOBAL DIGITAL COMMERCE</div>
-    <div class="section-text">
-      From online stores to complex marketplaces, Tamany builds systems
-      that allow businesses to sell, operate, and expand globally.
+      Combining classic foundations with modern AI systems.
     </div>
   </div>
 </section>
@@ -358,15 +286,15 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.15});
 sections.forEach(sec=>observer.observe(sec));
 
-/* ===== LOGO LOCK IN NAVBAR ===== */
+/* ===== LOGO LOCK — CLEAN & STABLE ===== */
 
 const logo = document.getElementById("logo");
 
 window.addEventListener("scroll", () => {
 
-  const rect = logo.getBoundingClientRect();
+  const lockPoint = window.innerHeight * 0.5;
 
-  if(rect.top <= 10){
+  if(window.scrollY > lockPoint){
     logo.classList.add("locked");
   }else{
     logo.classList.remove("locked");
