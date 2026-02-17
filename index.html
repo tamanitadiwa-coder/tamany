@@ -60,21 +60,11 @@ body.fade-out{
   text-align:center;
 }
 
-/* ===== TAMANY TITLE — CLEAN CENTER ===== */
-
-.hero-title{
-  font-weight:500;
-  letter-spacing:.12em;
-  font-size:48px;
-  margin-bottom:40px;
-  color:#fff;
-}
-
-/* ===== LOGO ===== */
+/* ===== LOGO — NOW ABOVE TITLE ===== */
 
 .logo{
   width:70px;
-  margin-bottom:40px;
+  margin-bottom:20px; /* tighter spacing above title */
   opacity:.95;
   transition:all .35s ease;
   z-index:1000;
@@ -89,11 +79,21 @@ body.fade-out{
   margin:0;
 }
 
+/* ===== TAMANY TITLE — MOVED DOWN ===== */
+
+.hero-title{
+  font-weight:500;
+  letter-spacing:.12em;
+  font-size:48px;
+  margin-bottom:12px; /* closer to tagline */
+  color:#fff;
+}
+
 /* ===== TEXT ===== */
 
 .hero p{
   color:#888;
-  margin-top:10px;
+  margin-top:0; /* remove extra gap */
   font-size:18px;
 }
 
@@ -209,12 +209,16 @@ body.fade-out{
 <!-- HERO -->
 <section class="hero">
 
-  <div class="hero-title">TAMANY</div>
-
+  <!-- LOGO FIRST (ABOVE) -->
   <img src="logo.png" class="logo" id="logo">
 
+  <!-- TITLE -->
+  <div class="hero-title">TAMANY</div>
+
+  <!-- TAGLINE -->
   <p>Technology solutions for modern business.</p>
 
+  <!-- BUTTON -->
   <button class="cta" id="servicesBtn">
     Explore Services
   </button>
@@ -269,7 +273,7 @@ body.fade-out{
 
   <div class="small">
     Tamany — Parent Technology Company  
-    © 2026 All rights reserved
+    ©️ 2026 All rights reserved
   </div>
 
 </section>
