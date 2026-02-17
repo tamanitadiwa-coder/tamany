@@ -37,6 +37,9 @@ body{
   text-decoration:none;
   font-size:15px;
   opacity:.85;
+  transform:scale(1);
+  transform-origin:left center;
+  transition:opacity .2s ease;
 }
 
 .nav a:hover{opacity:1;}
@@ -154,8 +157,8 @@ body{
 <!-- TOP BAR -->
 
 <div class="nav">
-  <a href="packages.html">Packages</a>
-  <a href="contact.html">Help</a>
+  <a href="packages.html" class="nav-btn">Packages</a>
+  <a href="contact.html" class="nav-btn">Help</a>
 </div>
 
 <div class="wrapper">
@@ -265,6 +268,28 @@ body{
   </div>
 
 </section>
+
+<script>
+
+/* ===== SHRINK & LOCK NAV BUTTONS ===== */
+
+const buttons = document.querySelectorAll(".nav-btn");
+
+window.addEventListener("scroll", () => {
+
+  const lockPoint = 300;
+  const y = window.scrollY;
+  const progress = Math.min(y / lockPoint, 1);
+
+  const scale = 1 - (1 - 0.8) * progress; // shrinks to 80%
+
+  buttons.forEach(btn=>{
+    btn.style.transform = `scale(${scale})`;
+  });
+
+});
+
+</script>
 
 </body>
 </html>
