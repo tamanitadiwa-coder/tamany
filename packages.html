@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMANY — Contact</title>
+<title>TAMANY — Packages</title>
 
 <style>
 
@@ -18,11 +18,11 @@ body{
   transition:opacity .6s ease;
 }
 
-body.loaded{ opacity:1; }
+body.loaded{opacity:1;}
 
 a, a:visited, a:active { color:#fff; text-decoration:none; }
 
-/* ===== TOP BAR ===== */
+/* ===== NAV ===== */
 
 .nav{
   position:fixed;
@@ -42,7 +42,6 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 .nav a{
   font-size:15px;
   opacity:.85;
-  transition:.2s;
   cursor:pointer;
 }
 
@@ -52,11 +51,11 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 
 .wrapper{
   padding-top:120px;
-  max-width:520px;
+  max-width:760px;
   margin:auto;
-  text-align:center;
   padding-left:20px;
   padding-right:20px;
+  text-align:center;
 }
 
 /* ===== LOGO ===== */
@@ -70,7 +69,6 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   z-index:1000;
 }
 
-/* LOGO LOCKED IN NAVBAR */
 .logo.locked{
   position:fixed;
   top:10px;
@@ -82,40 +80,72 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 /* ===== TITLE ===== */
 
 .title{
-  font-size:28px;
+  font-size:30px;
   letter-spacing:.12em;
-  margin-bottom:20px;
+  margin-bottom:60px;
   color:#e0e0e0;
 }
 
-/* ===== SUBTEXT ===== */
+/* ===== PACKAGE CARD ===== */
 
-.subtitle{
-  color:#aaa;
-  font-size:16px;
-  margin-bottom:60px;
-  line-height:1.6;
+.package{
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;
+  padding:34px 28px;
+  margin-bottom:26px;
+  background:rgba(255,255,255,.03);
+  transition:.25s;
 }
 
-/* ===== CONTACT BUTTONS ===== */
+.package:hover{
+  border-color:#aaa;
+  background:rgba(255,255,255,.05);
+  box-shadow:0 0 35px rgba(255,255,255,.1);
+}
 
-.contact-btn{
-  width:100%;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.03);
+.package h2{
+  margin:0 0 10px;
+  font-weight:500;
+}
+
+.price{
+  font-size:28px;
+  margin-bottom:18px;
   color:#fff;
-  font-size:18px;
+}
+
+.desc{
+  color:#bbb;
+  line-height:1.7;
+  margin-bottom:26px;
+  font-size:16px;
+}
+
+/* ===== ENQUIRE BUTTON ===== */
+
+.enquire-btn{
+  padding:16px 36px;
+  border-radius:14px;
+  border:1px solid #777;
+  background:transparent;
+  color:#fff;
+  font-size:15px;
   cursor:pointer;
   transition:.25s;
 }
 
-.contact-btn:hover{
-  border-color:#aaa;
-  background:rgba(255,255,255,.06);
-  box-shadow:0 0 25px rgba(255,255,255,.12);
+.enquire-btn:hover{
+  border-color:#fff;
+  box-shadow:0 0 20px rgba(255,255,255,.2);
+}
+
+/* ===== NOTE ===== */
+
+.note{
+  margin-top:60px;
+  color:#aaa;
+  line-height:1.7;
+  font-size:15px;
 }
 
 /* ===== FOOTER ===== */
@@ -149,11 +179,11 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 
 <body onload="document.body.classList.add('loaded')">
 
-<!-- TOP BAR -->
+<!-- ===== NAV ===== -->
 
 <div class="nav">
-  <a onclick="goBack()">Back</a>
-  <a href="packages.html">Packages</a>
+  <a onclick="history.back()">Back</a>
+  <a href="contact.html">Help</a>
 </div>
 
 <div class="wrapper">
@@ -162,65 +192,73 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   <img src="logo.png" class="logo" id="logo">
 
   <!-- TITLE -->
-  <div class="title">Contact Us</div>
+  <div class="title">Website Packages</div>
 
-  <div class="subtitle">
-    Choose how you’d like to reach Tamany.<br>
-    We’ll respond as soon as possible.
+  <!-- ===== STARTER ===== -->
+
+  <div class="package">
+    <h2>Starter Website</h2>
+    <div class="price">R2,500</div>
+    <div class="desc">
+      A clean professional website to establish your business online.
+      Perfect for small businesses starting their digital presence.
+    </div>
+    <button class="enquire-btn"
+      onclick="window.location.href='enquiry.html?package=Starter%20Website%20—%20R2,500'">
+      Enquire
+    </button>
   </div>
 
-  <!-- EMAIL BUTTON -->
+  <!-- ===== PROFESSIONAL ===== -->
 
-  <button class="contact-btn"
-    onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
-    Email Us
-  </button>
+  <div class="package">
+    <h2>Professional Website</h2>
+    <div class="price">R5,000</div>
+    <div class="desc">
+      A custom website designed for credibility, growth, and a stronger
+      brand presence online.
+    </div>
+    <button class="enquire-btn"
+      onclick="window.location.href='enquiry.html?package=Professional%20Website%20—%20R5,000'">
+      Enquire
+    </button>
+  </div>
 
-  <!-- WHATSAPP BUTTON -->
+  <!-- ===== PREMIUM ===== -->
 
-  <button class="contact-btn"
-    onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
-    WhatsApp Business
-  </button>
+  <div class="package">
+    <h2>Premium Website</h2>
+    <div class="price">R9,500</div>
+    <div class="desc">
+      A full digital experience for established businesses that want
+      maximum impact, polish, and performance.
+    </div>
+    <button class="enquire-btn"
+      onclick="window.location.href='enquiry.html?package=Premium%20Website%20—%20R9,500'">
+      Enquire
+    </button>
+  </div>
+
+  <!-- NOTE -->
+
+  <div class="note">
+    You purchase and own your domain and hosting.  
+    Tamany handles design, setup, and launch.
+  </div>
 
 </div>
 
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 
 <section class="footer">
 
   <h2>TAMANY TECHNOLOGY</h2>
 
   <div class="links">
-
-    <!-- EMAIL (NOW OPENS MAIL APP) -->
-    <div style="cursor:pointer;"
-      onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
-      Email: tamanitadiwa@gmail.com
-    </div>
-
-    <div>
-      Phone:
-      <span style="text-decoration:underline; cursor:pointer;"
-        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
-        084 037 4424
-      </span>
-    </div>
-
-    <div>
-      WhatsApp:
-      <span style="cursor:pointer;"
-        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
-        084 037 4424
-      </span>
-    </div>
-
-    <!-- INSTAGRAM (NOW OPENS YOUR PROFILE) -->
-    <div style="cursor:pointer;"
-      onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">
-      Instagram: tamany.tech
-    </div>
-
+    <div>Email: tamanitadiwa@gmail.com</div>
+    <div>Phone: 084 037 4424</div>
+    <div>WhatsApp: 084 037 4424</div>
+    <div>Instagram: tamany.tech</div>
   </div>
 
   <div class="small">
@@ -232,17 +270,7 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 
 <script>
 
-/* ===== SAFE BACK BUTTON (SERVICES FALLBACK) ===== */
-
-function goBack(){
-  if (window.history.length > 1) {
-    window.history.back();
-  } else {
-    window.location.href = "services.html";
-  }
-}
-
-/* ===== LOGO LOCK IN NAVBAR ===== */
+/* ===== LOGO LOCK ===== */
 
 const logo = document.getElementById("logo");
 
