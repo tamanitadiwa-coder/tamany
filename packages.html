@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAMANY — Contact</title>
+
+<style>
+
+/* ===== GLOBAL ===== */
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#000;
+  color:#fff;
+  opacity:0;
+  transition:opacity .6s ease;
+}
+
+body.loaded{ opacity:1; }
+
+a, a:visited, a:active { color:#fff; text-decoration:none; }
+
+/* ===== TOP BAR ===== */
+
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:70px;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 28px;
+  box-sizing:border-box;
+  z-index:999;
+}
+
+.nav a{
+  font-size:15px;
+  opacity:.85;
+  transition:.2s;
+  cursor:pointer;
+}
+
+.nav a:hover{opacity:1;}
+
+/* ===== WRAPPER ===== */
+
+.wrapper{
+  padding-top:120px;
+  max-width:520px;
+  margin:auto;
+  text-align:center;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+/* ===== LOGO ===== */
+
+.logo{
+  width:70px;
+  margin:40px auto 40px;
+  display:block;
+  opacity:.95;
+  transition:.3s ease;
+  z-index:1000;
+}
+
+/* LOGO LOCKED IN NAVBAR */
+.logo.locked{
+  position:fixed;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  margin:0;
+}
+
+/* ===== TITLE ===== */
+
+.title{
+  font-size:28px;
+  letter-spacing:.12em;
+  margin-bottom:20px;
+  color:#e0e0e0;
+}
+
+/* ===== SUBTEXT ===== */
+
+.subtitle{
+  color:#aaa;
+  font-size:16px;
+  margin-bottom:60px;
+  line-height:1.6;
+}
+
+/* ===== CONTACT BUTTONS ===== */
+
+.contact-btn{
+  width:100%;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.03);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.contact-btn:hover{
+  border-color:#aaa;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 0 25px rgba(255,255,255,.12);
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+  margin-top:120px;
+  padding:80px 20px;
+  text-align:center;
+  color:#ccc;
+}
+
+.footer h2{
+  color:#fff;
+  letter-spacing:.12em;
+}
+
+.links{
+  margin-top:40px;
+  line-height:2.4;
+  font-size:17px;
+}
+
+.small{
+  margin-top:60px;
+  font-size:14px;
+  color:#777;
+}
+
+</style>
+</head>
+
+<body onload="document.body.classList.add('loaded')">
+
+<!-- TOP BAR -->
+
+<div class="nav">
+  <a onclick="goBack()">Back</a>
+  <a href="packages.html">Packages</a>
+</div>
+
+<div class="wrapper">
+
+  <!-- LOGO -->
+  <img src="logo.png" class="logo" id="logo">
+
+  <!-- TITLE -->
+  <div class="title">Contact Us</div>
+
+  <div class="subtitle">
+    Choose how you’d like to reach Tamany.<br>
+    We’ll respond as soon as possible.
+  </div>
+
+  <!-- EMAIL BUTTON -->
+
+  <button class="contact-btn"
+    onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
+    Email Us
+  </button>
+
+  <!-- WHATSAPP BUTTON -->
+
+  <button class="contact-btn"
+    onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+    WhatsApp Business
+  </button>
+
+</div>
+
+<!-- FOOTER -->
+
+<section class="footer">
+
+  <h2>TAMANY TECHNOLOGY</h2>
+
+  <div class="links">
+
+    <!-- EMAIL (NOW OPENS MAIL APP) -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
+      Email: tamanitadiwa@gmail.com
+    </div>
+
+    <div>
+      Phone:
+      <span style="text-decoration:underline; cursor:pointer;"
+        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+        084 037 4424
+      </span>
+    </div>
+
+    <div>
+      WhatsApp:
+      <span style="cursor:pointer;"
+        onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+        084 037 4424
+      </span>
+    </div>
+
+    <!-- INSTAGRAM (NOW OPENS YOUR PROFILE) -->
+    <div style="cursor:pointer;"
+      onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">
+      Instagram: tamany.tech
+    </div>
+
+  </div>
+
+  <div class="small">
+    Tamany — Parent Technology Company  
+    ©️ 2026 All rights reserved
+  </div>
+
+</section>
+
+<script>
+
+/* ===== SAFE BACK BUTTON (SERVICES FALLBACK) ===== */
+
+function goBack(){
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = "services.html";
+  }
+}
+
+/* ===== LOGO LOCK IN NAVBAR ===== */
+
+const logo = document.getElementById("logo");
+
+window.addEventListener("scroll", () => {
+  if(window.scrollY > 120){
+    logo.classList.add("locked");
+  }else{
+    logo.classList.remove("locked");
+  }
+});
+
+</script>
+
+</body>
+</html>
