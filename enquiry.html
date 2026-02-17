@@ -105,11 +105,6 @@ input, textarea{
   font-size:15px;
   font-family:inherit;
   outline:none;
-  transition:.2s;
-}
-
-input:focus, textarea:focus{
-  border-color:#666;
 }
 
 textarea{
@@ -129,45 +124,80 @@ textarea{
   font-size:16px;
   font-weight:500;
   cursor:pointer;
-  transition:.2s;
 }
 
-.submit-btn:hover{
-  opacity:.9;
+/* ===== MODAL OVERLAY ===== */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s ease;
+  z-index:10000;
 }
 
-/* ===== FOOTER ===== */
+.overlay.active{
+  opacity:1;
+  pointer-events:auto;
+}
 
-.footer{
-  margin-top:120px;
-  padding:80px 20px;
+/* ===== MODAL ===== */
+
+.modal{
+  background:#111;
+  padding:30px;
+  border-radius:20px;
+  width:90%;
+  max-width:360px;
   text-align:center;
-  color:#ccc;
+  transform:translateY(20px);
+  transition:.25s ease;
 }
 
-.footer h2{
+.overlay.active .modal{
+  transform:translateY(0);
+}
+
+.modal h3{
+  margin-top:0;
+  margin-bottom:25px;
+  font-weight:500;
+  letter-spacing:.05em;
+}
+
+.option{
+  width:100%;
+  padding:16px;
+  margin-bottom:12px;
+  border-radius:12px;
+  border:1px solid #444;
+  background:#000;
   color:#fff;
-  letter-spacing:.12em;
+  cursor:pointer;
+  font-size:15px;
 }
 
-.links{
-  margin-top:40px;
-  line-height:2.4;
-  font-size:17px;
+.option:hover{
+  border-color:#777;
 }
 
-.small{
-  margin-top:60px;
+.cancel{
+  margin-top:10px;
   font-size:14px;
-  color:#777;
+  opacity:.7;
+  cursor:pointer;
 }
 
 </style>
 </head>
 
 <body onload="document.body.classList.add('loaded')">
-
-<!-- TOP BAR -->
 
 <div class="nav">
   <a href="packages.html">Back</a>
@@ -176,13 +206,9 @@ textarea{
 
 <div class="wrapper">
 
-  <!-- LOGO -->
   <img src="logo.png" class="logo" id="logo">
 
-  <!-- TITLE -->
   <div class="title">Project Enquiry</div>
-
-  <!-- FORM -->
 
   <form id="enquiryForm">
 
@@ -212,29 +238,22 @@ textarea{
 
 </div>
 
-<!-- FOOTER -->
+<!-- ===== MODAL ===== -->
 
-<section class="footer">
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>Send Enquiry With</h3>
 
-  <h2>TAMANY TECHNOLOGY</h2>
+    <button class="option" id="emailBtn">Email</button>
+    <button class="option" id="whatsappBtn">WhatsApp</button>
 
-  <div class="links">
-    <div>Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: <span style="text-decoration:underline;">084 037 4424</span></div>
-    <div>WhatsApp: 084 037 4424</div>
-    <div>Instagram: tamany.tech</div>
+    <div class="cancel" id="cancelBtn">Cancel</div>
   </div>
-
-  <div class="small">
-    Tamany — Parent Technology Company  
-    ©️ 2026 All rights reserved
-  </div>
-
-</section>
+</div>
 
 <script>
 
-/* ===== LOGO LOCK IN NAVBAR ===== */
+/* ===== LOGO LOCK ===== */
 
 const logo = document.getElementById("logo");
 
@@ -246,7 +265,7 @@ window.addEventListener("scroll", () => {
   }
 });
 
-/* ===== AUTO-FILL PACKAGE FROM URL ===== */
+/* ===== AUTO-FILL PACKAGE ===== */
 
 const params = new URLSearchParams(window.location.search);
 const pkg = params.get("package");
@@ -256,31 +275,63 @@ if(pkg){
     decodeURIComponent(pkg);
 }
 
-/* ===== SEND EMAIL ===== */
+/* ===== FORM SUBMIT → SHOW MODAL ===== */
 
-document.getElementById("enquiryForm")
-.addEventListener("submit", function(e){
+const form = document.getElementById("enquiryForm");
+const overlay = document.getElementById("overlay");
 
+form.addEventListener("submit", function(e){
   e.preventDefault();
+  overlay.classList.add("active");
+});
 
-  const subject = "Website Enquiry — " +
-    document.getElementById("package").value;
+/* ===== CLOSE MODAL ===== */
 
-  const body =
-`Package: ${package.value}
+document.getElementById("cancelBtn")
+.onclick = () => overlay.classList.remove("active");
+
+/* ===== BUILD MESSAGE ===== */
+
+function buildMessage(){
+
+  return `Enquiry with ${package.value}
 
 Name: ${name.value}
 Company: ${company.value}
 
-About the company:
+About:
 ${about.value}
 
 Email: ${email.value}
 Phone: ${phone.value}`;
+}
+
+/* ===== EMAIL OPTION ===== */
+
+document.getElementById("emailBtn")
+.onclick = () => {
+
+  const subject =
+    "Website Enquiry — " + package.value;
+
+  const body = buildMessage();
 
   window.location.href =
     `mailto:tamanitadiwa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
+};
+
+/* ===== WHATSAPP OPTION ===== */
+
+document.getElementById("whatsappBtn")
+.onclick = () => {
+
+  const message = buildMessage();
+
+  window.open(
+    `https://wa.me/27840374424?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+};
 
 </script>
 
