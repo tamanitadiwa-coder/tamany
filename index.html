@@ -43,24 +43,10 @@ body.fade-out{
   z-index:999;
 }
 
-/* ===== TAMANY TITLE (LOCKED — NO MOVE, NO SHRINK) ===== */
-
-.hero-title{
-  position:absolute;            /* now scrolls with page */
-  top:35%;                      /* moved UP for better spacing */
-  left:50%;
-  transform:translate(-50%,-50%);
-  color:#fff;
-  font-weight:500;
-  letter-spacing:.12em;
-  font-size:48px;
-  z-index:1000;
-  pointer-events:none;
-}
-
 /* ===== HERO ===== */
 
 .hero{
+  position:relative;          /* 🔑 anchor for title */
   background:#000;
   color:#fff;
   height:100vh;
@@ -69,6 +55,21 @@ body.fade-out{
   align-items:center;
   justify-content:center;
   text-align:center;
+}
+
+/* ===== TAMANY TITLE (PERFECTLY CENTERED) ===== */
+
+.hero-title{
+  position:absolute;
+  top:30%;                    /* higher but visible */
+  left:50%;
+  transform:translate(-50%,-50%);
+  color:#fff;
+  font-weight:500;
+  letter-spacing:.12em;
+  font-size:48px;
+  z-index:1000;
+  pointer-events:none;
 }
 
 /* ===== LOGO ===== */
@@ -224,11 +225,11 @@ body.fade-out{
 <!-- NAV BAR -->
 <div class="nav"></div>
 
-<!-- TAMANY TITLE -->
-<div id="title" class="hero-title">TAMANY</div>
-
 <!-- HERO -->
 <section class="hero">
+
+  <!-- TAMANY TITLE -->
+  <div id="title" class="hero-title">TAMANY</div>
 
   <img src="logo.png" class="logo" id="logo">
 
