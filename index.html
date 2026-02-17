@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMANY — Website Solutions</title>
+<title>TAMANY</title>
 
 <style>
 body {
@@ -11,86 +11,61 @@ body {
   background: #000;
   color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  height: 100vh;
+  position: relative;
   text-align: center;
-  padding: 60px 20px 120px;
 }
 
-/* Logo */
+/* Logo stays where it is (top area) */
 .logo {
   width: 70px;
-  margin-bottom: 40px;
+  margin-top: 120px;
   opacity: 0.95;
 }
 
-/* Title */
+/* Centered text block */
+.center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* TAMANY title */
 h1 {
-  font-size: 34px;
+  font-size: 48px;
+  margin: 0;
   font-weight: 500;
   letter-spacing: 0.12em;
-  margin-bottom: 40px;
 }
 
-/* Service cards */
-.card {
-  border: 1px solid #333;
-  border-radius: 16px;
-  padding: 32px;
-  margin: 22px auto;
-  max-width: 480px;
-  background: rgba(255,255,255,0.02);
+/* Subtext */
+.subtext {
+  font-size: 16px;
+  color: #888;
+  margin-top: 22px;
 }
 
-.card h2 {
-  margin-top: 0;
-  font-weight: 500;
-}
-
-.card p {
-  color: #bbb;
+/* Button — much lower */
+button {
+  position: absolute;
+  bottom: 110px; /* 👈 moved far down */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 44px;
   font-size: 15px;
-  line-height: 1.6;
-}
-
-/* Primary button */
-.primary-btn {
-  margin-top: 40px;
-  padding: 16px 42px;
-  font-size: 16px;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #777;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-.primary-btn:hover {
-  border-color: #aaa;
-}
-
-/* Long info section */
-.about {
-  margin-top: 120px;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #aaa;
-  font-size: 16px;
-  line-height: 1.9;
-}
-
-/* Back button */
-.back-btn {
-  margin-top: 70px;
-  padding: 14px 36px;
+  letter-spacing: 0.05em;
   background: transparent;
   color: #fff;
   border: 1px solid #555;
   border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.back-btn:hover {
+button:hover {
   border-color: #aaa;
+  box-shadow: 0 0 22px rgba(255,255,255,0.18);
 }
 </style>
 </head>
@@ -100,67 +75,14 @@ h1 {
 <!-- Logo -->
 <img src="logo.png" alt="Tamany Logo" class="logo">
 
-<h1>WEBSITE SOLUTIONS</h1>
-
-<div class="card">
-  <h2>Starter Website</h2>
-  <p>Clean, modern website for small businesses establishing a professional online presence.</p>
+<!-- Centered wording -->
+<div class="center-text">
+  <h1>TAMANY</h1>
+  <div class="subtext">Technology solutions for modern business.</div>
 </div>
 
-<div class="card">
-  <h2>Professional Website</h2>
-  <p>Custom business website with advanced features, branding, and strong customer engagement.</p>
-</div>
-
-<div class="card">
-  <h2>Premium Website</h2>
-  <p>Fully tailored digital experience designed for serious brands, scalability, and long-term growth.</p>
-</div>
-
-<!-- Main action button -->
-<button class="primary-btn"
-  onclick="window.location.href='packages.html'">
-  Let Us Build Your Website
-</button>
-
-<!-- About Tamany section -->
-<div class="about">
-
-  <p>
-  Tamany is a technology company focused on building modern digital
-  solutions for real-world businesses and consumers.
-  </p>
-
-  <p>
-  Our ecosystem includes mobile applications, advanced platforms,
-  AI-driven systems, and scalable digital products designed for the
-  next generation of business and communication.
-  </p>
-
-  <p>
-  We are currently developing a dating application, a shopping
-  marketplace, and additional platforms that will expand the way
-  people connect, transact, and grow online.
-  </p>
-
-  <p>
-  Website Solutions is one division of Tamany — our parent technology
-  company — created to help businesses establish a powerful,
-  trustworthy presence on the internet.
-  </p>
-
-  <p>
-  As Tamany grows, more services, applications, and innovations will
-  be introduced, forming a complete technology ecosystem built for
-  the future.
-  </p>
-
-</div>
-
-<button class="back-btn"
-  onclick="window.location.href='index.html'">
-  Back to Home
-</button>
+<!-- Lower button -->
+<button>Explore Services</button>
 
 </body>
 </html>
