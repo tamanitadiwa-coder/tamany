@@ -40,10 +40,10 @@ body.fade-out{
   z-index:999;
 }
 
-/* ===== MORPHING TITLE ===== */
+/* ===== MORPHING TITLE (MOVES UP + SHRINKS ONLY) ===== */
 
 .hero-title{
-  position:absolute;            /* CHANGED */
+  position:fixed;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%) scale(1);
@@ -53,13 +53,7 @@ body.fade-out{
   font-size:48px;
   z-index:1000;
   pointer-events:none;
-  transition:transform .15s linear;
-}
-
-.hero-title.fixed{
-  position:fixed;
-  top:35px;                     /* centered in navbar */
-  transform:translate(-50%,-50%) scale(.35);
+  will-change:transform;
 }
 
 /* ===== HERO ===== */
@@ -120,11 +114,46 @@ body.fade-out{
   transform:translateY(0);
 }
 
+.image-wrap{
+  position:relative;
+  overflow:hidden;
+}
+
 .image-wrap img{
   width:100%;
   display:block;
   filter:brightness(.7);
+  transform:scale(1.03);
+  transition:transform 1.5s ease;
 }
+
+.section.visible img{
+  transform:scale(1);
+}
+
+/* Gradient edges */
+
+.image-wrap::before,
+.image-wrap::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width:100%;
+  height:140px;
+  z-index:2;
+}
+
+.image-wrap::before{
+  top:0;
+  background:linear-gradient(#000, transparent);
+}
+
+.image-wrap::after{
+  bottom:0;
+  background:linear-gradient(transparent, #000);
+}
+
+/* ===== TEXT BLOCK ===== */
 
 .text-block{
   padding:80px 20px;
@@ -156,17 +185,29 @@ body.fade-out{
   text-align:center;
 }
 
-.footer h2{ color:#fff; letter-spacing:.12em; }
+.footer h2{
+  color:#fff;
+  letter-spacing:.12em;
+}
 
-.links{ margin-top:40px; line-height:2.4; font-size:17px; }
+.links{
+  margin-top:40px;
+  line-height:2.4;
+  font-size:17px;
+}
 
-.small{ margin-top:60px; font-size:14px; color:#777; }
+.small{
+  margin-top:60px;
+  font-size:14px;
+  color:#777;
+}
 
 </style>
 </head>
 
 <body onload="document.body.classList.add('loaded')">
 
+<!-- NAV BAR -->
 <div class="nav"></div>
 
 <!-- MORPHING TITLE -->
@@ -211,6 +252,65 @@ body.fade-out{
   </div>
 </section>
 
+<section class="section">
+  <div class="image-wrap"><img src="image3.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">FROM ORIGINS TO AI FUTURE</div>
+    <div class="section-text">
+      We respect the history of technology while pushing boundaries
+      forward — combining classic computing foundations with modern
+      artificial intelligence and scalable cloud platforms.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image4.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">SUSTAINABLE INNOVATION</div>
+    <div class="section-text">
+      Tamany invests in solutions that balance innovation with
+      responsibility, ensuring technology contributes positively to
+      both society and the environment.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image5.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">HUMAN CONNECTION PLATFORMS</div>
+    <div class="section-text">
+      Our ecosystem includes social platforms, marketplaces, and
+      communication tools designed to bring people closer together in
+      a secure digital environment.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image6.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">SOFTWARE AT THE CORE</div>
+    <div class="section-text">
+      Every product we create is powered by advanced software
+      engineering, delivering reliability, performance, and scalability
+      for businesses of any size.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="image-wrap"><img src="image7.jpg"></div>
+  <div class="text-block">
+    <div class="section-title">GLOBAL DIGITAL COMMERCE</div>
+    <div class="section-text">
+      From online stores to complex marketplaces, Tamany builds systems
+      that allow businesses to sell, operate, and expand globally.
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 
 <section class="footer">
@@ -243,19 +343,24 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:0.15});
 sections.forEach(sec=>observer.observe(sec));
 
-/* ===== TITLE MORPH (APPLE STYLE) ===== */
+/* ===== TITLE MOVE UP + SHRINK (LOCKED) ===== */
 
 const title = document.getElementById("title");
 
 window.addEventListener("scroll", () => {
 
-  const trigger = window.innerHeight * 0.35;
+  const lockPoint = 300;
+  const y = window.scrollY;
+  const progress = Math.min(y / lockPoint, 1);
 
-  if(window.scrollY > trigger){
-    title.classList.add("fixed");
-  }else{
-    title.classList.remove("fixed");
-  }
+  const scale = 1 - (1 - 0.35) * progress;
+
+  const startY = window.innerHeight / 2;
+  const endY = 35; // navbar center
+  const currentY = startY - (startY - endY) * progress;
+
+  title.style.top = currentY + "px";
+  title.style.transform = "translate(-50%,-50%) scale(" + scale + ")";
 
 });
 
