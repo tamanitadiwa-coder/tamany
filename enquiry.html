@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,9 @@ body{
   transition:opacity .6s ease;
 }
 
-body.loaded{ opacity:1; }
+body.loaded{opacity:1;}
+
+a, a:visited, a:active { color:#fff; }
 
 /* ===== TOP BAR ===== */
 
@@ -38,7 +39,6 @@ body.loaded{ opacity:1; }
 }
 
 .nav a{
-  color:#fff;
   text-decoration:none;
   font-size:15px;
   opacity:.85;
@@ -50,7 +50,7 @@ body.loaded{ opacity:1; }
 
 .wrapper{
   padding-top:110px;
-  max-width:760px;
+  max-width:620px;
   margin:auto;
   padding-left:20px;
   padding-right:20px;
@@ -60,95 +60,72 @@ body.loaded{ opacity:1; }
 
 .logo{
   width:70px;
-  margin:40px auto 50px;
+  margin:40px auto 60px;
   display:block;
   opacity:.95;
+  transition:.3s ease;
+}
+
+.logo.locked{
+  position:fixed;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  margin:0;
 }
 
 /* ===== TITLE ===== */
 
 .title{
-  font-size:28px;
-  letter-spacing:.1em;
   text-align:center;
-  margin-bottom:60px;
+  font-size:26px;
+  letter-spacing:.1em;
+  margin-bottom:50px;
   color:#e0e0e0;
-}
-
-/* ===== PACKAGE CARDS ===== */
-
-.package{
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:16px;
-  padding:24px;
-  margin-bottom:20px;
-  cursor:pointer;
-  transition:.25s;
-}
-
-.package:hover{
-  border-color:rgba(255,255,255,.35);
-  background:rgba(255,255,255,.03);
-}
-
-.package h3{
-  margin:0 0 10px;
-  font-weight:500;
-}
-
-.package p{
-  margin:0;
-  color:#bbb;
-}
-
-/* ===== NOTE ===== */
-
-.note{
-  margin:50px 0;
-  color:#aaa;
-  line-height:1.7;
-  font-size:15px;
 }
 
 /* ===== FORM ===== */
 
-form{
-  margin-top:40px;
-}
-
 label{
   display:block;
+  font-size:13px;
+  color:#aaa;
   margin-bottom:8px;
-  font-size:14px;
-  color:#ccc;
+  letter-spacing:.04em;
 }
 
 input, textarea{
   width:100%;
-  padding:14px;
-  margin-bottom:20px;
+  padding:16px;
+  margin-bottom:26px;
   background:#111;
   border:1px solid #333;
-  border-radius:10px;
+  border-radius:12px;
   color:#fff;
   font-size:15px;
   font-family:inherit;
+  outline:none;
+  transition:.2s;
+}
+
+input:focus, textarea:focus{
+  border-color:#666;
 }
 
 textarea{
-  min-height:120px;
+  min-height:140px;
   resize:vertical;
 }
 
-/* ===== SUBMIT BUTTON ===== */
+/* ===== SEND BUTTON ===== */
 
 .submit-btn{
   width:100%;
-  padding:16px;
+  padding:18px;
   background:#fff;
   color:#000;
   border:none;
-  border-radius:12px;
+  border-radius:14px;
   font-size:16px;
   font-weight:500;
   cursor:pointer;
@@ -200,59 +177,36 @@ textarea{
 <div class="wrapper">
 
   <!-- LOGO -->
-  <img src="logo.png" class="logo">
+  <img src="logo.png" class="logo" id="logo">
 
   <!-- TITLE -->
-  <div class="title">Website Packages</div>
-
-  <!-- PACKAGES -->
-
-  <div class="package" onclick="selectPackage('Starter Website — R2,500')">
-    <h3>Starter Website — R2,500</h3>
-    <p>Basic professional website to establish your business online.</p>
-  </div>
-
-  <div class="package" onclick="selectPackage('Professional Website — R5,000')">
-    <h3>Professional Website — R5,000</h3>
-    <p>Custom website designed for growth and credibility.</p>
-  </div>
-
-  <div class="package" onclick="selectPackage('Premium Website — R9,500')">
-    <h3>Premium Website — R9,500</h3>
-    <p>Full digital experience for established brands.</p>
-  </div>
-
-  <!-- NOTE -->
-
-  <div class="note">
-    You purchase and own your domain and hosting.  
-    Tamany handles design, setup, and launch.  
-    Final details, invoice, and timeline will be provided after enquiry.
-  </div>
+  <div class="title">Project Enquiry</div>
 
   <!-- FORM -->
 
-  <form>
+  <form id="enquiryForm">
 
     <label>Selected Package</label>
-    <input type="text" id="packageField" placeholder="Tap a package above" required>
+    <input type="text" id="package" readonly>
 
-    <label>Business / Project Name</label>
-    <input type="text" required>
+    <label>Your Name</label>
+    <input type="text" id="name" required>
 
-    <label>Type of Website or Services Offered</label>
-    <input type="text" required>
+    <label>Company Name</label>
+    <input type="text" id="company" required>
+
+    <label>What is the company about?</label>
+    <textarea id="about" required></textarea>
 
     <label>Email Address</label>
-    <input type="email" required>
+    <input type="email" id="email" required>
 
-    <label>Phone / WhatsApp (optional)</label>
-    <input type="tel">
+    <label>Phone / WhatsApp</label>
+    <input type="tel" id="phone" required>
 
-    <label>Additional Message (optional)</label>
-    <textarea></textarea>
-
-    <button class="submit-btn">Submit Enquiry</button>
+    <button type="submit" class="submit-btn">
+      Send Enquiry
+    </button>
 
   </form>
 
@@ -273,22 +227,60 @@ textarea{
 
   <div class="small">
     Tamany — Parent Technology Company  
-    © 2026 All rights reserved
+    ©️ 2026 All rights reserved
   </div>
 
 </section>
 
 <script>
 
-/* ===== PACKAGE SELECT ===== */
+/* ===== LOGO LOCK IN NAVBAR ===== */
 
-function selectPackage(name){
-  document.getElementById("packageField").value = name;
-  document.getElementById("packageField").scrollIntoView({
-    behavior:"smooth",
-    block:"center"
-  });
+const logo = document.getElementById("logo");
+
+window.addEventListener("scroll", () => {
+  if(window.scrollY > 120){
+    logo.classList.add("locked");
+  }else{
+    logo.classList.remove("locked");
+  }
+});
+
+/* ===== AUTO-FILL PACKAGE FROM URL ===== */
+
+const params = new URLSearchParams(window.location.search);
+const pkg = params.get("package");
+
+if(pkg){
+  document.getElementById("package").value =
+    decodeURIComponent(pkg);
 }
+
+/* ===== SEND EMAIL ===== */
+
+document.getElementById("enquiryForm")
+.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const subject = "Website Enquiry — " +
+    document.getElementById("package").value;
+
+  const body =
+`Package: ${package.value}
+
+Name: ${name.value}
+Company: ${company.value}
+
+About the company:
+${about.value}
+
+Email: ${email.value}
+Phone: ${phone.value}`;
+
+  window.location.href =
+    `mailto:tamanitadiwa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
 
 </script>
 
