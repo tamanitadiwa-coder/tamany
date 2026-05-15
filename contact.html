@@ -20,7 +20,10 @@ body{
 
 body.loaded{ opacity:1; }
 
-a, a:visited, a:active { color:#fff; text-decoration:none; }
+a, a:visited, a:active {
+  color:#fff;
+  text-decoration:none;
+}
 
 /* ===== TOP BAR ===== */
 
@@ -46,7 +49,9 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
   cursor:pointer;
 }
 
-.nav a:hover{opacity:1;}
+.nav a:hover{
+  opacity:1;
+}
 
 /* ===== WRAPPER ===== */
 
@@ -148,9 +153,11 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 <div class="wrapper">
 
   <!-- LOGO -->
+
   <img src="logo.png" class="logo">
 
   <!-- TITLE -->
+
   <div class="title">Contact Us</div>
 
   <div class="subtitle">
@@ -160,15 +167,17 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 
   <!-- EMAIL BUTTON -->
 
-  <button class="contact-btn"
+  <button
+    class="contact-btn"
     onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
     Email Us
   </button>
 
   <!-- WHATSAPP BUTTON -->
 
-  <button class="contact-btn"
-    onclick="window.location.href='https://wa.me/message/QNSR34ZBPCP4L1'">
+  <button
+    class="contact-btn"
+    onclick="window.location.href='https://wa.me/27842818624'">
     WhatsApp Business
   </button>
 
@@ -182,8 +191,8 @@ a, a:visited, a:active { color:#fff; text-decoration:none; }
 
   <div class="links">
     <div>Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: <span style="text-decoration:underline;">084 037 4424</span></div>
-    <div>WhatsApp: 084 037 4424</div>
+    <div>Phone: <span style="text-decoration:underline;">+27 84 281 8624</span></div>
+    <div>WhatsApp: +27 84 281 8624</div>
     <div>Instagram: tamany.tech</div>
   </div>
 
@@ -202,7 +211,7 @@ function goBack(){
   if (window.history.length > 1) {
     window.history.back();
   } else {
-    window.location.href = "index.html"; // fallback if no history
+    window.location.href = "index.html";
   }
 }
 
