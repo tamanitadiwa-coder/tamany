@@ -4,342 +4,214 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TAMANY — Enquiry</title>
-
 <style>
-
-/* ===== GLOBAL ===== */
-
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:#000;
-  color:#fff;
-  opacity:0;
-  transition:opacity .6s ease;
-}
-
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#000;color:#fff;opacity:0;transition:opacity .6s ease;}
 body.loaded{opacity:1;}
-
-a, a:visited, a:active { color:#fff; }
-
-/* ===== TOP BAR ===== */
-
-.nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:70px;
-  background:rgba(0,0,0,.7);
-  backdrop-filter:blur(14px);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 30px;
-  box-sizing:border-box;
-  z-index:999;
-}
-
-.nav a{
-  text-decoration:none;
-  font-size:15px;
-  opacity:.85;
-}
-
+a,a:visited,a:active{color:#fff;}
+.nav{position:fixed;top:0;width:100%;height:70px;background:rgba(0,0,0,.7);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-sizing:border-box;z-index:999;}
+.nav a{text-decoration:none;font-size:15px;opacity:.85;}
 .nav a:hover{opacity:1;}
-
-/* ===== WRAPPER ===== */
-
-.wrapper{
-  padding-top:110px;
-  max-width:620px;
-  margin:auto;
-  padding-left:20px;
-  padding-right:20px;
-}
-
-/* ===== LOGO ===== */
-
-.logo{
-  width:70px;
-  margin:40px auto 60px;
-  display:block;
-  opacity:.95;
-  transition:.3s ease;
-}
-
-.logo.locked{
-  position:fixed;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  margin:0;
-}
-
-/* ===== TITLE ===== */
-
-.title{
-  text-align:center;
-  font-size:26px;
-  letter-spacing:.1em;
-  margin-bottom:50px;
-  color:#e0e0e0;
-}
-
-/* ===== FORM ===== */
-
-label{
-  display:block;
-  font-size:13px;
-  color:#aaa;
-  margin-bottom:8px;
-  letter-spacing:.04em;
-}
-
-/* font-size 16px prevents iOS zoom on focus */
-input, textarea{
-  width:100%;
-  padding:16px;
-  margin-bottom:26px;
-  background:#111;
-  border:1px solid #333;
-  border-radius:12px;
-  color:#fff;
-  font-size:16px;
-  font-family:inherit;
-  outline:none;
-  box-sizing:border-box;
-}
-
-textarea{
-  min-height:140px;
-  resize:vertical;
-}
-
-/* ===== SEND BUTTON ===== */
-
-.submit-btn{
-  width:100%;
-  padding:18px;
-  background:#fff;
-  color:#000;
-  border:none;
-  border-radius:14px;
-  font-size:16px;
-  font-weight:500;
-  cursor:pointer;
-}
-
-/* ===== MODAL OVERLAY ===== */
-
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  backdrop-filter:blur(6px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.25s ease;
-  z-index:10000;
-}
-
-.overlay.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* ===== MODAL ===== */
-
-.modal{
-  background:#111;
-  padding:30px;
-  border-radius:20px;
-  width:90%;
-  max-width:360px;
-  text-align:center;
-  transform:translateY(20px);
-  transition:.25s ease;
-}
-
-.overlay.active .modal{
-  transform:translateY(0);
-}
-
-.modal h3{
-  margin-top:0;
-  margin-bottom:25px;
-  font-weight:500;
-  letter-spacing:.05em;
-}
-
-.option{
-  width:100%;
-  padding:16px;
-  margin-bottom:12px;
-  border-radius:12px;
-  border:1px solid #444;
-  background:#000;
-  color:#fff;
-  cursor:pointer;
-  font-size:15px;
-}
-
-.option:hover{
-  border-color:#777;
-}
-
-.cancel{
-  margin-top:10px;
-  font-size:14px;
-  opacity:.7;
-  cursor:pointer;
-}
-
+.wrapper{padding-top:110px;max-width:620px;margin:auto;padding-left:20px;padding-right:20px;}
+.logo{width:70px;margin:40px auto 60px;display:block;opacity:.95;transition:.3s ease;}
+.logo.locked{position:fixed;top:10px;left:50%;transform:translateX(-50%);margin:0;}
+.title{text-align:center;font-size:26px;letter-spacing:.1em;margin-bottom:8px;color:#e0e0e0;}
+.title-sub{text-align:center;font-size:15px;color:#666;margin-bottom:50px;}
+label{display:block;font-size:13px;color:#aaa;margin-bottom:8px;letter-spacing:.04em;}
+input,textarea,select{width:100%;padding:16px;margin-bottom:26px;background:#111;border:1px solid #333;border-radius:12px;color:#fff;font-size:16px;font-family:inherit;outline:none;box-sizing:border-box;appearance:none;}
+select option{background:#111;color:#fff;}
+textarea{min-height:140px;resize:vertical;}
+.section-heading{font-size:11px;letter-spacing:.18em;color:#555;text-transform:uppercase;margin-bottom:20px;margin-top:10px;border-top:1px solid #1a1a1a;padding-top:30px;}
+.submit-btn{width:100%;padding:18px;background:#fff;color:#000;border:none;border-radius:14px;font-size:16px;font-weight:500;cursor:pointer;margin-bottom:60px;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.25s ease;z-index:10000;}
+.overlay.active{opacity:1;pointer-events:auto;}
+.modal{background:#111;padding:30px;border-radius:20px;width:90%;max-width:360px;text-align:center;transform:translateY(20px);transition:.25s ease;}
+.overlay.active .modal{transform:translateY(0);}
+.modal h3{margin-top:0;margin-bottom:25px;font-weight:500;letter-spacing:.05em;}
+.option{width:100%;padding:16px;margin-bottom:12px;border-radius:12px;border:1px solid #444;background:#000;color:#fff;cursor:pointer;font-size:15px;}
+.option:hover{border-color:#777;}
+.cancel{margin-top:10px;font-size:14px;opacity:.7;cursor:pointer;}
 </style>
 </head>
-
 <body onload="document.body.classList.add('loaded')">
-
 <div class="nav">
   <a href="packages.html">Back</a>
   <a href="contact.html">Help</a>
 </div>
-
 <div class="wrapper">
-
   <img src="logo.png" class="logo" id="logo">
-
   <div class="title">Project Enquiry</div>
+  <div class="title-sub">Fill in the details below and we'll get back to you.</div>
 
   <form id="enquiryForm">
 
     <label>Selected Package</label>
     <input type="text" id="packageInput" readonly>
 
-    <label>Your Name</label>
-    <input type="text" id="nameInput" required>
+    <!-- ABOUT YOU -->
+    <div class="section-heading">About You</div>
 
-    <label>Company Name</label>
-    <input type="text" id="companyInput" required>
+    <label>Your Full Name</label>
+    <input type="text" id="nameInput" placeholder="e.g. John Smith" required>
 
-    <label>What is the company about?</label>
-    <textarea id="aboutInput" required></textarea>
+    <label>Your Role / Title</label>
+    <input type="text" id="roleInput" placeholder="e.g. Owner, Manager, CEO">
 
     <label>Email Address</label>
-    <input type="email" id="emailInput" required>
+    <input type="email" id="emailInput" placeholder="your@email.com" required>
 
-    <label>Phone / WhatsApp</label>
-    <input type="tel" id="phoneInput" required>
+    <label>Phone / WhatsApp Number</label>
+    <input type="tel" id="phoneInput" placeholder="+27 ..." required>
 
-    <button type="submit" class="submit-btn">
-      Send Enquiry
-    </button>
+    <!-- ABOUT YOUR BUSINESS -->
+    <div class="section-heading">About Your Business</div>
+
+    <label>Business / Company Name</label>
+    <input type="text" id="companyInput" placeholder="e.g. Joe's Bakery" required>
+
+    <label>Industry / Type of Business</label>
+    <select id="industryInput">
+      <option value="">Select industry...</option>
+      <option>Retail Store</option>
+      <option>Restaurant / Food</option>
+      <option>Salon / Beauty</option>
+      <option>Clothing / Fashion</option>
+      <option>Tech / Electronics</option>
+      <option>Furniture / Home</option>
+      <option>Grocery / Supermarket</option>
+      <option>Corporate / Professional Services</option>
+      <option>Health / Medical</option>
+      <option>Construction / Trades</option>
+      <option>Automotive</option>
+      <option>Education</option>
+      <option>Entertainment / Events</option>
+      <option>Non-Profit</option>
+      <option>Other</option>
+    </select>
+
+    <label>Location (City / Area)</label>
+    <input type="text" id="locationInput" placeholder="e.g. Cape Town, Johannesburg">
+
+    <label>What does your business do?</label>
+    <textarea id="aboutInput" placeholder="Brief description of your business and what you sell or offer..." required></textarea>
+
+    <!-- WEBSITE DETAILS -->
+    <div class="section-heading">Website Details</div>
+
+    <label>Do you already have a website?</label>
+    <select id="existingWebInput">
+      <option value="">Select...</option>
+      <option>No, this will be my first website</option>
+      <option>Yes, I want to replace my current website</option>
+      <option>Yes, I want to update / improve my current website</option>
+    </select>
+
+    <label>Current website URL (if any)</label>
+    <input type="text" id="currentUrlInput" placeholder="www.yoursite.com (leave blank if none)">
+
+    <label>Do you have a domain name already?</label>
+    <select id="domainInput">
+      <option value="">Select...</option>
+      <option>No, I need help choosing one</option>
+      <option>Yes, I already own a domain</option>
+    </select>
+
+    <label>What pages do you need? (tick all that apply)</label>
+    <select id="pagesInput">
+      <option value="">Select main need...</option>
+      <option>Home page only</option>
+      <option>Home + About + Contact</option>
+      <option>Home + Services + Contact</option>
+      <option>Full multi-page site</option>
+      <option>Online store / e-commerce</option>
+      <option>Not sure — advise me</option>
+    </select>
+
+    <label>Any specific features you want?</label>
+    <textarea id="featuresInput" placeholder="e.g. online booking, photo gallery, WhatsApp chat button, product catalogue, map, etc."></textarea>
+
+    <label>Any reference websites you like the look of?</label>
+    <input type="text" id="refsInput" placeholder="www.example.com (or describe the style)">
+
+    <!-- TIMELINE & BUDGET -->
+    <div class="section-heading">Timeline & Budget</div>
+
+    <label>How soon do you need the website?</label>
+    <select id="timelineInput">
+      <option value="">Select...</option>
+      <option>As soon as possible</option>
+      <option>Within 2 weeks</option>
+      <option>Within a month</option>
+      <option>No rush — quality over speed</option>
+    </select>
+
+    <label>Anything else you'd like us to know?</label>
+    <textarea id="extraInput" placeholder="Any other details, questions, or requirements..."></textarea>
+
+    <button type="submit" class="submit-btn">Send Enquiry</button>
 
   </form>
-
 </div>
 
-<!-- ===== MODAL ===== -->
-
+<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal">
     <h3>Send Enquiry With</h3>
-
     <button class="option" id="emailBtn">Email</button>
     <button class="option" id="whatsappBtn">WhatsApp</button>
-
     <div class="cancel" id="cancelBtn">Cancel</div>
   </div>
 </div>
 
 <script>
-
-/* ===== LOGO LOCK ===== */
-
 const logo = document.getElementById("logo");
-
-window.addEventListener("scroll", () => {
-  if(window.scrollY > 120){
-    logo.classList.add("locked");
-  }else{
-    logo.classList.remove("locked");
-  }
-});
-
-/* ===== AUTO-FILL PACKAGE ===== */
+window.addEventListener("scroll",()=>{ logo.classList.toggle("locked", window.scrollY > 120); });
 
 const params = new URLSearchParams(window.location.search);
 const pkg = params.get("package");
-
-if(pkg){
-  document.getElementById("packageInput").value = decodeURIComponent(pkg);
-}
-
-/* ===== FORM SUBMIT → SHOW MODAL ===== */
+if(pkg){ document.getElementById("packageInput").value = decodeURIComponent(pkg); }
 
 const form = document.getElementById("enquiryForm");
 const overlay = document.getElementById("overlay");
-
-form.addEventListener("submit", function(e){
-  e.preventDefault();
-  overlay.classList.add("active");
-});
-
-/* ===== CLOSE MODAL ===== */
-
-document.getElementById("cancelBtn")
-.onclick = () => overlay.classList.remove("active");
-
-/* ===== BUILD MESSAGE ===== */
+form.addEventListener("submit",function(e){ e.preventDefault(); overlay.classList.add("active"); });
+document.getElementById("cancelBtn").onclick = () => overlay.classList.remove("active");
 
 function buildMessage(){
-  const packageVal = document.getElementById("packageInput").value;
-  const nameVal    = document.getElementById("nameInput").value;
-  const companyVal = document.getElementById("companyInput").value;
-  const aboutVal   = document.getElementById("aboutInput").value;
-  const emailVal   = document.getElementById("emailInput").value;
-  const phoneVal   = document.getElementById("phoneInput").value;
+  const v = id => document.getElementById(id).value;
+  return `Enquiry: ${v("packageInput")}
 
-  return `Enquiry with ${packageVal}
+--- About You ---
+Name: ${v("nameInput")}
+Role: ${v("roleInput")}
+Email: ${v("emailInput")}
+Phone: ${v("phoneInput")}
 
-Name: ${nameVal}
-Company: ${companyVal}
+--- Business ---
+Company: ${v("companyInput")}
+Industry: ${v("industryInput")}
+Location: ${v("locationInput")}
+About: ${v("aboutInput")}
 
-About:
-${aboutVal}
+--- Website ---
+Existing site: ${v("existingWebInput")}
+Current URL: ${v("currentUrlInput")}
+Domain owned: ${v("domainInput")}
+Pages needed: ${v("pagesInput")}
+Features wanted: ${v("featuresInput")}
+Reference sites: ${v("refsInput")}
 
-Email: ${emailVal}
-Phone: ${phoneVal}`;
+--- Timeline ---
+Timeline: ${v("timelineInput")}
+Extra notes: ${v("extraInput")}`;
 }
 
-/* ===== EMAIL OPTION ===== */
-
-document.getElementById("emailBtn")
-.onclick = () => {
-
+document.getElementById("emailBtn").onclick = () => {
   const subject = "Website Enquiry — " + document.getElementById("packageInput").value;
-  const body = buildMessage();
-
-  window.location.href =
-    `mailto:tamanitadiwa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:tamanitadiwa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildMessage())}`;
 };
 
-/* ===== WHATSAPP OPTION ===== */
-
-document.getElementById("whatsappBtn")
-.onclick = () => {
-
-  const message = buildMessage();
-
-  window.open(
-    `https://wa.me/27842818624?text=${encodeURIComponent(message)}`,
-    "_blank"
-  );
+document.getElementById("whatsappBtn").onclick = () => {
+  window.open(`https://wa.me/27842818624?text=${encodeURIComponent(buildMessage())}`, "_blank");
 };
-
 </script>
-
 </body>
 </html>
