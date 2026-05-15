@@ -20,10 +20,7 @@ body{
 
 body.loaded{ opacity:1; }
 
-a, a:visited, a:active {
-  color:#fff;
-  text-decoration:none;
-}
+a, a:visited, a:active { color:#fff; text-decoration:none; }
 
 /* ===== TOP BAR ===== */
 
@@ -49,9 +46,7 @@ a, a:visited, a:active {
   cursor:pointer;
 }
 
-.nav a:hover{
-  opacity:1;
-}
+.nav a:hover{opacity:1;}
 
 /* ===== WRAPPER ===== */
 
@@ -153,30 +148,26 @@ a, a:visited, a:active {
 <div class="wrapper">
 
   <!-- LOGO -->
-
   <img src="logo.png" class="logo">
 
   <!-- TITLE -->
-
   <div class="title">Contact Us</div>
 
   <div class="subtitle">
-    Choose how you’d like to reach Tamany.<br>
-    We’ll respond as soon as possible.
+    Choose how you'd like to reach Tamany.<br>
+    We'll respond as soon as possible.
   </div>
 
   <!-- EMAIL BUTTON -->
 
-  <button
-    class="contact-btn"
+  <button class="contact-btn"
     onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
     Email Us
   </button>
 
   <!-- WHATSAPP BUTTON -->
 
-  <button
-    class="contact-btn"
+  <button class="contact-btn"
     onclick="window.location.href='https://wa.me/27842818624'">
     WhatsApp Business
   </button>
@@ -211,7 +202,7 @@ function goBack(){
   if (window.history.length > 1) {
     window.history.back();
   } else {
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // fallback if no history
   }
 }
 
