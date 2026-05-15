@@ -35,6 +35,7 @@ a, a:visited, a:active { color:#fff; }
   align-items:center;
   justify-content:space-between;
   padding:0 30px;
+  box-sizing:border-box;
   z-index:999;
 }
 
@@ -94,6 +95,7 @@ label{
   letter-spacing:.04em;
 }
 
+/* font-size 16px prevents iOS zoom on focus */
 input, textarea{
   width:100%;
   padding:16px;
@@ -102,9 +104,10 @@ input, textarea{
   border:1px solid #333;
   border-radius:12px;
   color:#fff;
-  font-size:15px;
+  font-size:16px;
   font-family:inherit;
   outline:none;
+  box-sizing:border-box;
 }
 
 textarea{
@@ -213,22 +216,22 @@ textarea{
   <form id="enquiryForm">
 
     <label>Selected Package</label>
-    <input type="text" id="package" readonly>
+    <input type="text" id="packageInput" readonly>
 
     <label>Your Name</label>
-    <input type="text" id="name" required>
+    <input type="text" id="nameInput" required>
 
     <label>Company Name</label>
-    <input type="text" id="company" required>
+    <input type="text" id="companyInput" required>
 
     <label>What is the company about?</label>
-    <textarea id="about" required></textarea>
+    <textarea id="aboutInput" required></textarea>
 
     <label>Email Address</label>
-    <input type="email" id="email" required>
+    <input type="email" id="emailInput" required>
 
     <label>Phone / WhatsApp</label>
-    <input type="tel" id="phone" required>
+    <input type="tel" id="phoneInput" required>
 
     <button type="submit" class="submit-btn">
       Send Enquiry
@@ -271,8 +274,7 @@ const params = new URLSearchParams(window.location.search);
 const pkg = params.get("package");
 
 if(pkg){
-  document.getElementById("package").value =
-    decodeURIComponent(pkg);
+  document.getElementById("packageInput").value = decodeURIComponent(pkg);
 }
 
 /* ===== FORM SUBMIT → SHOW MODAL ===== */
@@ -293,17 +295,23 @@ document.getElementById("cancelBtn")
 /* ===== BUILD MESSAGE ===== */
 
 function buildMessage(){
+  const packageVal = document.getElementById("packageInput").value;
+  const nameVal    = document.getElementById("nameInput").value;
+  const companyVal = document.getElementById("companyInput").value;
+  const aboutVal   = document.getElementById("aboutInput").value;
+  const emailVal   = document.getElementById("emailInput").value;
+  const phoneVal   = document.getElementById("phoneInput").value;
 
-  return `Enquiry with ${package.value}
+  return `Enquiry with ${packageVal}
 
-Name: ${name.value}
-Company: ${company.value}
+Name: ${nameVal}
+Company: ${companyVal}
 
 About:
-${about.value}
+${aboutVal}
 
-Email: ${email.value}
-Phone: ${phone.value}`;
+Email: ${emailVal}
+Phone: ${phoneVal}`;
 }
 
 /* ===== EMAIL OPTION ===== */
@@ -311,9 +319,7 @@ Phone: ${phone.value}`;
 document.getElementById("emailBtn")
 .onclick = () => {
 
-  const subject =
-    "Website Enquiry — " + package.value;
-
+  const subject = "Website Enquiry — " + document.getElementById("packageInput").value;
   const body = buildMessage();
 
   window.location.href =
@@ -328,7 +334,7 @@ document.getElementById("whatsappBtn")
   const message = buildMessage();
 
   window.open(
-    `https://wa.me/27840374424?text=${encodeURIComponent(message)}`,
+    `https://wa.me/27842818624?text=${encodeURIComponent(message)}`,
     "_blank"
   );
 };
