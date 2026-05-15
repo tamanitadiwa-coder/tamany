@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAMANY — Do Business With Us</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#000;color:#fff;opacity:0;transition:opacity .6s ease;}
+body.loaded{opacity:1;}
+a,a:visited,a:active{color:#fff;text-decoration:none;}
+.nav{position:fixed;top:0;width:100%;height:70px;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;z-index:999;}
+.nav a{font-size:15px;opacity:.85;cursor:pointer;}
+.nav a:hover{opacity:1;}
+.wrapper{padding-top:120px;max-width:760px;margin:auto;padding-left:20px;padding-right:20px;text-align:center;}
+.logo{width:70px;margin:40px auto 40px;display:block;opacity:.95;}
+.title{font-size:32px;letter-spacing:.12em;margin-bottom:16px;color:#e0e0e0;}
+.subtitle{font-size:17px;color:#777;margin-bottom:70px;line-height:1.7;max-width:560px;margin-left:auto;margin-right:auto;}
+
+.collab-card{border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:36px 30px;margin-bottom:26px;background:rgba(255,255,255,.03);transition:.3s;text-align:left;cursor:pointer;}
+.collab-card:hover{border-color:#888;background:rgba(255,255,255,.055);box-shadow:0 0 35px rgba(255,255,255,.07);transform:translateY(-3px);}
+.card-tag{font-size:11px;letter-spacing:.18em;color:#666;text-transform:uppercase;margin-bottom:12px;}
+.card-title{font-size:21px;font-weight:500;margin-bottom:12px;color:#fff;}
+.card-desc{font-size:15px;color:#888;line-height:1.75;margin-bottom:20px;}
+.card-arrow{font-size:18px;color:#fff;opacity:.5;}
+
+.divider{border:none;border-top:1px solid #1a1a1a;margin:60px 0;}
+
+.contact-section{margin-bottom:80px;}
+.contact-section p{color:#777;font-size:16px;line-height:1.7;margin-bottom:30px;}
+.contact-btn{padding:16px 36px;border-radius:14px;border:1px solid #555;background:transparent;color:#fff;font-size:15px;cursor:pointer;transition:.25s;margin:8px;}
+.contact-btn:hover{border-color:#aaa;box-shadow:0 0 20px rgba(255,255,255,.12);}
+
+.footer{background:#000;color:#ccc;padding:80px 20px;text-align:center;}
+.footer h2{color:#fff;letter-spacing:.12em;}
+.links{margin-top:40px;line-height:2.4;font-size:17px;}
+.small{margin-top:60px;font-size:14px;color:#777;}
+</style>
+</head>
+<body onload="document.body.classList.add('loaded')">
+<div class="nav">
+  <a onclick="history.back()">Back</a>
+  <a href="contact.html">Contact</a>
+</div>
+<div class="wrapper">
+  <img src="logo.png" class="logo">
+  <div class="title">Do Business With Us</div>
+  <div class="subtitle">
+    Tamany is a parent technology company. We're open to partnerships, collaborations, and working with driven people and businesses in any meaningful capacity.
+  </div>
+
+  <div class="collab-card" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Partnership%20Enquiry%20—%20Parent%20Company'">
+    <div class="card-tag">Structure</div>
+    <div class="card-title">Join as a Subsidiary / Sister Brand</div>
+    <div class="card-desc">Operate under the Tamany umbrella. We provide brand support, infrastructure, and direction while you focus on your core business. Ideal for startups and growing brands that want backing.</div>
+    <div class="card-arrow">→</div>
+  </div>
+
+  <div class="collab-card" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Partnership%20Enquiry%20—%20Collaboration'">
+    <div class="card-tag">Partnership</div>
+    <div class="card-title">Collaborate on a Project</div>
+    <div class="card-desc">Working on something and need a technology partner? We're open to collaborating on builds, campaigns, digital products, and more. Let's talk about what you're building.</div>
+    <div class="card-arrow">→</div>
+  </div>
+
+  <div class="collab-card" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Partnership%20Enquiry%20—%20Referral%20Partner'">
+    <div class="card-tag">Referrals</div>
+    <div class="card-title">Become a Referral Partner</div>
+    <div class="card-desc">Know businesses that need websites? Refer them to Tamany and earn a commission on completed projects. Simple, no overhead, flexible arrangement.</div>
+    <div class="card-arrow">→</div>
+  </div>
+
+  <div class="collab-card" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Partnership%20Enquiry%20—%20Other'">
+    <div class="card-tag">Open Door</div>
+    <div class="card-title">Something Else in Mind?</div>
+    <div class="card-desc">Have an idea that doesn't fit neatly into a box? Reach out anyway. We're open-minded and interested in conversations that could lead somewhere valuable.</div>
+    <div class="card-arrow">→</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="contact-section">
+    <p>Ready to start a conversation? Reach out directly — we respond fast.</p>
+    <button class="contact-btn" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Business%20Enquiry'">Email Us</button>
+    <button class="contact-btn" onclick="window.open('https://wa.me/27842818624','_blank')">WhatsApp Us</button>
+  </div>
+</div>
+
+<section class="footer">
+  <h2>TAMANY TECHNOLOGY</h2>
+  <div class="links">
+    <div style="cursor:pointer;" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">Email: tamanitadiwa@gmail.com</div>
+    <div>Phone: <span style="text-decoration:underline;cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">+27 84 281 8624</span></div>
+    <div style="cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">WhatsApp: +27 84 281 8624</div>
+    <div style="cursor:pointer;" onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">Instagram: tamany.tech</div>
+  </div>
+  <div class="small">Tamany — Parent Technology Company<br>©️ 2026 All rights reserved</div>
+</section>
+</body>
+</html>
