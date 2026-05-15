@@ -3,348 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMANY — Website Solutions</title>
-
+<title>TAMANY — Website Services</title>
 <style>
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#000;color:#fff;opacity:0;transition:opacity .6s ease;}
+body.loaded{opacity:1;}
+a,a:visited,a:active{color:#fff;}
+.nav{position:fixed;top:0;left:0;width:100%;height:70px;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;z-index:999;}
+.nav a{color:#fff;text-decoration:none;font-size:15px;opacity:.85;transition:opacity .2s ease;cursor:pointer;}
+.nav a:hover{opacity:1;}
+.wrapper{padding-top:110px;text-align:center;}
+.logo{width:70px;margin:40px auto 30px;display:block;opacity:.95;transition:transform .25s ease,top .25s ease;z-index:1000;}
+.logo.locked{position:fixed;top:8px;left:50%;transform:translateX(-50%);margin:0;}
 
-/* ===== GLOBAL ===== */
+/* HERO STATEMENT */
+.hero-statement{max-width:680px;margin:0 auto 20px;padding:0 20px;}
+.hero-statement h1{font-size:36px;font-weight:500;letter-spacing:.06em;color:#fff;line-height:1.3;margin-bottom:16px;}
+.hero-statement p{font-size:17px;color:#777;line-height:1.7;margin-bottom:40px;}
 
-html{ scroll-behavior:smooth; }
+.packages-btn{margin:10px auto 60px;padding:16px 40px;background:#fff;color:#000;border:none;border-radius:14px;font-size:16px;font-weight:500;cursor:pointer;transition:.25s;display:block;max-width:220px;text-align:center;}
+.packages-btn:hover{box-shadow:0 0 30px rgba(255,255,255,.25);}
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:#000;
-  color:#fff;
-  opacity:0;
-  transition:opacity .6s ease;
-}
+.gallery-title{margin:80px 0 40px;font-size:13px;letter-spacing:.18em;color:#555;text-align:center;text-transform:uppercase;}
 
-body.loaded{ opacity:1; }
+/* IMAGE SECTIONS */
+.section{margin-top:100px;}
+.image-wrap{overflow:hidden;}
+.image-wrap img{width:100%;display:block;filter:brightness(.7);transform:scale(1.06);transition:transform 1s cubic-bezier(.22,.61,.36,1);}
+.section.visible img{transform:scale(1);}
+.text-block{max-width:760px;margin:30px auto;padding:0 20px;text-align:left;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.section-title{font-size:14px;font-weight:700;letter-spacing:.14em;color:#e0e0e0;}
+.inline-btn{padding:12px 26px;border-radius:10px;border:1px solid #555;background:transparent;color:#fff;font-size:14px;cursor:pointer;transition:.25s;white-space:nowrap;}
+.inline-btn:hover{border-color:#aaa;box-shadow:0 0 16px rgba(255,255,255,.12);}
 
-/* FORCE ALL LINKS WHITE */
-a, a:visited, a:active { color:#fff; }
-
-/* ===== TOP BAR ===== */
-
-.nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:70px;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(14px);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 28px;
-  box-sizing:border-box;
-  z-index:999;
-}
-
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:15px;
-  opacity:.85;
-  transition:opacity .2s ease;
-  white-space:nowrap;
-  cursor:pointer;
-}
-
-.nav a:hover{ opacity:1; }
-
-/* ===== PAGE WRAPPER ===== */
-
-.wrapper{
-  padding-top:110px;
-  text-align:center;
-}
-
-/* ===== LOGO ===== */
-
-.logo{
-  width:70px;
-  margin:40px auto 30px;
-  display:block;
-  opacity:.95;
-  transition:transform .25s ease, top .25s ease;
-  z-index:1000;
-}
-
-/* LOGO LOCKED IN NAVBAR — NO JUMP */
-.logo.locked{
-  position:fixed;
-  top:8px;
-  left:50%;
-  transform:translateX(-50%);
-  margin:0;
-}
-
-/* ===== BUTTON ===== */
-
-.packages-btn{
-  margin:20px auto 60px;
-  padding:14px 38px;
-  background:transparent;
-  color:#fff;
-  border:1px solid #777;
-  border-radius:12px;
-  font-size:15px;
-  cursor:pointer;
-  transition:.25s;
-  display:block;
-}
-
-.packages-btn:hover{
-  border-color:#aaa;
-  box-shadow:0 0 20px rgba(255,255,255,.15);
-}
-
-/* ===== IMAGE HEADER ===== */
-
-.gallery-title{
-  margin:120px 0 60px;
-  font-size:24px;
-  letter-spacing:.1em;
-  color:#e0e0e0;
-  text-align:center;
-}
-
-/* ===== IMAGE SECTIONS ===== */
-
-.section{ margin-top:120px; }
-
-.image-wrap{
-  overflow:hidden;
-}
-
-.image-wrap img{
-  width:100%;
-  display:block;
-  filter:brightness(.7);
-  transform:scale(1.06);
-  transition:transform 1s cubic-bezier(.22,.61,.36,1);
-}
-
-.section.visible img{ transform:scale(1); }
-
-/* TEXT BELOW IMAGE */
-
-.text-block{
-  max-width:760px;
-  margin:40px auto;
-  padding:0 20px;
-  text-align:left;
-}
-
-.section-title{
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.14em;
-  margin-bottom:18px;
-  color:#e0e0e0;
-}
-
-/* ===== FOOTER ===== */
-
-.footer{
-  background:#000;
-  color:#ccc;
-  padding:80px 20px;
-  text-align:center;
-}
-
-.footer h2{
-  color:#fff;
-  letter-spacing:.12em;
-}
-
-.links{
-  margin-top:40px;
-  line-height:2.4;
-  font-size:17px;
-}
-
-.small{
-  margin-top:60px;
-  font-size:14px;
-  color:#777;
-}
-
+.footer{background:#000;color:#ccc;padding:80px 20px;text-align:center;}
+.footer h2{color:#fff;letter-spacing:.12em;}
+.links{margin-top:40px;line-height:2.4;font-size:17px;}
+.small{margin-top:60px;font-size:14px;color:#777;}
 </style>
 </head>
-
 <body onload="document.body.classList.add('loaded')">
-
-<!-- TOP BAR -->
-
 <div class="nav">
-  <a onclick="history.back()" class="nav-btn">Back</a>
-  <a href="contact.html" class="nav-btn">Help</a>
+  <a onclick="history.back()">Back</a>
+  <a href="contact.html">Help</a>
 </div>
-
 <div class="wrapper">
-
   <img src="logo.png" class="logo" id="logo">
 
-  <button class="packages-btn"
-    onclick="window.location.href='packages.html'">
-    View Packages
-  </button>
-
-  <div class="gallery-title">
-    Our Most Requested Website Solutions
+  <div class="hero-statement">
+    <h1>We Build Websites.<br>That's What We Do.</h1>
+    <p>Tamany specialises in designing and building professional websites for businesses across South Africa. From a simple one-pager to a full enterprise platform — we handle it all.</p>
   </div>
 
-</div>
+  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages & Pricing</button>
 
-<!-- IMAGE SECTIONS -->
+  <div class="gallery-title">Types of websites we build</div>
+</div>
 
 <section class="section">
   <div class="image-wrap"><img src="image10.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR RETAIL STORES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">RETAIL STORES</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image11.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR SALONS & BEAUTY BRANDS</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">SALONS & BEAUTY BRANDS</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image12.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR FURNITURE STORES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">FURNITURE STORES</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image13.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR TECH SHOPS</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">TECH SHOPS</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image14.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR GROCERY STORES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">GROCERY STORES</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image15.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR CLOTHING BRANDS</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">CLOTHING BRANDS</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image16.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR BOOKSTORES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">BOOKSTORES</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image17.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR RESTAURANTS</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">RESTAURANTS</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image18.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR SERVICE BUSINESSES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">SERVICE BUSINESSES</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image19.jpg"></div>
-  <div class="text-block"><div class="section-title">WEBSITES FOR CORPORATE COMPANIES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">CORPORATE COMPANIES</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
 <section class="section">
   <div class="image-wrap"><img src="image20.jpg"></div>
-  <div class="text-block"><div class="section-title">CUSTOM BUSINESS WEBSITES</div></div>
-  <button class="packages-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  <div class="text-block">
+    <div class="section-title">CUSTOM PLATFORMS</div>
+    <button class="inline-btn" onclick="window.location.href='packages.html'">View Packages</button>
+  </div>
 </section>
 
-<!-- FOOTER -->
-
 <section class="footer">
-
   <h2>TAMANY TECHNOLOGY</h2>
-
   <div class="links">
-
-    <!-- EMAIL -->
-    <div style="cursor:pointer;"
-      onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">
-      Email: tamanitadiwa@gmail.com
-    </div>
-
-    <!-- PHONE → WHATSAPP -->
-    <div>
-      Phone:
-      <span style="text-decoration:underline; cursor:pointer;"
-        onclick="window.location.href='https://wa.me/27842818624'">
-        +27 84 281 8624
-      </span>
-    </div>
-
-    <!-- WHATSAPP -->
-    <div style="cursor:pointer;"
-      onclick="window.location.href='https://wa.me/27842818624'">
-      WhatsApp: +27 84 281 8624
-    </div>
-
-    <!-- INSTAGRAM -->
-    <div style="cursor:pointer;"
-      onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">
-      Instagram: tamany.tech
-    </div>
-
+    <div style="cursor:pointer;" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">Email: tamanitadiwa@gmail.com</div>
+    <div>Phone: <span style="text-decoration:underline;cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">+27 84 281 8624</span></div>
+    <div style="cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">WhatsApp: +27 84 281 8624</div>
+    <div style="cursor:pointer;" onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">Instagram: tamany.tech</div>
   </div>
-
-  <div class="small">
-    Tamany — Parent Technology Company  
-    ©️ 2026 All rights reserved
-  </div>
-
+  <div class="small">Tamany — Parent Technology Company<br>©️ 2026 All rights reserved</div>
 </section>
 
 <script>
-
-/* ===== LOGO LOCK — STABLE ===== */
-
 const logo = document.getElementById("logo");
-
-window.addEventListener("scroll", () => {
-
-  const lockPoint = 120;
-
-  if(window.scrollY > lockPoint){
-    logo.classList.add("locked");
-  }else{
-    logo.classList.remove("locked");
-  }
-
-});
-
-/* ===== CINEMATIC REVEAL ===== */
-
+window.addEventListener("scroll",()=>{ logo.classList.toggle("locked", window.scrollY > 120); });
 const sections = document.querySelectorAll(".section");
-
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
-  });
-},{threshold:0.25});
-
-sections.forEach(sec=>observer.observe(sec));
-
+const observer = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("visible"); }); },{threshold:0.25});
+sections.forEach(s=>observer.observe(s));
 </script>
-
 </body>
 </html>
