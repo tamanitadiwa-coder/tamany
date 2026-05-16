@@ -15,14 +15,29 @@ body.fade-out{opacity:0;transition:opacity .35s ease;}
 .logo{width:70px;margin-bottom:20px;opacity:.95;transition:all .35s ease;z-index:1000;}
 .logo.locked{position:fixed;top:10px;left:50%;transform:translateX(-50%);margin:0;}
 .hero-title{font-weight:500;letter-spacing:.12em;font-size:48px;margin-bottom:12px;color:#fff;}
-.hero-sub{color:#888;margin-top:0;margin-bottom:60px;font-size:18px;}
-.paths{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;max-width:800px;width:100%;margin-top:10px;}
-.path-card{flex:1;min-width:260px;max-width:360px;border:1px solid #333;border-radius:20px;padding:38px 28px;background:rgba(255,255,255,.03);cursor:pointer;transition:.3s ease;text-align:left;}
-.path-card:hover{border-color:#888;background:rgba(255,255,255,.06);box-shadow:0 0 40px rgba(255,255,255,.08);transform:translateY(-4px);}
-.path-tag{font-size:11px;letter-spacing:.18em;color:#777;margin-bottom:14px;text-transform:uppercase;}
-.path-title{font-size:22px;font-weight:500;margin-bottom:14px;color:#fff;line-height:1.3;}
-.path-desc{font-size:15px;color:#888;line-height:1.7;margin-bottom:28px;}
-.path-arrow{font-size:20px;color:#fff;opacity:.6;}
+.hero-sub{color:#888;margin-top:0;margin-bottom:40px;font-size:18px;}
+
+/* SLIM BUTTON ROW */
+.paths{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;width:100%;}
+.path-card{
+  border:1px solid #333;
+  border-radius:14px;
+  padding:18px 28px;
+  background:rgba(255,255,255,.04);
+  cursor:pointer;
+  transition:.3s ease;
+  font-size:16px;
+  font-weight:500;
+  color:#fff;
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.path-card:hover{
+  border-color:#888;
+  background:rgba(255,255,255,.08);
+  box-shadow:0 0 24px rgba(255,255,255,.08);
+}
+
 .section{background:#000;text-align:center;opacity:0;transform:translateY(60px);transition:all .6s ease;margin-top:120px;}
 .section.visible{opacity:1;transform:translateY(0);}
 .image-wrap{position:relative;overflow:hidden;}
@@ -44,20 +59,11 @@ body.fade-out{opacity:0;transition:opacity .35s ease;}
   <div class="hero-title">TAMANY</div>
   <p class="hero-sub">What would you like to do?</p>
   <div class="paths">
-    <div class="path-card" onclick="go('services.html')">
-      <div class="path-tag">For Businesses</div>
-      <div class="path-title">Get a Website Built</div>
-      <div class="path-desc">We design and build professional websites for businesses of all sizes. Fast, clean, and built to represent your brand.</div>
-      <div class="path-arrow">→</div>
-    </div>
-    <div class="path-card" onclick="go('collaborate.html')">
-      <div class="path-tag">For Partners</div>
-      <div class="path-title">Do Business With Us</div>
-      <div class="path-desc">Partner with Tamany as a parent company or collaborate in any capacity. Let's build something bigger together.</div>
-      <div class="path-arrow">→</div>
-    </div>
+    <div class="path-card" onclick="go('services.html')">Get a Website Built</div>
+    <div class="path-card" onclick="go('collaborate.html')">Do Business With Us</div>
   </div>
 </section>
+
 <section class="section">
   <div class="image-wrap"><img src="image1.jpg"></div>
   <div class="text-block">
@@ -79,6 +85,7 @@ body.fade-out{opacity:0;transition:opacity .35s ease;}
     <div class="section-text">Combining classic foundations with modern AI systems.</div>
   </div>
 </section>
+
 <section class="footer">
   <h2>TAMANY TECHNOLOGY</h2>
   <div class="links">
@@ -89,6 +96,7 @@ body.fade-out{opacity:0;transition:opacity .35s ease;}
   </div>
   <div class="small">Tamany — Parent Technology Company<br>©️ 2026 All rights reserved</div>
 </section>
+
 <script>
 const logo = document.getElementById("logo");
 window.addEventListener("scroll",()=>{ logo.classList.toggle("locked", window.scrollY > window.innerHeight * 0.5); });
