@@ -3,215 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMANY — Enquiry</title>
+<title>TAMANY — Website Packages</title>
 <style>
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#000;color:#fff;opacity:0;transition:opacity .6s ease;}
 body.loaded{opacity:1;}
-a,a:visited,a:active{color:#fff;}
-.nav{position:fixed;top:0;width:100%;height:70px;background:rgba(0,0,0,.7);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-sizing:border-box;z-index:999;}
-.nav a{text-decoration:none;font-size:15px;opacity:.85;}
+a,a:visited,a:active{color:#fff;text-decoration:none;}
+.nav{position:fixed;top:0;width:100%;height:70px;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;z-index:999;}
+.nav a{font-size:15px;opacity:.85;cursor:pointer;}
 .nav a:hover{opacity:1;}
-.wrapper{padding-top:110px;max-width:620px;margin:auto;padding-left:20px;padding-right:20px;}
-.logo{width:70px;margin:40px auto 60px;display:block;opacity:.95;transition:.3s ease;}
-.logo.locked{position:fixed;top:10px;left:50%;transform:translateX(-50%);margin:0;}
-.title{text-align:center;font-size:26px;letter-spacing:.1em;margin-bottom:8px;color:#e0e0e0;}
-.title-sub{text-align:center;font-size:15px;color:#666;margin-bottom:50px;}
-label{display:block;font-size:13px;color:#aaa;margin-bottom:8px;letter-spacing:.04em;}
-input,textarea,select{width:100%;padding:16px;margin-bottom:26px;background:#111;border:1px solid #333;border-radius:12px;color:#fff;font-size:16px;font-family:inherit;outline:none;box-sizing:border-box;appearance:none;}
-select option{background:#111;color:#fff;}
-textarea{min-height:140px;resize:vertical;}
-.section-heading{font-size:11px;letter-spacing:.18em;color:#555;text-transform:uppercase;margin-bottom:20px;margin-top:10px;border-top:1px solid #1a1a1a;padding-top:30px;}
-.submit-btn{width:100%;padding:18px;background:#fff;color:#000;border:none;border-radius:14px;font-size:16px;font-weight:500;cursor:pointer;margin-bottom:60px;}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.25s ease;z-index:10000;}
-.overlay.active{opacity:1;pointer-events:auto;}
-.modal{background:#111;padding:30px;border-radius:20px;width:90%;max-width:360px;text-align:center;transform:translateY(20px);transition:.25s ease;}
-.overlay.active .modal{transform:translateY(0);}
-.modal h3{margin-top:0;margin-bottom:25px;font-weight:500;letter-spacing:.05em;}
-.option{width:100%;padding:16px;margin-bottom:12px;border-radius:12px;border:1px solid #444;background:#000;color:#fff;cursor:pointer;font-size:15px;}
-.option:hover{border-color:#777;}
-.cancel{margin-top:10px;font-size:14px;opacity:.7;cursor:pointer;}
+.wrapper{padding-top:120px;max-width:780px;margin:auto;padding-left:20px;padding-right:20px;text-align:center;}
+.logo{width:70px;margin:40px auto 40px;display:block;opacity:.95;}
+.title{font-size:30px;letter-spacing:.12em;margin-bottom:12px;color:#e0e0e0;}
+.subtitle{font-size:16px;color:#777;margin-bottom:60px;line-height:1.6;}
+
+/* PACKAGE CARDS */
+.package{border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:34px 28px;margin-bottom:26px;background:rgba(255,255,255,.03);transition:.25s;text-align:left;position:relative;}
+.package:hover{border-color:#aaa;background:rgba(255,255,255,.05);box-shadow:0 0 35px rgba(255,255,255,.08);}
+.package h2{margin:0 0 6px;font-weight:500;font-size:22px;}
+.package-tag{font-size:11px;letter-spacing:.16em;color:#777;text-transform:uppercase;margin-bottom:14px;display:block;}
+.price{font-size:32px;font-weight:600;margin-bottom:6px;color:#fff;}
+.price-note{font-size:13px;color:#666;margin-bottom:18px;}
+.desc{color:#bbb;line-height:1.75;margin-bottom:24px;font-size:15px;}
+.features{list-style:none;padding:0;margin:0 0 28px;color:#999;font-size:14px;line-height:2;}
+.features li::before{content:"✓  ";color:#555;}
+.enquire-btn{padding:14px 32px;border-radius:12px;border:1px solid #666;background:transparent;color:#fff;font-size:15px;cursor:pointer;transition:.25s;}
+.enquire-btn:hover{border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,.15);}
+
+/* HIGHLIGHT BADGE */
+.badge{position:absolute;top:20px;right:20px;background:#fff;color:#000;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 12px;border-radius:20px;}
+
+/* BUDGET CARD SPECIAL */
+.package.budget{border-style:dashed;border-color:#444;}
+.package.budget .price{font-size:22px;color:#aaa;}
+
+
+/* BUDGET SELECTOR */
+.filter-label{font-size:12px;letter-spacing:.12em;color:#777;text-transform:uppercase;margin-bottom:10px;display:block;}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+.chip{padding:10px 18px;border-radius:30px;border:1px solid #444;background:transparent;color:#aaa;font-size:14px;cursor:pointer;transition:.25s;}
+.chip:hover{border-color:#aaa;color:#fff;}
+.chip.active{background:#fff;color:#000;border-color:#fff;font-weight:600;}
+.package.budget .price small{font-size:13px;color:#666;font-weight:400;margin-right:6px;}
+
+.note{margin-top:60px;margin-bottom:80px;color:#666;line-height:1.8;font-size:14px;}
+
+.footer{background:#000;color:#ccc;padding:80px 20px;text-align:center;}
+.footer h2{color:#fff;letter-spacing:.12em;}
+.links{margin-top:40px;line-height:2.4;font-size:17px;}
+.small{margin-top:60px;font-size:14px;color:#777;}
 </style>
 </head>
 <body onload="document.body.classList.add('loaded')">
 <div class="nav">
-  <a href="packages.html">Back</a>
+  <a onclick="history.back()">Back</a>
   <a href="contact.html">Help</a>
 </div>
 <div class="wrapper">
-  <img src="logo.png" class="logo" id="logo">
-  <div class="title">Project Enquiry</div>
-  <div class="title-sub">Fill in the details below and we'll get back to you.</div>
+  <img src="logo.png" class="logo">
+  <div class="title">Website Packages</div>
+  <div class="subtitle">We build websites for all sizes of businesses.<br>Choose the package that fits your needs.</div>
 
-  <form id="enquiryForm">
+  <!-- BUDGET -->
+  <div class="package budget">
+    <span class="package-tag">Quick & Simple</span>
+    <h2>Small Budget Website</h2>
+    <div class="price"><small>Budget</small><span id="budgetPrice">R2,500</span></div>
+    <div class="price-note">Pick your budget — we'll chat privately and sort out the details</div>
+    <div class="desc">For individuals and very small businesses. Tell us what you can spend and we'll build the best we can within it.</div>
+    <span class="filter-label">Choose your budget</span>
+    <div class="chips">
+      <button class="chip active" data-price="R2,500">R2,500</button>
+      <button class="chip" data-price="R3,500">R3,500</button>
+      <button class="chip" data-price="R4,500">R4,500</button>
+      <button class="chip" data-price="R5,000+">R5,000+</button>
+    </div>
+    <button class="enquire-btn" id="budgetEnquire">Message Us</button>
+  </div>
 
-    <label>Selected Package</label>
-    <input type="text" id="packageInput" readonly>
+  <!-- STARTER -->
+  <div class="package">
+    <span class="package-tag">Most Accessible</span>
+    <h2>Starter Website</h2>
+    <div class="price">R9,500</div>
+    <div class="price-note">Domain & hosting (paid by you): approx. R120 – R200/year</div>
+    <div class="desc">A clean, professional website to establish your business online. Perfect for small businesses starting their digital presence.</div>
+    <ul class="features">
+      <li>Up to 5 pages</li>
+      <li>Mobile responsive design</li>
+      <li>Contact form</li>
+      <li>Basic SEO setup</li>
+      <li>Social media links</li>
+    </ul>
+    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Starter%20Website%20—%20R9%2C500'">Enquire</button>
+  </div>
 
-    <!-- ABOUT YOU -->
-    <div class="section-heading">About You</div>
+  <!-- PROFESSIONAL -->
+  <div class="package">
+    <span class="package-tag">Most Popular</span>
+    <h2>Professional Website</h2>
+    <div class="price">R16,000</div>
+    <div class="price-note">Domain & hosting (paid by you): approx. R150 – R250/year</div>
+    <div class="desc">A custom website designed for credibility, growth, and a stronger brand presence online.</div>
+    <ul class="features">
+      <li>Up to 10 pages</li>
+      <li>Custom design tailored to your brand</li>
+      <li>Gallery or portfolio section</li>
+      <li>Google Maps integration</li>
+      <li>SEO optimisation</li>
+      <li>WhatsApp chat button</li>
+    </ul>
+    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Professional%20Website%20—%20R16%2C000'">Enquire</button>
+  </div>
 
-    <label>Your Full Name</label>
-    <input type="text" id="nameInput" placeholder="e.g. John Smith" required>
+  <!-- PREMIUM -->
+  <div class="package">
+    <span class="package-tag">Full Experience</span>
+    <h2>Premium Website</h2>
+    <div class="price">R28,000</div>
+    <div class="price-note">Domain & hosting (paid by you): approx. R200 – R400/year</div>
+    <div class="desc">A full digital experience for established businesses that want maximum impact, polish, and performance.</div>
+    <ul class="features">
+      <li>Unlimited pages</li>
+      <li>Premium custom design</li>
+      <li>Animations & interactions</li>
+      <li>Booking or enquiry system</li>
+      <li>Full SEO setup</li>
+      <li>Speed optimisation</li>
+      <li>Social media integration</li>
+    </ul>
+    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Premium%20Website%20—%20R28%2C000'">Enquire</button>
+  </div>
 
-    <label>Your Role / Title</label>
-    <input type="text" id="roleInput" placeholder="e.g. Owner, Manager, CEO">
+  <!-- ENTERPRISE -->
+  <div class="package">
+    <div class="badge">TOP TIER</div>
+    <span class="package-tag">Enterprise</span>
+    <h2>Enterprise Website</h2>
+    <div class="price">R55,000</div>
+    <div class="price-note">Domain & hosting (paid by you): approx. R400+/year</div>
+    <div class="desc">A complete digital platform for large businesses, corporates, and ambitious brands. Built to scale, perform, and impress at every level.</div>
+    <ul class="features">
+      <li>Fully custom-built platform</li>
+      <li>E-commerce / online store</li>
+      <li>Admin dashboard</li>
+      <li>User accounts & login</li>
+      <li>Advanced animations</li>
+      <li>Multi-language support</li>
+      <li>Priority support & revisions</li>
+    </ul>
+    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Enterprise%20Website%20—%20R55%2C000'">Enquire</button>
+  </div>
 
-    <label>Email Address</label>
-    <input type="email" id="emailInput" placeholder="your@email.com" required>
-
-    <label>Phone / WhatsApp Number</label>
-    <input type="tel" id="phoneInput" placeholder="+27 ..." required>
-
-    <!-- ABOUT YOUR BUSINESS -->
-    <div class="section-heading">About Your Business</div>
-
-    <label>Business / Company Name</label>
-    <input type="text" id="companyInput" placeholder="e.g. Joe's Bakery" required>
-
-    <label>Industry / Type of Business</label>
-    <select id="industryInput">
-      <option value="">Select industry...</option>
-      <option>Retail Store</option>
-      <option>Restaurant / Food</option>
-      <option>Salon / Beauty</option>
-      <option>Clothing / Fashion</option>
-      <option>Tech / Electronics</option>
-      <option>Furniture / Home</option>
-      <option>Grocery / Supermarket</option>
-      <option>Corporate / Professional Services</option>
-      <option>Health / Medical</option>
-      <option>Construction / Trades</option>
-      <option>Automotive</option>
-      <option>Education</option>
-      <option>Entertainment / Events</option>
-      <option>Non-Profit</option>
-      <option>Other</option>
-    </select>
-
-    <label>Location (City / Area)</label>
-    <input type="text" id="locationInput" placeholder="e.g. Cape Town, Johannesburg">
-
-    <label>What does your business do?</label>
-    <textarea id="aboutInput" placeholder="Brief description of your business and what you sell or offer..." required></textarea>
-
-    <!-- WEBSITE DETAILS -->
-    <div class="section-heading">Website Details</div>
-
-    <label>Do you already have a website?</label>
-    <select id="existingWebInput">
-      <option value="">Select...</option>
-      <option>No, this will be my first website</option>
-      <option>Yes, I want to replace my current website</option>
-      <option>Yes, I want to update / improve my current website</option>
-    </select>
-
-    <label>Current website URL (if any)</label>
-    <input type="text" id="currentUrlInput" placeholder="www.yoursite.com (leave blank if none)">
-
-    <label>Do you have a domain name already?</label>
-    <select id="domainInput">
-      <option value="">Select...</option>
-      <option>No, I need help choosing one</option>
-      <option>Yes, I already own a domain</option>
-    </select>
-
-    <label>What pages do you need? (tick all that apply)</label>
-    <select id="pagesInput">
-      <option value="">Select main need...</option>
-      <option>Home page only</option>
-      <option>Home + About + Contact</option>
-      <option>Home + Services + Contact</option>
-      <option>Full multi-page site</option>
-      <option>Online store / e-commerce</option>
-      <option>Not sure — advise me</option>
-    </select>
-
-    <label>Any specific features you want?</label>
-    <textarea id="featuresInput" placeholder="e.g. online booking, photo gallery, WhatsApp chat button, product catalogue, map, etc."></textarea>
-
-    <label>Any reference websites you like the look of?</label>
-    <input type="text" id="refsInput" placeholder="www.example.com (or describe the style)">
-
-    <!-- TIMELINE & BUDGET -->
-    <div class="section-heading">Timeline & Budget</div>
-
-    <label>How soon do you need the website?</label>
-    <select id="timelineInput">
-      <option value="">Select...</option>
-      <option>As soon as possible</option>
-      <option>Within 2 weeks</option>
-      <option>Within a month</option>
-      <option>No rush — quality over speed</option>
-    </select>
-
-    <label>Anything else you'd like us to know?</label>
-    <textarea id="extraInput" placeholder="Any other details, questions, or requirements..."></textarea>
-
-    <button type="submit" class="submit-btn">Send Enquiry</button>
-
-  </form>
-</div>
-
-<!-- MODAL -->
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <h3>Send Enquiry With</h3>
-    <button class="option" id="emailBtn">Email</button>
-    <button class="option" id="whatsappBtn">WhatsApp</button>
-    <div class="cancel" id="cancelBtn">Cancel</div>
+  <div class="note">
+    You purchase and fully own your domain and hosting.<br>
+    Tamany handles all design, development, and launch.<br>
+    Not sure which package is right for you? <span style="color:#ccc;cursor:pointer;" onclick="window.location.href='contact.html'">Contact us</span> and we'll advise.
   </div>
 </div>
 
+<section class="footer">
+  <h2>TAMANY TECHNOLOGY</h2>
+  <div class="links">
+    <div style="cursor:pointer;" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">Email: tamanitadiwa@gmail.com</div>
+    <div>Phone: <span style="text-decoration:underline;cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">+27 84 281 8624</span></div>
+    <div style="cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">WhatsApp: +27 84 281 8624</div>
+    <div style="cursor:pointer;" onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">Instagram: tamany.tech</div>
+  </div>
+  <div class="small">Tamany — Parent Technology Company<br>©️ 2026 All rights reserved</div>
+</section>
 <script>
-const logo = document.getElementById("logo");
-window.addEventListener("scroll",()=>{ logo.classList.toggle("locked", window.scrollY > 120); });
-
-const params = new URLSearchParams(window.location.search);
-const pkg = params.get("package");
-if(pkg){ document.getElementById("packageInput").value = decodeURIComponent(pkg); }
-
-const form = document.getElementById("enquiryForm");
-const overlay = document.getElementById("overlay");
-form.addEventListener("submit",function(e){ e.preventDefault(); overlay.classList.add("active"); });
-document.getElementById("cancelBtn").onclick = () => overlay.classList.remove("active");
-
-function buildMessage(){
-  const v = id => document.getElementById(id).value;
-  return `Enquiry: ${v("packageInput")}
-
---- About You ---
-Name: ${v("nameInput")}
-Role: ${v("roleInput")}
-Email: ${v("emailInput")}
-Phone: ${v("phoneInput")}
-
---- Business ---
-Company: ${v("companyInput")}
-Industry: ${v("industryInput")}
-Location: ${v("locationInput")}
-About: ${v("aboutInput")}
-
---- Website ---
-Existing site: ${v("existingWebInput")}
-Current URL: ${v("currentUrlInput")}
-Domain owned: ${v("domainInput")}
-Pages needed: ${v("pagesInput")}
-Features wanted: ${v("featuresInput")}
-Reference sites: ${v("refsInput")}
-
---- Timeline ---
-Timeline: ${v("timelineInput")}
-Extra notes: ${v("extraInput")}`;
-}
-
-document.getElementById("emailBtn").onclick = () => {
-  const subject = "Website Enquiry — " + document.getElementById("packageInput").value;
-  window.location.href = `mailto:tamanitadiwa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildMessage())}`;
-};
-
-document.getElementById("whatsappBtn").onclick = () => {
-  window.open(`https://wa.me/27842818624?text=${encodeURIComponent(buildMessage())}`, "_blank");
-};
+(function(){
+  var chips=document.querySelectorAll('.chip'),sel=chips[0];
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){
+      chips.forEach(function(x){x.classList.remove('active');});
+      c.classList.add('active');sel=c;
+      document.getElementById('budgetPrice').textContent=c.dataset.price;
+    });
+  });
+  document.getElementById('budgetEnquire').addEventListener('click',function(){
+    var t='Hi Tamany, I\u2019m interested in a Small Budget Website. My budget is '+sel.dataset.price+'.';
+    window.location.href='https://wa.me/27842818624?text='+encodeURIComponent(t);
+  });
+})();
 </script>
 </body>
 </html>
