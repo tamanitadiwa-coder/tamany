@@ -268,3 +268,52 @@ html.motion .mask > span{transform:translateY(108%)}
 }
 .nav.bubble{position:fixed}
 @media (max-width:899px){.hero__media{flex:1 1 0}}
+
+/* ==========================================================================
+   Packages: quick start + level slider
+   ========================================================================== */
+.pk{padding-bottom:72px}
+@media (min-width:900px){.pk{padding-bottom:120px}}
+.pk__lead{color:var(--muted);margin-bottom:26px;max-width:34ch}
+.quick{display:flex;flex-wrap:wrap;gap:12px}
+.price-pill{height:58px;padding:0 28px;font-family:var(--serif);font-size:24px;letter-spacing:0;text-transform:none;font-weight:400}
+@media (max-width:420px){.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.price-pill{justify-content:center;padding:0;font-size:20px;height:54px}}
+
+.slider{--p:0%;padding-top:6px}
+.range{-webkit-appearance:none;appearance:none;width:100%;height:44px;margin:0;background:transparent;cursor:pointer;touch-action:pan-y}
+.range:focus{outline:none}
+.range::-webkit-slider-runnable-track{height:1px;background:linear-gradient(90deg,var(--fg) var(--p),var(--line) var(--p))}
+.range::-moz-range-track{height:1px;background:var(--line)}
+.range::-moz-range-progress{height:1px;background:var(--fg)}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;margin-top:-15px;border-radius:50%;border:1px solid rgba(255,255,255,.38);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.6),rgba(255,255,255,.08) 34%,rgba(255,255,255,0) 60%),conic-gradient(from 200deg,rgba(186,206,255,.35),rgba(255,198,232,.3),rgba(196,255,232,.28),rgba(255,236,190,.26),rgba(186,206,255,.35));
+  box-shadow:inset 0 0 8px rgba(255,255,255,.12),0 6px 18px rgba(0,0,0,.4);transition:transform .4s var(--ease)}
+.range::-moz-range-thumb{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.38);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.6),rgba(255,255,255,.08) 34%,rgba(255,255,255,0) 60%),conic-gradient(from 200deg,rgba(186,206,255,.35),rgba(255,198,232,.3),rgba(196,255,232,.28),rgba(255,236,190,.26),rgba(186,206,255,.35));box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.range:active::-webkit-slider-thumb{transform:scale(1.12)}
+.range:focus-visible::-webkit-slider-thumb{outline:1px solid var(--fg);outline-offset:3px}
+.ticks{display:flex;justify-content:space-between;margin-top:6px}
+.tick{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);min-height:40px;transition:color .4s ease}
+.tick.is-on{color:var(--fg)}
+.levels{margin-top:40px}
+.level{display:none}
+.level.is-on{display:block}
+html:not(.js) .level{display:block;margin-bottom:56px}
+html:not(.js) .slider{display:none}
+.level__top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:18px}
+.level__price{font-family:var(--serif);font-size:clamp(48px,13vw,96px);line-height:1;letter-spacing:-.01em}
+.level__host{color:var(--muted);font-size:13px;margin-top:14px}
+.level__list{margin-top:26px;display:grid;grid-template-columns:1fr;gap:2px}
+.level__list li{padding-block:9px;border-bottom:1px solid var(--line);color:var(--soft);font-size:15px}
+@media (min-width:700px){.level__list{grid-template-columns:1fr 1fr;column-gap:32px}}
+.level__actions{margin-top:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;font-size:14px}
+
+/* Floating Packages bubble (homepage, after the hero) */
+.float-pk{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));z-index:90;transform:translate(-50%,24px);opacity:0;pointer-events:none;transition:opacity .5s var(--ease),transform .6s var(--ease);background:radial-gradient(120% 140% at 22% 0%,rgba(40,40,40,.5),rgba(14,14,14,.42) 60%)}
+.float-pk.is-on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.float-pk.is-on:hover{transform:translate(-50%,-2px)}
+body.menu-open .float-pk{opacity:0;pointer-events:none}
+@media (min-width:900px){.float-pk{left:auto;right:var(--m);bottom:28px;transform:translateY(24px)}.float-pk.is-on{transform:none}.float-pk.is-on:hover{transform:translateY(-2px)}}
+.form__send .pill{color:var(--fg)}
+.level__top .label{display:none}
+.float-pk{background:radial-gradient(120% 140% at 22% 0%,rgba(44,44,44,.82),rgba(14,14,14,.78) 60%)}
