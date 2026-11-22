@@ -317,3 +317,26 @@ body.menu-open .float-pk{opacity:0;pointer-events:none}
 .form__send .pill{color:var(--fg)}
 .level__top .label{display:none}
 .float-pk{background:radial-gradient(120% 140% at 22% 0%,rgba(44,44,44,.82),rgba(14,14,14,.78) 60%)}
+
+/* ==========================================================================
+   Quote form: choose options, see the draft
+   ========================================================================== */
+.quote{display:grid;grid-template-columns:minmax(0,1fr);gap:56px}
+.quote__fields{display:grid;gap:40px}
+@media (min-width:1000px){
+  .quote{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:start}
+  .quote__draft{position:sticky;top:calc(var(--nav) + 40px)}
+}
+.opts{border:0;margin:0;padding:0;min-width:0}
+.opts legend{padding:0;margin-bottom:16px}
+.opts__list{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:14px;transition:color .35s ease,border-color .35s ease,background-color .35s ease,transform .5s var(--ease)}
+@media (hover:hover){.opt:hover span{color:var(--fg);border-color:rgba(236,235,231,.3)}}
+.opt input:focus-visible + span{outline:1px solid var(--fg);outline-offset:3px}
+.opt input:checked + span{color:var(--fg);border-color:transparent;background:radial-gradient(120% 140% at 22% 0%,rgba(255,255,255,.16),rgba(255,255,255,.04) 55%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.34),inset 0 1px 1px rgba(255,255,255,.2),0 0 0 1px rgba(186,206,255,.10),0 0 18px rgba(255,198,232,.06)}
+.quote__draft{border-top:1px solid var(--line);padding-top:24px}
+.draft{margin:18px 0 28px;font-family:var(--sans);font-size:15px;line-height:1.7;white-space:pre-wrap;color:var(--soft);min-height:120px}
+.quote__note{margin-top:18px;font-size:12.5px;color:var(--muted)}
