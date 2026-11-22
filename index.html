@@ -30,7 +30,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav">
+<header class="nav bubble">
   <a class="brand" href="index.html" aria-label="TAMANY, home">TAMANY</a>
   <nav class="nav__links" aria-label="Primary">
     <a href="#services">Services</a>
@@ -60,7 +60,7 @@
   <figure class="hero__media"><img src="assets/img/interior-800.webp" srcset="assets/img/interior-800.webp 800w, assets/img/interior-1200.webp 1200w" sizes="(min-width: 900px) 70vw, 100vw" alt="A bright, minimal retail interior with a curved shelf" loading="eager" fetchpriority="high" decoding="async" data-speed="1"></figure>
   <div class="hero__foot wrap">
     <p>We design and build websites for businesses with something to say.</p>
-    <a class="cta" href="#services">Explore <i></i></a>
+    <a class="pill bubble" href="#services">Explore <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1v10M2 7l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.1"/></svg></a>
   </div>
 </section>
 
@@ -69,11 +69,11 @@
     <h2 class="label col-label" id="services-h" data-reveal>Services</h2>
     <div class="col-main">
       <ol class="offer">
-        <li data-reveal><span class="n">01</span><h3>Web design.</h3><small>Bespoke, never templated</small></li>
-        <li data-reveal><span class="n">02</span><h3>Development.</h3><small>Fast, responsive, search-ready</small></li>
-        <li data-reveal><span class="n">03</span><h3>Management.</h3><small>Updates, backups, SSL, support</small></li>
+        <li><span class="n">01</span><h3 class="mask"><span>Web design.</span></h3></li>
+        <li><span class="n">02</span><h3 class="mask"><span>Development.</span></h3></li>
+        <li><span class="n">03</span><h3 class="mask"><span>Management.</span></h3></li>
       </ol>
-      <p class="note" data-reveal>You own your domain and hosting. We design, build and look after the rest. <a class="link" href="packages.html">Packages</a></p>
+      <p class="note" data-reveal>You own your domain and hosting. <a class="link" href="packages.html">Packages</a></p>
     </div>
   </div>
 </section>
@@ -87,9 +87,9 @@
   <div class="grid">
     <h2 class="label col-label" id="approach-h" data-reveal>Approach</h2>
     <ul class="principles col-main">
-      <li data-reveal>Good design.</li>
-      <li data-reveal>Clear thinking.</li>
-      <li data-reveal>Built to last.</li>
+      <li class="mask"><span>Good design.</span></li>
+      <li class="mask"><span>Clear thinking.</span></li>
+      <li class="mask"><span>Built to last.</span></li>
     </ul>
   </div>
 </section>
@@ -98,13 +98,10 @@
   <div class="grid">
     <h2 class="label col-label" id="work-h" data-reveal>Work</h2>
     <div class="col-main">
-      <p class="work-intro" data-reveal>Selected projects, published with our clients’ permission.</p>
       <!-- To add a project, replace a row with:
       <li><a class="link" href="https://client.example" target="_blank" rel="noopener"><h3>Client name</h3></a><span class="label">2026</span></li> -->
       <ol class="work-list">
-        <li data-reveal><h3>Forthcoming</h3><span class="label">01</span></li>
-        <li data-reveal><h3>Forthcoming</h3><span class="label">02</span></li>
-        <li data-reveal><h3>Forthcoming</h3><span class="label">03</span></li>
+        <li data-reveal><h3>Forthcoming</h3><span class="label">2026</span></li>
       </ol>
     </div>
   </div>
@@ -115,10 +112,10 @@
     <p class="label col-label" data-reveal>Contact</p>
     <div class="col-main">
       <p class="contact__q" data-reveal>Have something in mind?</p>
-      <h2 class="display" id="contact-h" data-reveal>Let’s <em>talk.</em></h2>
+      <h2 class="display mask" id="contact-h"><span>Let’s <em>talk.</em></span></h2>
       <div class="contact__links" data-reveal>
-        <a class="link" href="https://wa.me/27842818624?text=Hi%20Tamany%2C%20I%E2%80%99d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener">WhatsApp</a>
-        <a class="link" href="mailto:tamanitadiwa@gmail.com?subject=Tamany">tamanitadiwa@gmail.com</a>
+        <a class="pill bubble" href="https://wa.me/27842818624?text=Hi%20Tamany%2C%20I%E2%80%99d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener">WhatsApp</a>
+        <a class="pill bubble" href="mailto:tamanitadiwa@gmail.com?subject=Tamany">Email</a>
       </div>
     </div>
   </div>
@@ -129,7 +126,6 @@
   <a class="brand" href="index.html">TAMANY</a>
   <nav aria-label="Footer">
     <a href="packages.html">Packages</a>
-    <a href="enquiry.html">Start a project</a>
     <a href="collaborate.html">Partnerships</a>
     <a href="https://www.instagram.com/tamany.tech/" target="_blank" rel="noopener">Instagram</a>
   </nav>

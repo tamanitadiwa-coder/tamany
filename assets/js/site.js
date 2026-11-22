@@ -89,6 +89,16 @@
     onEnter: function (els) { gsap.to(els, { opacity: 1, y: 0, duration: 1.3, ease: "power3.out", stagger: 0.09, overwrite: true }); }
   });
 
+  /* Headlines: each line rises out of its own mask */
+  var masks = gsap.utils.toArray(".mask > span");
+  gsap.set(masks, { y: 0, yPercent: 108 });
+  ScrollTrigger.batch(".mask", {
+    start: "top 92%", once: true,
+    onEnter: function (els) {
+      gsap.to(els.map(function (m) { return m.firstElementChild; }), { yPercent: 0, duration: 1.5, ease: "expo.out", stagger: 0.12, delay: 0.05 });
+    }
+  });
+
   /* Images: reveal from the bottom edge */
   gsap.utils.toArray("[data-clip]").forEach(function (el) {
     gsap.to(el, { clipPath: "inset(0 0 0% 0)", duration: 1.8, ease: "expo.inOut", scrollTrigger: { trigger: el, start: "top 88%", once: true } });
