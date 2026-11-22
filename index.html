@@ -63,6 +63,7 @@
 <main id="main">
 
 <section class="hero" aria-labelledby="hero-title">
+  <div class="photo-bg" aria-hidden="true"><img src="assets/img/studio-800.webp" srcset="assets/img/studio-800.webp 800w, assets/img/studio-1600.webp 1600w" sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" data-speed="1.6"></div>
   <div class="hero__light" aria-hidden="true"></div>
   <img class="hero__mark" src="assets/img/mark-192.webp" width="192" height="192" alt="" fetchpriority="high" data-reveal="fade">
   <div class="hero__top wrap">
@@ -72,9 +73,9 @@
       <span class="label" data-reveal>Cape Town, South Africa</span>
     </div>
     <h1 class="hero__title" id="hero-title"><span class="ln"><span>We build</span></span><span class="ln"><span>digital <span class="serif">experiences.</span></span></span></h1>
-    <div class="hero__aside">
-      <p data-reveal>Thoughtfully designed websites that help businesses establish their presence and grow.</p>
-      <a class="btn" href="#intro" data-reveal>Explore <svg class="arrow arrow--down" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+    <div class="hero__aside glass" data-reveal>
+      <p>Thoughtfully designed websites that help businesses establish their presence and grow.</p>
+      <a class="btn" href="#intro">Explore <svg class="arrow arrow--down" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
     </div>
   </div>
   <div class="wordmark wordmark--silver wrap" aria-hidden="true"><span>T</span><span>A</span><span>M</span><span>A</span><span>N</span><span>Y</span></div>
@@ -138,15 +139,25 @@
   </div>
   <div class="svc-preview" aria-hidden="true"><img src="assets/img/screens-800.webp" alt="" loading="lazy" decoding="async" class="is-active"><img src="assets/img/desk-800.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/devices-800.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/growth-800.webp" alt="" loading="lazy" decoding="async"></div>
 
-  <div class="wrap" style="margin-top:var(--section)">
+  <div class="own-stage">
+    <div class="photo-bg photo-bg--soft" aria-hidden="true"><img src="assets/img/desk-800.webp" srcset="assets/img/desk-800.webp 800w, assets/img/desk-1600.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async" data-speed="1.4"></div>
     <div class="grid" style="margin-bottom:clamp(40px,5vw,80px)">
       <h2 class="h2" style="grid-column:1/-1" data-reveal>You own it. <span class="serif">We build it.</span></h2>
     </div>
     <div class="own">
-      <div class="own__col" data-reveal><span class="label">Yours</span><h3>Your domain. Your hosting.</h3><p>You purchase and own your domain and hosting arrangement outright. Your website is never locked into us.</p></div>
-      <div class="own__col" data-reveal><span class="label">Ours</span><h3>Design, setup and launch.</h3><p>We handle everything between idea and launch — design, development, configuration and going live.</p></div>
-      <div class="own__col" data-reveal><span class="label">Together</span><h3>Looked after, if you like.</h3><p>Choose ongoing management for updates, backups, SSL and technical support once your site is live.</p></div>
+      <div class="own__col glass" data-reveal><span class="label">Yours</span><h3>Your domain. Your hosting.</h3><p>You purchase and own your domain and hosting arrangement outright. Your website is never locked into us.</p></div>
+      <div class="own__col glass" data-reveal><span class="label">Ours</span><h3>Design, setup and launch.</h3><p>We handle everything between idea and launch — design, development, configuration and going live.</p></div>
+      <div class="own__col glass" data-reveal><span class="label">Together</span><h3>Looked after, if you like.</h3><p>Choose ongoing management for updates, backups, SSL and technical support once your site is live.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="photo-band" aria-labelledby="band-title">
+  <div class="photo-bg" aria-hidden="true"><img src="assets/img/screens-800.webp" srcset="assets/img/screens-800.webp 800w, assets/img/screens-1600.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async" data-speed="1.6"></div>
+  <div class="photo-band__card glass" data-reveal>
+    <span class="label label--fg">Presence</span>
+    <h2 id="band-title">Technology that <span class="serif">works for you.</span></h2>
+    <p>A website is often the first conversation a customer has with your business. We make sure it’s a good one — clear, trustworthy and easy to act on.</p>
   </div>
 </section>
 
@@ -195,7 +206,7 @@
         </article>
       -->
         <article class="work-item">
-          <div class="work-item__frame" aria-hidden="true">
+          <div class="work-item__frame glass" aria-hidden="true">
             <div class="work-item__chrome"><i></i><i></i><i></i><span class="work-item__status">In preparation</span></div>
             <div class="work-item__wire">
               <div class="wire-head"><b></b><span><i></i><i></i><i></i></span></div>
@@ -206,7 +217,7 @@
           <div class="work-item__meta"><h3>Case study 01</h3><span class="label">Coming soon</span></div>
         </article>
         <article class="work-item">
-          <div class="work-item__frame" aria-hidden="true">
+          <div class="work-item__frame glass" aria-hidden="true">
             <div class="work-item__chrome"><i></i><i></i><i></i><span class="work-item__status">In preparation</span></div>
             <div class="work-item__wire">
               <div class="wire-head"><b></b><span><i></i><i></i><i></i></span></div>
@@ -217,7 +228,7 @@
           <div class="work-item__meta"><h3>Case study 02</h3><span class="label">Coming soon</span></div>
         </article>
         <article class="work-item">
-          <div class="work-item__frame" aria-hidden="true">
+          <div class="work-item__frame glass" aria-hidden="true">
             <div class="work-item__chrome"><i></i><i></i><i></i><span class="work-item__status">In preparation</span></div>
             <div class="work-item__wire">
               <div class="wire-head"><b></b><span><i></i><i></i><i></i></span></div>
