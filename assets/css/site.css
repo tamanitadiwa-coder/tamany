@@ -340,3 +340,5 @@ body.menu-open .float-pk{opacity:0;pointer-events:none}
 .quote__draft{border-top:1px solid var(--line);padding-top:24px}
 .draft{margin:18px 0 28px;font-family:var(--sans);font-size:15px;line-height:1.7;white-space:pre-wrap;color:var(--soft);min-height:120px}
 .quote__note{margin-top:18px;font-size:12.5px;color:var(--muted)}
+.quote .form__send{gap:10px}
+.quote .form__send{align-items:center}@media (hover:none){.pill:hover{transform:none}}
