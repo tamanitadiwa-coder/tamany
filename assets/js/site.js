@@ -92,6 +92,7 @@
     var tl = gsap.timeline({ defaults: { ease: "power3.out" }, delay: 0.1 });
     tl.fromTo(".hero .wordmark", { opacity: 0, letterSpacing: "0.6em", marginRight: "-0.6em" }, { opacity: 1, letterSpacing: "0.36em", marginRight: "-0.36em", duration: 2.2, ease: "expo.out" }, 0)
       .fromTo(".hero__tag", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.4 }, 0.6)
+      .fromTo(".hero .demo", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 1.2 }, 0.9)
       .fromTo(".hero__media", { clipPath: "inset(18% 8% 18% 8%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 2, ease: "expo.inOut" }, 0.3)
       .fromTo(".hero__media img", { scale: 1.12 }, { scale: 1, duration: 2.4, ease: "expo.out" }, 0.3)
       .fromTo(".hero__foot > *", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.2, stagger: 0.12 }, 1.2);
@@ -159,18 +160,22 @@ function initEnquiry() {
   var draft = document.getElementById("draft");
   var pkg = new URLSearchParams(location.search).get("package");
   if (pkg) pkg = pkg.split(" \u2014 ")[0];
+  var need = new URLSearchParams(location.search).get("need");
+  if (need === "demo") { var d = form.querySelector('input[name="help"][value="Request a demo"]'); if (d) d.checked = true; }
   function v(id) { var el = form.querySelector(id); return el ? el.value.trim() : ""; }
   function pick(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ""; }
   function compose() {
     var biz = [pick("biz"), v("#f-business")].filter(Boolean).join(" \u2014 ");
     var lines = [
-      "Hi Tamany, I\u2019d like a quote.",
+      pick("help") === "Request a demo" ? "Hi Tamany, I\u2019d like to request a demo." : "Hi Tamany, I\u2019d like a quote.",
       "",
       pick("help") ? "Need: " + pick("help") : null,
       biz ? "Business: " + biz : null,
       pick("site") ? "Website: " + pick("site") : null,
       pkg ? "Interested in: " + pkg : null,
       pick("domain") ? "Domain & hosting: " + pick("domain") : null,
+      v("#f-ig") ? "Instagram: " + (v("#f-ig").charAt(0) === "@" ? "" : "@") + v("#f-ig") : null,
+      form.querySelector("#f-photos") && form.querySelector("#f-photos").checked ? "I\u2019ll send photos of my business here." : null,
       v("#f-message") ? "\n" + v("#f-message") : null,
       "",
       v("#f-name") ? "\u2014 " + v("#f-name") : null,
@@ -220,7 +225,7 @@ function initLevels() {
     current = i;
     levels.forEach(function (l, k) { l.classList.toggle("is-on", k === i); });
     var on = levels[i];
-    range.setAttribute("aria-valuetext", on.querySelector(".label").textContent + ", " + on.querySelector(".level__price").textContent);
+    range.setAttribute("aria-valuetext", on.getAttribute("data-name"));
     var g = window.gsap;
     if (animate && g && document.documentElement.classList.contains("motion")) {
       g.fromTo(on.querySelector(".level__price"), { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" });
