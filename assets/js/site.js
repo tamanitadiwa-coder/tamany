@@ -194,13 +194,6 @@ function initEnquiry() {
     }
     var text = compose();
     var via = (e.submitter && e.submitter.value) || "whatsapp";
-    if (via === "instagram") {
-      copyText(text);
-      var note = document.getElementById("quoteNote");
-      if (note) note.textContent = "Draft copied \u2014 paste it into the Instagram chat that just opened.";
-      window.open("https://ig.me/m/tamany.thech", "_blank", "noopener");
-      return;
-    }
     if (via === "email") location.href = "mailto:tamanitadiwa@gmail.com?subject=" + encodeURIComponent("Quote request" + (pick("site") ? " \u2014 " + pick("site") : "")) + "&body=" + encodeURIComponent(text);
     else window.open(waLink(text), "_blank", "noopener");
   });
@@ -237,16 +230,4 @@ function initLevels() {
   range.addEventListener("input", function () { show(parseInt(range.value, 10), true); });
   ticks.forEach(function (t) { t.addEventListener("click", function () { show(parseInt(t.getAttribute("data-go"), 10), true); }); });
   show(0, false);
-}
-
-function copyText(t) {
-  if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).catch(function () { legacyCopy(t); }); }
-  else legacyCopy(t);
-}
-function legacyCopy(t) {
-  var ta = document.createElement("textarea");
-  ta.value = t; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
-  document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length);
-  try { document.execCommand("copy"); } catch (e) {}
-  ta.remove();
 }
