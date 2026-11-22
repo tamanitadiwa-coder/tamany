@@ -152,47 +152,53 @@ function initBudget() {
   set(chips[0].getAttribute("data-budget"));
 }
 
-/* Enquiry: compose a WhatsApp or email message, nothing stored */
+/* Enquiry: choose options, see the draft, send it as a quote request. Nothing stored. */
 function initEnquiry() {
   var form = document.getElementById("enquiry");
   if (!form) return;
+  var draft = document.getElementById("draft");
   var pkg = new URLSearchParams(location.search).get("package");
-  var sel = form.querySelector("#f-package");
-  if (pkg && sel) {
-    var match = Array.prototype.find.call(sel.options, function (o) { return o.value && (o.value === pkg || pkg.indexOf(o.value) === 0); });
-    if (!match) { match = new Option(pkg, pkg); sel.add(match, 1); }
-    sel.value = match.value;
-  }
+  if (pkg) pkg = pkg.split(" \u2014 ")[0];
   function v(id) { var el = form.querySelector(id); return el ? el.value.trim() : ""; }
+  function pick(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ""; }
   function compose() {
-    return [
-      "Hi Tamany, I’d like to enquire about a website.", "",
-      "Name: " + v("#f-name"),
-      v("#f-business") ? "Business: " + v("#f-business") : null,
-      "Package: " + (v("#f-package") || "Not sure yet"),
-      v("#f-contact") ? "Reach me at: " + v("#f-contact") : null,
-      "", v("#f-message")
-    ].filter(function (l) { return l !== null; }).join("\n");
+    var biz = [pick("biz"), v("#f-business")].filter(Boolean).join(" \u2014 ");
+    var lines = [
+      "Hi Tamany, I\u2019d like a quote.",
+      "",
+      pick("help") ? "Need: " + pick("help") : null,
+      biz ? "Business: " + biz : null,
+      pick("site") ? "Website: " + pick("site") : null,
+      pkg ? "Interested in: " + pkg : null,
+      pick("domain") ? "Domain & hosting: " + pick("domain") : null,
+      v("#f-message") ? "\n" + v("#f-message") : null,
+      "",
+      v("#f-name") ? "\u2014 " + v("#f-name") : null,
+      v("#f-contact") ? v("#f-contact") : null
+    ];
+    return lines.filter(function (l) { return l !== null; }).join("\n").replace(/\n{3,}/g, "\n\n").trim();
   }
-  function valid() {
-    var ok = true;
-    ["#f-name", "#f-message"].forEach(function (id) {
-      var el = form.querySelector(id), bad = !el.value.trim();
-      el.closest(".field").classList.toggle("is-invalid", bad);
-      el.setAttribute("aria-invalid", String(bad));
-      if (bad && ok) { el.focus(); ok = false; }
-    });
-    return ok;
-  }
+  function render() { if (draft) draft.textContent = compose(); }
+  form.addEventListener("input", render);
+  form.addEventListener("change", render);
+  render();
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!valid()) return;
+    var name = form.querySelector("#f-name");
+    if (!name.value.trim()) {
+      name.closest(".field").classList.add("is-invalid");
+      name.setAttribute("aria-invalid", "true");
+      name.focus();
+      return;
+    }
+    var text = compose();
     var via = (e.submitter && e.submitter.value) || "whatsapp";
-    if (via === "email") location.href = "mailto:tamanitadiwa@gmail.com?subject=" + encodeURIComponent("Website enquiry — " + (v("#f-package") || "General")) + "&body=" + encodeURIComponent(compose());
-    else window.open(waLink(compose()), "_blank", "noopener");
+    if (via === "email") location.href = "mailto:tamanitadiwa@gmail.com?subject=" + encodeURIComponent("Quote request" + (pick("site") ? " \u2014 " + pick("site") : "")) + "&body=" + encodeURIComponent(text);
+    else window.open(waLink(text), "_blank", "noopener");
   });
   form.querySelectorAll("input,textarea").forEach(function (el) {
-    el.addEventListener("input", function () { el.closest(".field").classList.remove("is-invalid"); el.removeAttribute("aria-invalid"); });
+    el.addEventListener("input", function () { var f = el.closest(".field"); if (f) f.classList.remove("is-invalid"); el.removeAttribute("aria-invalid"); });
   });
 }
 function waLink(t) { return "https://wa.me/27842818624?text=" + encodeURIComponent(t); }

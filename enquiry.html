@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Start a project — TAMANY</title>
-<meta name="description" content="Tell Tamany about your project. Send via WhatsApp or email.">
+<title>Ask for a quote — TAMANY</title>
+<meta name="description" content="Tell Tamany about your business and the website you need, and get a quote. Send via WhatsApp or email.">
 <link rel="canonical" href="https://tamany.tech/enquiry.html">
 <meta name="theme-color" content="#0b0b0b">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TAMANY">
-<meta property="og:title" content="Start a project — TAMANY">
-<meta property="og:description" content="Tell Tamany about your project. Send via WhatsApp or email.">
+<meta property="og:title" content="Ask for a quote — TAMANY">
+<meta property="og:description" content="Tell Tamany about your business and the website you need, and get a quote. Send via WhatsApp or email.">
 <meta property="og:url" content="https://tamany.tech/enquiry.html">
 <meta property="og:image" content="https://tamany.tech/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -53,18 +53,44 @@
 
 <section class="page-head wrap">
   <p class="label">Start a project</p>
-  <h1 class="mask"><span>Tell us a <em>little.</em></span></h1>
-  <p>Your message opens in WhatsApp or email. Nothing is stored here.</p>
+  <h1 class="mask"><span>Ask for a <em>quote.</em></span></h1>
+  <p>Choose what fits. We’ll reply with a price for your project.</p>
 </section>
 <section class="wrap" style="padding-bottom:var(--space)">
-  <form class="form" id="enquiry" novalidate>
-    <div class="field"><label for="f-name">Name *</label><input id="f-name" autocomplete="name" required><span class="err">Please add your name.</span></div>
-    <div class="field"><label for="f-business">Business</label><input id="f-business" autocomplete="organization"></div>
-    <div class="field"><label for="f-package">Package</label><select id="f-package"><option value="">Not sure yet</option><option value="Small Budget Website">Small budget</option><option value="Starter Website — R9,500">Starter — R9,500</option><option value="Professional Website — R16,000">Professional — R16,000</option><option value="Premium Website — R28,000">Premium — R28,000</option><option value="Enterprise Website — R55,000">Enterprise — R55,000</option><option value="Website management">Management only</option></select></div>
-    <div class="field"><label for="f-contact">Email or phone</label><input id="f-contact" autocomplete="email"></div>
-    <div class="field field--full"><label for="f-message">Project *</label><textarea id="f-message" rows="3" required></textarea><span class="err">A sentence or two is enough.</span></div>
-    <div class="form__send"><button class="pill bubble" type="submit" value="whatsapp">Send via WhatsApp</button><button class="pill bubble" type="submit" value="email">Email instead</button></div>
+  <form class="quote" id="enquiry" novalidate>
+    <div class="quote__fields">
+      <fieldset class="opts" data-group="help">
+        <legend class="label">What do you need?</legend>
+        <div class="opts__list"><label class="opt"><input type="radio" name="help" value="New website"><span>New website</span></label><label class="opt"><input type="radio" name="help" value="Redesign"><span>Redesign</span></label><label class="opt"><input type="radio" name="help" value="Website management"><span>Website management</span></label><label class="opt"><input type="radio" name="help" value="Something else"><span>Something else</span></label></div>
+      </fieldset>
+      <fieldset class="opts" data-group="biz">
+        <legend class="label">Your business</legend>
+        <div class="opts__list"><label class="opt"><input type="radio" name="biz" value="Café or restaurant"><span>Café or restaurant</span></label><label class="opt"><input type="radio" name="biz" value="Shop or retail"><span>Shop or retail</span></label><label class="opt"><input type="radio" name="biz" value="Salon or beauty"><span>Salon or beauty</span></label><label class="opt"><input type="radio" name="biz" value="Fashion"><span>Fashion</span></label><label class="opt"><input type="radio" name="biz" value="Professional services"><span>Professional services</span></label><label class="opt"><input type="radio" name="biz" value="Corporate"><span>Corporate</span></label><label class="opt"><input type="radio" name="biz" value="Other"><span>Other</span></label></div>
+      </fieldset>
+      <div class="field"><label for="f-business">Business name</label><input id="f-business" autocomplete="organization"></div>
+      <fieldset class="opts" data-group="site">
+        <legend class="label">Type of website</legend>
+        <div class="opts__list"><label class="opt"><input type="radio" name="site" value="One page"><span>One page</span></label><label class="opt"><input type="radio" name="site" value="Business website"><span>Business website</span></label><label class="opt"><input type="radio" name="site" value="Portfolio or gallery"><span>Portfolio or gallery</span></label><label class="opt"><input type="radio" name="site" value="Bookings or enquiries"><span>Bookings or enquiries</span></label><label class="opt"><input type="radio" name="site" value="Online store"><span>Online store</span></label><label class="opt"><input type="radio" name="site" value="Custom platform"><span>Custom platform</span></label><label class="opt"><input type="radio" name="site" value="Not sure yet"><span>Not sure yet</span></label></div>
+      </fieldset>
+      <fieldset class="opts" data-group="domain">
+        <legend class="label">Domain & hosting</legend>
+        <div class="opts__list"><label class="opt"><input type="radio" name="domain" value="I have them"><span>I have them</span></label><label class="opt"><input type="radio" name="domain" value="Not yet"><span>Not yet</span></label><label class="opt"><input type="radio" name="domain" value="Not sure"><span>Not sure</span></label></div>
+      </fieldset>
+      <div class="field"><label for="f-message">Anything else</label><textarea id="f-message" rows="3" placeholder="Pages, features, timing…"></textarea></div>
+      <div class="field"><label for="f-name">Your name *</label><input id="f-name" autocomplete="name" required><span class="err">Please add your name.</span></div>
+      <div class="field"><label for="f-contact">Email or phone</label><input id="f-contact" autocomplete="email"></div>
+    </div>
+    <aside class="quote__draft" aria-label="Your draft">
+      <p class="label">Your draft</p>
+      <pre class="draft" id="draft" aria-live="polite"></pre>
+      <div class="form__send">
+        <button class="pill bubble" type="submit" value="whatsapp">Send on WhatsApp</button>
+        <button class="pill bubble" type="submit" value="email">Email instead</button>
+      </div>
+      <p class="quote__note">Opens in WhatsApp or your email app. Nothing is stored here.</p>
+    </aside>
   </form>
+  <noscript><p class="muted" style="margin-top:32px">Prefer to message directly? <a class="link" href="https://wa.me/27842818624">WhatsApp</a> or <a class="link" href="mailto:tamanitadiwa@gmail.com?subject=Quote%20request">email</a>.</p></noscript>
 </section>
 
 </main>
