@@ -1,149 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMANY — Website Packages</title>
-<style>
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#000;color:#fff;opacity:0;transition:opacity .6s ease;}
-body.loaded{opacity:1;}
-a,a:visited,a:active{color:#fff;text-decoration:none;}
-.nav{position:fixed;top:0;width:100%;height:70px;background:rgba(0,0,0,.75);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;box-sizing:border-box;z-index:999;}
-.nav a{font-size:15px;opacity:.85;cursor:pointer;}
-.nav a:hover{opacity:1;}
-.wrapper{padding-top:120px;max-width:780px;margin:auto;padding-left:20px;padding-right:20px;text-align:center;}
-.logo{width:70px;margin:40px auto 40px;display:block;opacity:.95;}
-.title{font-size:30px;letter-spacing:.12em;margin-bottom:12px;color:#e0e0e0;}
-.subtitle{font-size:16px;color:#777;margin-bottom:60px;line-height:1.6;}
+<meta charset="utf-8">
 
-/* PACKAGE CARDS */
-.package{border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:34px 28px;margin-bottom:26px;background:rgba(255,255,255,.03);transition:.25s;text-align:left;position:relative;}
-.package:hover{border-color:#aaa;background:rgba(255,255,255,.05);box-shadow:0 0 35px rgba(255,255,255,.08);}
-.package h2{margin:0 0 6px;font-weight:500;font-size:22px;}
-.package-tag{font-size:11px;letter-spacing:.16em;color:#777;text-transform:uppercase;margin-bottom:14px;display:block;}
-.price{font-size:32px;font-weight:600;margin-bottom:6px;color:#fff;}
-.price-note{font-size:13px;color:#666;margin-bottom:18px;}
-.desc{color:#bbb;line-height:1.75;margin-bottom:24px;font-size:15px;}
-.features{list-style:none;padding:0;margin:0 0 28px;color:#999;font-size:14px;line-height:2;}
-.features li::before{content:"✓  ";color:#555;}
-.enquire-btn{padding:14px 32px;border-radius:12px;border:1px solid #666;background:transparent;color:#fff;font-size:15px;cursor:pointer;transition:.25s;}
-.enquire-btn:hover{border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,.15);}
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Packages &amp; Pricing — TAMANY</title>
+<meta name="description" content="Website packages from Tamany: Small Budget, Starter, Professional, Premium and Enterprise. You own your domain and hosting; we design, build and launch.">
+<link rel="canonical" href="https://tamany.tech/packages.html">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAMANY">
+<meta property="og:title" content="Packages &amp; Pricing — TAMANY">
+<meta property="og:description" content="Website packages from Tamany: Small Budget, Starter, Professional, Premium and Enterprise. You own your domain and hosting; we design, build and launch.">
+<meta property="og:url" content="https://tamany.tech/packages.html">
+<meta property="og:image" content="https://tamany.tech/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>(function(d){var r=d.documentElement;r.classList.add('js');if(window.matchMedia&&!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('motion');try{if(sessionStorage.getItem('tmy-t'))r.classList.add('is-entering')}catch(e){}setTimeout(function(){if(!window.__tamanyReady)r.classList.remove('motion','is-entering')},3000)}})(document)</script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/js/site.js" defer></script>
 
-/* HIGHLIGHT BADGE */
-.badge{position:absolute;top:20px;right:20px;background:#fff;color:#000;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 12px;border-radius:20px;}
-
-/* BUDGET CARD SPECIAL */
-.package.budget{border-style:dashed;border-color:#444;}
-.package.budget .price{font-size:22px;color:#aaa;}
-
-.note{margin-top:60px;margin-bottom:80px;color:#666;line-height:1.8;font-size:14px;}
-
-.footer{background:#000;color:#ccc;padding:80px 20px;text-align:center;}
-.footer h2{color:#fff;letter-spacing:.12em;}
-.links{margin-top:40px;line-height:2.4;font-size:17px;}
-.small{margin-top:60px;font-size:14px;color:#777;}
-</style>
 </head>
-<body onload="document.body.classList.add('loaded')">
-<div class="nav">
-  <a onclick="history.back()">Back</a>
-  <a href="contact.html">Help</a>
-</div>
-<div class="wrapper">
-  <img src="logo.png" class="logo">
-  <div class="title">Website Packages</div>
-  <div class="subtitle">We build websites for all sizes of businesses.<br>Choose the package that fits your needs.</div>
-
-  <!-- STARTER -->
-  <div class="package">
-    <span class="package-tag">Most Accessible</span>
-    <h2>Starter Website</h2>
-    <div class="price">R12,000</div>
-    <div class="price-note">Domain & hosting (paid by you): approx. R120 – R200/year</div>
-    <div class="desc">A clean, professional website to establish your business online. Perfect for small businesses starting their digital presence.</div>
-    <ul class="features">
-      <li>Up to 5 pages</li>
-      <li>Mobile responsive design</li>
-      <li>Contact form</li>
-      <li>Basic SEO setup</li>
-      <li>Social media links</li>
-    </ul>
-    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Starter%20Website%20—%20R12%2C000'">Enquire</button>
-  </div>
-
-  <!-- PROFESSIONAL -->
-  <div class="package">
-    <span class="package-tag">Most Popular</span>
-    <h2>Professional Website</h2>
-    <div class="price">R16,000</div>
-    <div class="price-note">Domain & hosting (paid by you): approx. R150 – R250/year</div>
-    <div class="desc">A custom website designed for credibility, growth, and a stronger brand presence online.</div>
-    <ul class="features">
-      <li>Up to 10 pages</li>
-      <li>Custom design tailored to your brand</li>
-      <li>Gallery or portfolio section</li>
-      <li>Google Maps integration</li>
-      <li>SEO optimisation</li>
-      <li>WhatsApp chat button</li>
-    </ul>
-    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Professional%20Website%20—%20R16%2C000'">Enquire</button>
-  </div>
-
-  <!-- PREMIUM -->
-  <div class="package">
-    <span class="package-tag">Full Experience</span>
-    <h2>Premium Website</h2>
-    <div class="price">R22,000</div>
-    <div class="price-note">Domain & hosting (paid by you): approx. R200 – R400/year</div>
-    <div class="desc">A full digital experience for established businesses that want maximum impact, polish, and performance.</div>
-    <ul class="features">
-      <li>Unlimited pages</li>
-      <li>Premium custom design</li>
-      <li>Animations & interactions</li>
-      <li>Booking or enquiry system</li>
-      <li>Full SEO setup</li>
-      <li>Speed optimisation</li>
-      <li>Social media integration</li>
-    </ul>
-    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Premium%20Website%20—%20R22%2C000'">Enquire</button>
-  </div>
-
-  <!-- ENTERPRISE -->
-  <div class="package">
-    <div class="badge">TOP TIER</div>
-    <span class="package-tag">Enterprise</span>
-    <h2>Enterprise Website</h2>
-    <div class="price">R28,000</div>
-    <div class="price-note">Domain & hosting (paid by you): approx. R400+/year</div>
-    <div class="desc">A complete digital platform for large businesses, corporates, and ambitious brands. Built to scale, perform, and impress at every level.</div>
-    <ul class="features">
-      <li>Fully custom-built platform</li>
-      <li>E-commerce / online store</li>
-      <li>Admin dashboard</li>
-      <li>User accounts & login</li>
-      <li>Advanced animations</li>
-      <li>Multi-language support</li>
-      <li>Priority support & revisions</li>
-    </ul>
-    <button class="enquire-btn" onclick="window.location.href='enquiry.html?package=Enterprise%20Website%20—%20R28%2C000'">Enquire</button>
-  </div>
-
-  <div class="note">
-    You purchase and fully own your domain and hosting.<br>
-    Tamany handles all design, development, and launch.<br>
-    Not sure which package is right for you? <span style="color:#ccc;cursor:pointer;" onclick="window.location.href='contact.html'">Contact us</span> and we'll advise.
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="curtain" aria-hidden="true"></div>
+<header class="nav">
+  <a class="nav__brand" href="index.html" aria-label="TAMANY — home"><img src="assets/img/mark-96.png" width="26" height="26" alt="">TAMANY</a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#process">Process</a>
+    <a href="packages.html" aria-current="page">Packages</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn nav__cta" href="enquiry.html">Start a project <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span data-menu-label>Menu</span><span class="nav__burger" aria-hidden="true"></span></button>
+</header>
+<div class="menu" id="menu" aria-hidden="true" inert>
+  <ul class="menu__list">
+    <li><a href="index.html"><span>00</span>Home</a></li>
+    <li><a href="index.html#services"><span>01</span>Services</a></li>
+    <li><a href="index.html#work"><span>02</span>Work</a></li>
+    <li><a href="index.html#process"><span>03</span>Process</a></li>
+    <li><a href="packages.html"><span>04</span>Packages</a></li>
+    <li><a href="enquiry.html"><span>05</span>Start a project</a></li>
+  </ul>
+  <div class="menu__foot">
+    <a href="https://wa.me/27842818624" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry">Email</a>
+    <a href="https://www.instagram.com/tamany.tech/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </div>
+<main id="main">
 
-<section class="footer">
-  <h2>TAMANY TECHNOLOGY</h2>
-  <div class="links">
-    <div style="cursor:pointer;" onclick="window.location.href='mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry'">Email: tamanitadiwa@gmail.com</div>
-    <div>Phone: <span style="text-decoration:underline;cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">+27 84 281 8624</span></div>
-    <div style="cursor:pointer;" onclick="window.location.href='https://wa.me/27842818624'">WhatsApp: +27 84 281 8624</div>
-    <div style="cursor:pointer;" onclick="window.location.href='https://www.instagram.com/tamany.tech?igsh=bmh5dzJidnlsdW1r&utm_source=qr'">Instagram: tamany.tech</div>
+<section class="page-hero page-hero--photo wrap" aria-labelledby="ph">
+  <div class="photo-bg" aria-hidden="true"><img src="assets/img/devices-800.webp" srcset="assets/img/devices-800.webp 800w, assets/img/devices-1600.webp 1600w" sizes="100vw" alt="" loading="eager" fetchpriority="high" decoding="async" data-speed="1.4"></div>
+  <p class="label page-hero__label">Packages &amp; pricing</p>
+  <h1 id="ph"><span class="ln"><span>Clear pricing.</span></span><span class="ln"><span><span class="serif">No surprises.</span></span></span></h1>
+  <div class="page-hero__sub">
+    <p data-reveal>We build websites for businesses of every size. Choose the package that fits — or tell us what you need and we’ll advise.</p>
   </div>
-  <div class="small">Tamany — Parent Technology Company<br>©️ 2026 All rights reserved</div>
 </section>
+<section class="tiers-stage" aria-label="Packages">
+  <div class="photo-bg photo-bg--soft" aria-hidden="true"><img src="assets/img/studio-800.webp" srcset="assets/img/studio-800.webp 800w, assets/img/studio-1600.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
+  <div class="tiers">
+    <article class="tier glass">
+      <div class="tier__head"><span class="label tier__tag">Quick &amp; simple</span><h2 class="tier__name">Small Budget Website</h2></div>
+      <div class="tier__price"><span id="budgetPrice">R2,500</span><small>Pick your budget — we’ll chat privately<br>and sort out the details.</small></div>
+      <div class="tier__body">
+        <p>For individuals and very small businesses. Tell us what you can spend and we’ll build the best we can within it.</p>
+        <div class="chips" role="group" aria-label="Choose your budget">
+          <button class="chip" type="button" data-budget="R2,500" aria-pressed="true">R2,500</button>
+          <button class="chip" type="button" data-budget="R3,500" aria-pressed="false">R3,500</button>
+          <button class="chip" type="button" data-budget="R4,500" aria-pressed="false">R4,500</button>
+          <button class="chip" type="button" data-budget="R5,000+" aria-pressed="false">R5,000+</button>
+        </div>
+        <div class="tier__actions"><a class="btn" id="budgetEnquire" href="https://wa.me/27842818624" target="_blank" rel="noopener">Message us on WhatsApp <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M4.5 3H11v6.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </article>
+    <article class="tier glass">
+      <div class="tier__head"><span class="label tier__tag">Most accessible</span><h2 class="tier__name">Starter Website</h2></div>
+      <div class="tier__price">R9,500<small>Domain &amp; hosting, paid by you:<br>approx. R120 – R200 / year</small></div>
+      <div class="tier__body">
+        <p>A clean, professional website to establish your business online. Perfect for small businesses starting their digital presence.</p>
+        <ul class="tier__features"><li>Up to 5 pages</li><li>Mobile responsive design</li><li>Contact form</li><li>Basic SEO setup</li><li>Social media links</li></ul>
+        <div class="tier__actions"><a class="btn" href="enquiry.html?package=Starter%20Website%20%E2%80%94%20R9%2C500">Enquire <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </article>
+    <article class="tier glass tier--feature">
+      <div class="tier__head"><span class="label tier__tag">Most popular</span><h2 class="tier__name">Professional Website</h2></div>
+      <div class="tier__price">R16,000<small>Domain &amp; hosting, paid by you:<br>approx. R150 – R250 / year</small></div>
+      <div class="tier__body">
+        <p>A custom website designed for credibility, growth and a stronger brand presence online.</p>
+        <ul class="tier__features"><li>Up to 10 pages</li><li>Custom design tailored to your brand</li><li>Gallery or portfolio section</li><li>Google Maps integration</li><li>SEO optimisation</li><li>WhatsApp chat button</li></ul>
+        <div class="tier__actions"><a class="btn btn--solid" href="enquiry.html?package=Professional%20Website%20%E2%80%94%20R16%2C000">Enquire <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </article>
+    <article class="tier glass">
+      <div class="tier__head"><span class="label tier__tag">Full experience</span><h2 class="tier__name">Premium Website</h2></div>
+      <div class="tier__price">R28,000<small>Domain &amp; hosting, paid by you:<br>approx. R200 – R400 / year</small></div>
+      <div class="tier__body">
+        <p>A full digital experience for established businesses that want maximum impact, polish and performance.</p>
+        <ul class="tier__features"><li>Unlimited pages</li><li>Premium custom design</li><li>Animations &amp; interactions</li><li>Booking or enquiry system</li><li>Full SEO setup</li><li>Speed optimisation</li><li>Social media integration</li></ul>
+        <div class="tier__actions"><a class="btn" href="enquiry.html?package=Premium%20Website%20%E2%80%94%20R28%2C000">Enquire <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </article>
+    <article class="tier glass">
+      <div class="tier__head"><span class="label tier__tag">Top tier</span><h2 class="tier__name">Enterprise Website</h2></div>
+      <div class="tier__price">R55,000<small>Domain &amp; hosting, paid by you:<br>approx. R400+ / year</small></div>
+      <div class="tier__body">
+        <p>A complete digital platform for large businesses, corporates and ambitious brands. Built to scale, perform and impress at every level.</p>
+        <ul class="tier__features"><li>Fully custom-built platform</li><li>E-commerce / online store</li><li>Admin dashboard</li><li>User accounts &amp; login</li><li>Advanced animations</li><li>Multi-language support</li><li>Priority support &amp; revisions</li></ul>
+        <div class="tier__actions"><a class="btn" href="enquiry.html?package=Enterprise%20Website%20%E2%80%94%20R55%2C000">Enquire <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a></div>
+      </div>
+    </article>
+  </div>
+</section>
+<section class="section wrap" aria-labelledby="own-h">
+  <div class="note-grid">
+    <p class="label note-grid__a" data-reveal>How it works</p>
+    <div class="note-grid__b">
+      <h2 class="h3" id="own-h" data-reveal>You purchase and fully own your domain and hosting. Tamany handles all design, development and launch.</h2>
+      <p class="muted" style="margin-top:24px;max-width:56ch" data-reveal>Hosting costs shown are approximate and paid directly to your provider. Ongoing website management — updates, backups, SSL and technical support — is available after launch; ask us for a quote.</p>
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap" data-reveal><a class="btn btn--solid" href="enquiry.html">Not sure? Ask us <svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></a><a class="btn" href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer wrap" aria-label="Site footer">
+  <div class="footer__cols">
+    <p class="footer__lede">Websites designed, built and cared for — <span class="serif">from Cape Town.</span></p>
+    <div class="footer__col">
+      <span class="label">Studio</span>
+      <a class="link" href="index.html#services">Services</a>
+      <a class="link" href="index.html#work">Selected work</a>
+      <a class="link" href="index.html#process">How we work</a>
+      <a class="link" href="packages.html">Packages</a>
+      <a class="link" href="services.html">Who we build for</a>
+    </div>
+    <div class="footer__col">
+      <span class="label">Contact</span>
+      <a class="link" href="https://wa.me/27842818624" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="link" href="mailto:tamanitadiwa@gmail.com?subject=Tamany%20Enquiry">Email</a>
+      <a class="link" href="https://www.instagram.com/tamany.tech/" target="_blank" rel="noopener">Instagram</a>
+      <a class="link" href="enquiry.html">Start a project</a>
+      <a class="link" href="collaborate.html">Do business with us</a>
+    </div>
+  </div>
+  <div class="footer__base">
+    <span>© <span data-year>2026</span> Tamany Web Solutions. All rights reserved.</span>
+    <span>Cape Town, South Africa — tamany.tech</span>
+  </div>
+  <div class="footer__word" aria-hidden="true">TAMANY</div>
+</footer>
 </body>
 </html>
