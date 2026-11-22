@@ -57,6 +57,21 @@
 
   initBudget();
   initEnquiry();
+  initLevels();
+
+  /* Floating Packages bubble: appears after the hero, steps aside near the footer */
+  var fpk = document.querySelector(".float-pk");
+  var heroEl = document.querySelector(".hero");
+  var foot = document.querySelector(".footer");
+  if (fpk && heroEl) {
+    var tog = function () {
+      var past = window.scrollY > heroEl.offsetHeight * 0.7;
+      var nearEnd = foot && foot.getBoundingClientRect().top < window.innerHeight - 20;
+      fpk.classList.toggle("is-on", past && !nearEnd);
+    };
+    window.addEventListener("scroll", tog, { passive: true });
+    tog();
+  }
 
   if (!motion || !hasGSAP) { root.classList.remove("motion"); return; }
   gsap.registerPlugin(ScrollTrigger);
@@ -181,3 +196,32 @@ function initEnquiry() {
   });
 }
 function waLink(t) { return "https://wa.me/27842818624?text=" + encodeURIComponent(t); }
+
+/* Packages: level slider shows what each price includes */
+function initLevels() {
+  var range = document.getElementById("level");
+  if (!range) return;
+  var levels = document.querySelectorAll(".level");
+  var ticks = document.querySelectorAll(".tick");
+  var slider = range.closest(".slider");
+  var current = -1;
+  function show(i, animate) {
+    i = Math.max(0, Math.min(levels.length - 1, i));
+    range.value = i;
+    slider.style.setProperty("--p", (i / (levels.length - 1)) * 100 + "%");
+    ticks.forEach(function (t, k) { t.classList.toggle("is-on", k === i); });
+    if (i === current) return;
+    current = i;
+    levels.forEach(function (l, k) { l.classList.toggle("is-on", k === i); });
+    var on = levels[i];
+    range.setAttribute("aria-valuetext", on.querySelector(".label").textContent + ", " + on.querySelector(".level__price").textContent);
+    var g = window.gsap;
+    if (animate && g && document.documentElement.classList.contains("motion")) {
+      g.fromTo(on.querySelector(".level__price"), { yPercent: 40, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.8, ease: "expo.out" });
+      g.fromTo(on.querySelectorAll(".level__list li, .level__host, .level__actions"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out", stagger: 0.035 });
+    }
+  }
+  range.addEventListener("input", function () { show(parseInt(range.value, 10), true); });
+  ticks.forEach(function (t) { t.addEventListener("click", function () { show(parseInt(t.getAttribute("data-go"), 10), true); }); });
+  show(0, false);
+}
