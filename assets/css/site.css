@@ -340,3 +340,30 @@ body.menu-open .float-pk{opacity:0;pointer-events:none}
 .quote__draft{border-top:1px solid var(--line);padding-top:24px}
 .draft{margin:18px 0 28px;font-family:var(--sans);font-size:15px;line-height:1.7;white-space:pre-wrap;color:var(--soft);min-height:120px}
 .quote__note{margin-top:18px;font-size:12.5px;color:var(--muted)}
+
+/* ---------- Request a demo (hero) ---------- */
+.demo{margin-top:22px;height:40px;padding:0 18px;font-size:10.5px;letter-spacing:.24em;gap:10px;color:var(--fg)}
+.demo i{width:6px;height:6px;border-radius:50%;background:var(--fg);box-shadow:0 0 0 0 rgba(236,235,231,.5);animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(236,235,231,.45)}70%{box-shadow:0 0 0 8px rgba(236,235,231,0)}100%{box-shadow:0 0 0 0 rgba(236,235,231,0)}}
+html.motion .hero .demo{opacity:0}
+@media (min-width:900px){.demo{margin-top:30px;height:44px;padding:0 22px;font-size:11px}}
+@media (prefers-reduced-motion:reduce){.demo i{animation:none}}
+
+/* ---------- Types instead of prices ---------- */
+.type-pill{height:52px;padding:0 22px;font-family:var(--serif);font-size:20px;letter-spacing:0;text-transform:none;font-weight:400}
+@media (max-width:420px){.quick{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.type-pill{height:50px;font-size:19px;padding:0 22px;justify-content:flex-start}}
+.level__price{font-size:clamp(40px,10.5vw,80px)}
+.pk__more{margin-top:56px}
+
+/* ---------- Enquiry: Instagram + photos ---------- */
+.check{display:flex;align-items:center;gap:14px;cursor:pointer;color:var(--soft);font-size:15px;min-height:44px}
+.check input{-webkit-appearance:none;appearance:none;width:22px;height:22px;margin:0;flex:none;border-radius:50%;border:1px solid var(--line);cursor:pointer;transition:all .35s ease}
+.check input:checked{border-color:rgba(255,255,255,.4);background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 18%,rgba(255,255,255,.22) 40%,rgba(255,255,255,.06) 70%)}
+.check input:focus-visible{outline:1px solid var(--fg);outline-offset:3px}
+
+/* ---------- Phone: smaller services, tighter page heads ---------- */
+@media (max-width:899px){
+  .offer h3{font-size:clamp(26px,7.2vw,40px)}
+  .offer li{padding-block:14px}
+  .page-head{padding-top:calc(var(--nav) + 40px);padding-bottom:44px}
+}
