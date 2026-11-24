@@ -47,7 +47,7 @@
     <li><a href="packages.html">Packages</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
-  <div class="menu__foot"><a href="https://wa.me/27842818624" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:tamanitadiwa@gmail.com?subject=Tamany">Email</a><a href="https://www.instagram.com/tamany.thech/" target="_blank" rel="noopener">Instagram</a></div>
+  <div class="menu__foot"><a href="enquiry.html?via=whatsapp">WhatsApp</a><a href="enquiry.html?via=email">Email</a><a href="https://www.instagram.com/tamany.thech/" target="_blank" rel="noopener">Instagram</a></div>
 </div>
 <main id="main">
 
@@ -57,26 +57,30 @@
   <p>Choose what fits. We’ll reply with a quote.</p>
 </section>
 <section class="wrap" style="padding-bottom:var(--space)">
-  <form class="quote" id="enquiry" novalidate>
+  <form class="quote" id="enquiry" novalidate data-mail="tamanitadiwa@gmail.com">
     <div class="quote__fields">
       <fieldset class="opts" data-group="help">
-        <legend class="label">What do you need?</legend>
-        <div class="opts__list"><label class="opt"><input type="radio" name="help" value="Request a demo"><span>Request a demo</span></label><label class="opt"><input type="radio" name="help" value="New website"><span>New website</span></label><label class="opt"><input type="radio" name="help" value="Redesign"><span>Redesign</span></label><label class="opt"><input type="radio" name="help" value="Website management"><span>Website management</span></label><label class="opt"><input type="radio" name="help" value="Something else"><span>Something else</span></label></div>
+        <legend class="label">What do you need? *</legend>
+        <div class="opts__list"><label class="opt"><input type="radio" name="help" value="Request a demo"><span>Request a demo</span></label><label class="opt"><input type="radio" name="help" value="New website"><span>New website</span></label><label class="opt"><input type="radio" name="help" value="Redesign"><span>Redesign</span></label><label class="opt"><input type="radio" name="help" value="Website management"><span>Website management</span></label><label class="opt"><input type="radio" name="help" value="Partnership"><span>Partnership</span></label><label class="opt"><input type="radio" name="help" value="Something else"><span>Something else</span></label></div>
+        <span class="err">Please choose one.</span>
       </fieldset>
       <fieldset class="opts" data-group="biz">
-        <legend class="label">Your business</legend>
+        <legend class="label">Your business *</legend>
         <div class="opts__list"><label class="opt"><input type="radio" name="biz" value="Café or restaurant"><span>Café or restaurant</span></label><label class="opt"><input type="radio" name="biz" value="Shop or retail"><span>Shop or retail</span></label><label class="opt"><input type="radio" name="biz" value="Salon or beauty"><span>Salon or beauty</span></label><label class="opt"><input type="radio" name="biz" value="Fashion"><span>Fashion</span></label><label class="opt"><input type="radio" name="biz" value="Professional services"><span>Professional services</span></label><label class="opt"><input type="radio" name="biz" value="Corporate"><span>Corporate</span></label><label class="opt"><input type="radio" name="biz" value="Other"><span>Other</span></label></div>
+        <span class="err">Please choose one.</span>
       </fieldset>
       <div class="field"><label for="f-business">Business name</label><input id="f-business" autocomplete="organization"></div>
       <div class="field"><label for="f-ig">Business Instagram</label><input id="f-ig" placeholder="@yourbusiness" autocapitalize="off" autocorrect="off" spellcheck="false"></div>
       <label class="check"><input type="checkbox" id="f-photos"><span>I’ll send photos of my business on WhatsApp</span></label>
       <fieldset class="opts" data-group="site">
-        <legend class="label">Type of website</legend>
-        <div class="opts__list"><label class="opt"><input type="radio" name="site" value="One page"><span>One page</span></label><label class="opt"><input type="radio" name="site" value="Business website"><span>Business website</span></label><label class="opt"><input type="radio" name="site" value="Portfolio or gallery"><span>Portfolio or gallery</span></label><label class="opt"><input type="radio" name="site" value="Bookings or enquiries"><span>Bookings or enquiries</span></label><label class="opt"><input type="radio" name="site" value="Online store"><span>Online store</span></label><label class="opt"><input type="radio" name="site" value="Custom platform"><span>Custom platform</span></label><label class="opt"><input type="radio" name="site" value="Not sure yet"><span>Not sure yet</span></label></div>
+        <legend class="label">Type of website *</legend>
+        <div class="opts__list"><label class="opt"><input type="radio" name="site" value="One-page site"><span>One-page site</span></label><label class="opt"><input type="radio" name="site" value="Small business site"><span>Small business site</span></label><label class="opt"><input type="radio" name="site" value="Starter website"><span>Starter website</span></label><label class="opt"><input type="radio" name="site" value="Business website"><span>Business website</span></label><label class="opt"><input type="radio" name="site" value="Premium website"><span>Premium website</span></label><label class="opt"><input type="radio" name="site" value="Online store"><span>Online store</span></label><label class="opt"><input type="radio" name="site" value="Custom platform"><span>Custom platform</span></label><label class="opt"><input type="radio" name="site" value="Not sure yet"><span>Not sure yet</span></label></div>
+        <span class="err">Please choose one.</span>
       </fieldset>
       <fieldset class="opts" data-group="domain">
         <legend class="label">Domain & hosting</legend>
         <div class="opts__list"><label class="opt"><input type="radio" name="domain" value="I have them"><span>I have them</span></label><label class="opt"><input type="radio" name="domain" value="Not yet"><span>Not yet</span></label><label class="opt"><input type="radio" name="domain" value="Not sure"><span>Not sure</span></label></div>
+        <span class="err">Please choose one.</span>
       </fieldset>
       <div class="field"><label for="f-message">Anything else</label><textarea id="f-message" rows="3" placeholder="Pages, features, timing…"></textarea></div>
       <div class="field"><label for="f-name">Your name *</label><input id="f-name" autocomplete="name" required><span class="err">Please add your name.</span></div>

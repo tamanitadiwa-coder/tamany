@@ -395,3 +395,23 @@ html.motion .hero .demo{opacity:0}
   .hero-follow{padding-top:72px}
   .hero-follow .hero__media{aspect-ratio:auto;margin:0 auto}
 }
+
+/* Request a demo: no dot */
+.demo{gap:0}
+
+/* Small demo links under photos */
+.photo-cta{margin-top:12px;font-size:12.5px;color:var(--muted);line-height:1.4}
+.photo-cta a{color:var(--soft)}
+.photo-cta--hero{padding-inline:var(--m)}
+@media (min-width:900px){.photo-cta{font-size:13px}.photo-cta--hero{width:min(64vw,1240px);margin:14px auto 0;padding:0}}
+.diptych__a,.diptych__b{aspect-ratio:auto;overflow:visible}
+.diptych figure{position:relative;overflow:hidden;margin:0}
+.diptych__a figure{aspect-ratio:3/4.4}
+.diptych__b figure{aspect-ratio:3/4}
+@media (max-width:899px){.diptych .photo-cta{font-size:11.5px}}
+
+/* Required option groups */
+.opts .err{display:none;font-size:12.5px;color:var(--fg);margin-top:10px}
+.opts.is-invalid .err{display:block}
+.opts.is-invalid .opt span{border-color:rgba(236,235,231,.35)}
+.prefers-email .form__send button[value="email"]{order:-1}

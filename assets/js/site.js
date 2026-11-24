@@ -159,16 +159,30 @@ function initEnquiry() {
   var form = document.getElementById("enquiry");
   if (!form) return;
   var draft = document.getElementById("draft");
-  var pkg = new URLSearchParams(location.search).get("package");
+  /* Every WhatsApp / email button on the site lands here first, with what they clicked pre-selected. */
+  var q = new URLSearchParams(location.search);
+  var pkg = q.get("about") || q.get("package");
   if (pkg) pkg = pkg.split(" \u2014 ")[0];
-  var need = new URLSearchParams(location.search).get("need");
-  if (need === "demo") { var d = form.querySelector('input[name="help"][value="Request a demo"]'); if (d) d.checked = true; }
+  function check(name, value) {
+    var el = value && form.querySelector('input[name="' + name + '"][value="' + value.replace(/"/g, "") + '"]');
+    if (el) el.checked = true;
+  }
+  var needMap = { demo: "Request a demo", partnership: "Partnership", management: "Website management" };
+  check("help", needMap[q.get("need")] || (q.get("site") ? "New website" : null));
+  check("biz", q.get("biz"));
+  check("site", q.get("site"));
+  if (q.get("via") === "email") form.classList.add("prefers-email");
   function v(id) { var el = form.querySelector(id); return el ? el.value.trim() : ""; }
   function pick(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ""; }
+  function siteNeeded() { return ["Request a demo", "New website", "Redesign"].indexOf(pick("help")) !== -1; }
+  function bizNeeded() { return pick("help") !== "Partnership"; }
   function compose() {
     var biz = [pick("biz"), v("#f-business")].filter(Boolean).join(" \u2014 ");
+    var opener = pick("help") === "Request a demo" ? "Hi Tamany, I\u2019d like to request a demo."
+      : pick("help") === "Partnership" ? "Hi Tamany, I\u2019d like to talk about a partnership."
+      : "Hi Tamany, I\u2019d like a quote.";
     var lines = [
-      pick("help") === "Request a demo" ? "Hi Tamany, I\u2019d like to request a demo." : "Hi Tamany, I\u2019d like a quote.",
+      opener,
       "",
       pick("help") ? "Need: " + pick("help") : null,
       biz ? "Business: " + biz : null,
@@ -186,21 +200,39 @@ function initEnquiry() {
   }
   function render() { if (draft) draft.textContent = compose(); }
   form.addEventListener("input", render);
-  form.addEventListener("change", render);
+  form.addEventListener("change", function (e) {
+    var fs = e.target.closest && e.target.closest(".opts");
+    if (fs) fs.classList.remove("is-invalid");
+    render();
+  });
   render();
+
+  /* Details first: need, business, website type (when relevant) and name */
+  function valid() {
+    var first = null;
+    function flag(el, bad) { if (!el) return; el.classList.toggle("is-invalid", bad); if (bad && !first) first = el; }
+    flag(form.querySelector('[data-group="help"]'), !pick("help"));
+    flag(form.querySelector('[data-group="biz"]'), bizNeeded() && !pick("biz"));
+    flag(form.querySelector('[data-group="site"]'), siteNeeded() && !pick("site"));
+    var name = form.querySelector("#f-name");
+    var bad = !name.value.trim();
+    flag(name.closest(".field"), bad);
+    name.setAttribute("aria-invalid", String(bad));
+    if (!first) return true;
+    first.scrollIntoView({ behavior: "smooth", block: "center" });
+    var input = first.querySelector("input");
+    if (input) setTimeout(function () { input.focus({ preventScroll: true }); }, 400);
+    return false;
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var name = form.querySelector("#f-name");
-    if (!name.value.trim()) {
-      name.closest(".field").classList.add("is-invalid");
-      name.setAttribute("aria-invalid", "true");
-      name.focus();
-      return;
-    }
+    if (!valid()) return;
     var text = compose();
     var via = (e.submitter && e.submitter.value) || "whatsapp";
-    if (via === "email") location.href = "mailto:tamanitadiwa@gmail.com?subject=" + encodeURIComponent("Quote request" + (pick("site") ? " \u2014 " + pick("site") : "")) + "&body=" + encodeURIComponent(text);
+    var subject = pick("help") === "Request a demo" ? "Demo request" : pick("help") === "Partnership" ? "Partnership enquiry" : "Quote request";
+    if (pick("site")) subject += " \u2014 " + pick("site");
+    if (via === "email") location.href = "mailto:" + (form.getAttribute("data-mail") || "") + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
     else window.open(waLink(text), "_blank", "noopener");
   });
   form.querySelectorAll("input,textarea").forEach(function (el) {
