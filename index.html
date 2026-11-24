@@ -34,7 +34,7 @@
   <a class="brand" href="index.html" aria-label="TAMANY, home">TAMANY</a>
   <nav class="nav__links" aria-label="Primary">
     <a href="#services">Services</a>
-    <a href="#work">Work</a>
+    <a href="#recent">Work</a>
     <a href="packages.html">Packages</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -44,7 +44,7 @@
   <ul class="menu__list">
     <li><a href="#services">Services</a></li>
     <li><a href="#approach">Approach</a></li>
-    <li><a href="#work">Work</a></li>
+    <li><a href="#recent">Work</a></li>
     <li><a href="packages.html">Packages</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -52,18 +52,37 @@
 </div>
 <main id="main">
 
-<section class="hero" aria-label="Introduction">
+<section class="hero hero--top" aria-label="Introduction">
   <div class="hero__head">
     <h1 class="wordmark">TAMANY</h1>
     <p class="hero__tag">Digital, thoughtfully made.</p>
     <a class="pill bubble demo" href="enquiry.html?need=demo"><i aria-hidden="true"></i>Request a demo</a>
   </div>
+</section>
+
+<section class="recent" id="recent" aria-labelledby="recent-h">
+  <h2 class="label recent__label" id="recent-h">Recent work</h2>
+  <div class="recent__stage">
+    <figure class="phone phone--left" data-rate="0.05">
+      <video muted loop playsinline disablepictureinpicture preload="none" poster="assets/video/maryglam-poster.webp" width="720" height="1530"
+        data-webm="assets/video/maryglam.webm" data-mp4="assets/video/maryglam.mp4" aria-label="MaryGlam nails and lashes website on an iPhone"></video>
+    </figure>
+    <figure class="phone phone--right" data-rate="0.13">
+      <video muted loop playsinline disablepictureinpicture preload="none" poster="assets/video/ora-poster.webp" width="720" height="1530"
+        data-webm="assets/video/ora.webm" data-mp4="assets/video/ora.mp4" aria-label="Óra café website on an iPhone"></video>
+    </figure>
+  </div>
+</section>
+
+<section class="hero-follow" aria-label="About">
   <figure class="hero__media"><img src="assets/img/interior-800.webp" srcset="assets/img/interior-800.webp 800w, assets/img/interior-1200.webp 1200w" sizes="(min-width: 900px) 70vw, 100vw" alt="A bright, minimal retail interior with a curved shelf" loading="eager" fetchpriority="high" decoding="async" data-speed="1"></figure>
   <div class="hero__foot wrap">
     <p>We design and build websites for businesses with something to say.</p>
     <a class="pill bubble" href="#services">Explore <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1v10M2 7l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.1"/></svg></a>
   </div>
 </section>
+
+
 
 <section class="section wrap" id="services" aria-labelledby="services-h">
   <div class="grid">
@@ -95,18 +114,6 @@
   </div>
 </section>
 
-<section class="section wrap" id="work" aria-labelledby="work-h">
-  <div class="grid">
-    <h2 class="label col-label" id="work-h" data-reveal>Work</h2>
-    <div class="col-main">
-      <!-- To add a project, replace a row with:
-      <li><a class="link" href="https://client.example" target="_blank" rel="noopener"><h3>Client name</h3></a><span class="label">2026</span></li> -->
-      <ol class="work-list">
-        <li data-reveal><h3>Forthcoming</h3><span class="label">2026</span></li>
-      </ol>
-    </div>
-  </div>
-</section>
 
 <section class="section wrap" id="contact" aria-labelledby="contact-h">
   <div class="grid">
