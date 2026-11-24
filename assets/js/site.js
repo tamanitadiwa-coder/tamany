@@ -9,17 +9,10 @@
 
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* Nav: solid after scrolling, tucks away while reading */
+  /* Nav: stays put. It only gains its bubble background once you scroll. */
   var nav = document.querySelector(".nav");
-  var lastY = window.scrollY;
   function onScroll() {
-    var y = window.scrollY;
-    nav.classList.toggle("is-scrolled", y > 20);
-    if (!body.classList.contains("menu-open")) {
-      if (y > window.innerHeight * 0.8 && y > lastY + 4) nav.classList.add("is-hidden");
-      else if (y < lastY - 4 || y < 80) nav.classList.remove("is-hidden");
-    }
-    lastY = y;
+    nav.classList.toggle("is-scrolled", window.scrollY > 20);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -76,6 +69,8 @@
 
   if (!motion || !hasGSAP) { root.classList.remove("motion"); return; }
   gsap.registerPlugin(ScrollTrigger);
+  /* iPhone's address bar resizes the viewport while scrolling; don't recalculate on that */
+  ScrollTrigger.config({ ignoreMobileResize: true });
   var desktop = window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches;
 
   /* Smooth scrolling only for mouse/trackpad; phones keep native scrolling */
@@ -97,7 +92,7 @@
       .fromTo(".hero__media", { clipPath: "inset(18% 8% 18% 8%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 2, ease: "expo.inOut" }, 0.3)
       .fromTo(".hero__media img", { scale: 1.12 }, { scale: 1, duration: 2.4, ease: "expo.out" }, 0.3)
       .fromTo(".hero__foot > *", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 1.2, stagger: 0.12 }, 1.2);
-    gsap.to(".hero__head", { yPercent: -40, opacity: 0.2, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
+    if (desktop) gsap.to(".hero__head", { yPercent: -40, opacity: 0.2, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
   }
 
   /* Text: a gentle rise, once */
@@ -125,7 +120,7 @@
   var range = desktop ? 7 : 4;
   gsap.utils.toArray("[data-speed]").forEach(function (img) {
     var s = parseFloat(img.getAttribute("data-speed")) || 1;
-    gsap.fromTo(img, { yPercent: -range * s }, { yPercent: range * s, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: desktop ? true : 0.3 } });
+    gsap.fromTo(img, { yPercent: -range * s }, { yPercent: range * s, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
   });
 
   /* Approach lines drift apart slightly */
@@ -312,14 +307,17 @@ function initRecentWork() {
   /* Parallax: transforms in requestAnimationFrame only; off for reduced motion */
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   var ticking = false, active = false;
+  var touch = window.matchMedia("(hover: none)").matches;
+  // Use a steady viewport height: the iPhone toolbar changing size shouldn't nudge the phones.
+  var vh = window.innerHeight, vw = window.innerWidth;
+  window.addEventListener("resize", function () { if (window.innerWidth !== vw) { vw = window.innerWidth; vh = window.innerHeight; } });
   function frame() {
     ticking = false;
     var r = section.getBoundingClientRect();
-    var vh = window.innerHeight;
     if (r.bottom < -100 || r.top > vh + 100) return;
     var offset = (r.top + r.height / 2) - vh / 2;   // 0 when centred
     phones.forEach(function (ph) {
-      var k = parseFloat(ph.getAttribute("data-rate")) || 0.08;
+      var k = (parseFloat(ph.getAttribute("data-rate")) || 0.08) * (touch ? 0.6 : 1);
       ph.style.transform = "translate3d(0," + (offset * k).toFixed(2) + "px,0)";
     });
   }
