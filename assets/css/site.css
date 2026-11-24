@@ -415,3 +415,10 @@ html.motion .hero .demo{opacity:0}
 .opts.is-invalid .err{display:block}
 .opts.is-invalid .opt span{border-color:rgba(236,235,231,.35)}
 .prefers-email .form__send button[value="email"]{order:-1}
+
+/* Photo captions: silent, not link-like */
+.photo-cta{margin-top:10px;font-size:11px;letter-spacing:.02em;line-height:1.45;color:#5f5e5b}
+.photo-cta a{color:inherit;text-decoration:none;transition:color .4s ease}
+.photo-cta a:hover,.photo-cta a:focus-visible{color:var(--soft)}
+@media (min-width:900px){.photo-cta{font-size:11.5px}}
+@media (max-width:899px){.diptych .photo-cta{font-size:10.5px}}
