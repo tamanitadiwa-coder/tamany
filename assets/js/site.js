@@ -58,6 +58,7 @@
   initBudget();
   initEnquiry();
   initLevels();
+  initRecentWork();
 
   /* Floating Packages bubble: appears after the hero, steps aside near the footer */
   var fpk = document.querySelector(".float-pk");
@@ -235,4 +236,72 @@ function initLevels() {
   range.addEventListener("input", function () { show(parseInt(range.value, 10), true); });
   ticks.forEach(function (t) { t.addEventListener("click", function () { show(parseInt(t.getAttribute("data-go"), 10), true); }); });
   show(0, false);
+}
+
+/* Recent work: lazy-load the phone videos, play only on screen, rAF parallax */
+function initRecentWork() {
+  var section = document.getElementById("recent");
+  if (!section) return;
+  var vids = Array.prototype.slice.call(section.querySelectorAll("video"));
+  var phones = Array.prototype.slice.call(section.querySelectorAll(".phone"));
+  var ua = navigator.userAgent;
+  var isIOS = /iP(hone|ad|od)/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isSafari = /^((?!chrome|chromium|crios|fxios|edg|android).)*safari/i.test(ua);
+  // WebKit can't show VP9 transparency, so it gets the MP4 on the page colour.
+  var probe = document.createElement("video");
+  var useWebm = !isIOS && !isSafari && probe.canPlayType('video/webm; codecs="vp9"') !== "";
+
+  function load(v) {
+    if (v.dataset.loaded) return;
+    v.dataset.loaded = "1";
+    v.muted = true;
+    v.src = useWebm ? v.dataset.webm : v.dataset.mp4;
+    v.load();
+  }
+  function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+
+  if ("IntersectionObserver" in window) {
+    var near = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { load(e.target); near.unobserve(e.target); } });
+    }, { rootMargin: "300px 0px" });
+    var vis = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { load(e.target); play(e.target); } else { e.target.pause(); }
+      });
+    }, { threshold: 0.15 });
+    vids.forEach(function (v) { near.observe(v); vis.observe(v); });
+  } else {
+    vids.forEach(function (v) { load(v); play(v); });
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) vids.forEach(function (v) { v.pause(); });
+  });
+
+  /* Parallax: transforms in requestAnimationFrame only; off for reduced motion */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var ticking = false, active = false;
+  function frame() {
+    ticking = false;
+    var r = section.getBoundingClientRect();
+    var vh = window.innerHeight;
+    if (r.bottom < -100 || r.top > vh + 100) return;
+    var offset = (r.top + r.height / 2) - vh / 2;   // 0 when centred
+    phones.forEach(function (ph) {
+      var k = parseFloat(ph.getAttribute("data-rate")) || 0.08;
+      ph.style.transform = "translate3d(0," + (offset * k).toFixed(2) + "px,0)";
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+  function setMode() {
+    if (reduce.matches) {
+      if (active) { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); active = false; }
+      phones.forEach(function (ph) { ph.style.transform = ""; });
+    } else if (!active) {
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll, { passive: true });
+      active = true; onScroll();
+    }
+  }
+  if (reduce.addEventListener) reduce.addEventListener("change", setMode); else if (reduce.addListener) reduce.addListener(setMode);
+  setMode();
 }

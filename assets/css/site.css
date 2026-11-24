@@ -367,3 +367,20 @@ html.motion .hero .demo{opacity:0}
   .offer li{padding-block:14px}
   .page-head{padding-top:calc(var(--nav) + 40px);padding-bottom:44px}
 }
+
+/* ==========================================================================
+   Recent work — two floating phones, staggered, light parallax
+   ========================================================================== */
+.recent{padding:56px var(--m) 24px;position:relative}
+.recent__label{text-align:center;margin-bottom:28px}
+.recent__stage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:4px;max-width:900px;margin:0 auto;align-items:start}
+.phone{margin:0;aspect-ratio:720/1530;will-change:transform;backface-visibility:hidden}
+.phone video{display:block;width:100%;height:100%;object-fit:contain;background:transparent;pointer-events:none}
+.phone--left{margin-top:22%}          /* right phone sits higher */
+.phone--right{margin-bottom:22%}
+@media (min-width:600px){.recent__stage{column-gap:24px;max-width:560px}}
+@media (min-width:900px){
+  .recent{padding:96px var(--m) 40px}
+  .recent__label{margin-bottom:48px}
+  .recent__stage{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center;column-gap:clamp(40px,8vw,160px);max-width:900px}
+}
