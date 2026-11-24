@@ -384,3 +384,14 @@ html.motion .hero .demo{opacity:0}
   .recent__label{margin-bottom:48px}
   .recent__stage{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center;column-gap:clamp(40px,8vw,160px);max-width:900px}
 }
+
+/* Order: wordmark → Recent work → image */
+.hero.hero--top{min-height:0;height:auto;padding-bottom:0}
+.hero--top + .recent{padding-top:40px}
+.hero-follow{display:flex;flex-direction:column}
+.hero-follow .hero__media{flex:none;margin-top:0;min-height:0;aspect-ratio:4/4.2}
+@media (min-width:900px){
+  .hero--top + .recent{padding-top:56px}
+  .hero-follow{padding-top:72px}
+  .hero-follow .hero__media{aspect-ratio:auto;margin:0 auto}
+}
